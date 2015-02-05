@@ -9,13 +9,13 @@ Connor Bottum
 
 To get to first playable:
 1) Three spell types (at worst 1?)
-	\ta) Projectile -b
-	\tb) Slash -x 
-	\tc) Wall -y
+	a) Projectile -b
+	b) Slash -x 
+	c) Wall -y
 2) Two+ elements
-	\ta) Water
-	\tb) Earth
-	\tc) Air
-	\td) Fire
+	a) Water
+	b) Earth
+	c) Air
+	d) Fire
 3) Characters that can fire spells and move n stuff
-	\tCasting a spell stops movement
+	Casting a spell stops movement
