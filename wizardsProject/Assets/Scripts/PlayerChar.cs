@@ -8,14 +8,14 @@ public class PlayerChar : MonoBehaviour {
 	int maxHp; //player's max hp
 	int maxMana; //player's max mana
 	public float moveForce = 40f; // Amount of force added to move the player left and right.
-	public float maxSpeed = 3f;	// The fastest the player can travel in the x axis.
+//	public float maxSpeed = 3f;	// The fastest the player can travel in the x axis.
 	bool jump; //true if player is currently jumping?
 	int dotVal; //damage taken per second
 	bool isDead; //true if player is dead, else false
 	int stunT; //"0" when player is not stunned, else duration of stun remaining
 	bool facingRight; //true if sprite is facing right
 	public int playerNum; //the player and controler number
-	private Animator anim; 
+	public Animator anim; 
 
 	//instantiate new instance of player char. @param isP1 determines start location
 	public PlayerChar() {
@@ -39,7 +39,10 @@ public class PlayerChar : MonoBehaviour {
 		playerNum = 1;
 	}
 
-
+	public void Awake () {
+		anim = this.GetComponent<Animator> ();
+		//anim = GetComponent<Animator>();
+	}
 
 	// Update is called once per frame
 	public void Update () {
@@ -49,18 +52,27 @@ public class PlayerChar : MonoBehaviour {
 	// FixedUpdate is called once per physics step 
 	public void FixedUpdate () {
 		// Cache the contoller input input.
-		float rh = Input.GetAxis ("Player"+playerNum+"_Move_Horizontal_Mac");
-		float rv = Input.GetAxis ("Player" + playerNum + "_Move_Vertical_Mac");
-		Vector3 h = new Vector3(rh, 0, 0);
-		Vector3 v = new Vector3 (0, 0, rv);
-		float speed = (h + v).magnitude;
+		float rawHorizontal = Input.GetAxis ("Player"+playerNum+"_Move_Horizontal_Mac");
+		float rawVertical = Input.GetAxis ("Player" + playerNum + "_Move_Vertical_Mac");
+		Vector3 direction = new Vector3(rawHorizontal, 0f, rawVertical);
+		float speed = (direction).magnitude;
 
-		// The Speed animator parameter is set to the absolute value of the horizontal input.
-		anim.SetFloat ("Speed", speed);
+		
+//		Debug.Log ("Test speed: "+speed);
 
-		// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
-		if (speed + rigidbody.velocity.magnitude < maxSpeed)
-			rigidbody.AddForce( new Vector3
+
+//		if (rawHorizontal != 0f || rawVertical != 0f) {
+//						// Create a rotation based on this new vector assuming that up is the global y axis
+//						Quaternion targetRotate = Quaternion.LookRotation (direction, Vector3.up);
+//
+//						// Create a rotation that is an increment closer to the target rotation from the player's rotation.
+//						Quaternion newRotation = Quaternion.Lerp (rigidbody.rotation, targetRotate, Time.deltaTime);//turnSmoothing * Time.deltaTime);
+//			
+//						// Change the players rotation to this new rotation.
+//						rigidbody.MoveRotation (newRotation);
+//		} 
+		rigidbody.AddForce (direction * moveForce);
+		anim.SetFloat("Speed", speed*5);
 	}
 
 	public void takeDamage(int dmg){
