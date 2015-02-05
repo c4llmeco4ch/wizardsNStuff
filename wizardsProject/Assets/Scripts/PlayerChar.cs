@@ -8,7 +8,7 @@ public class PlayerChar : MonoBehaviour {
 	int maxHp; //player's max hp
 	int maxMana; //player's max mana
 	public float moveForce = 40f; // Amount of force added to move the player left and right.
-//	public float maxSpeed = 3f;	// The fastest the player can travel in the x axis.
+	public float maxSpeed = 5f;	// The fastest the player can travel in the x axis.
 	bool jump; //true if player is currently jumping?
 	int dotVal; //damage taken per second
 	bool isDead; //true if player is dead, else false
@@ -59,19 +59,12 @@ public class PlayerChar : MonoBehaviour {
 
 		
 //		Debug.Log ("Test speed: "+speed);
+ 		if((speed * rigidbody.velocity).magnitude < maxSpeed)
+			rigidbody.AddForce (direction * moveForce);
 
+//		if (rigidbody.velocity.magnitude > maxSpeed)
+//						rigidbody.velocity = direction * maxSpeed;
 
-//		if (rawHorizontal != 0f || rawVertical != 0f) {
-//						// Create a rotation based on this new vector assuming that up is the global y axis
-//						Quaternion targetRotate = Quaternion.LookRotation (direction, Vector3.up);
-//
-//						// Create a rotation that is an increment closer to the target rotation from the player's rotation.
-//						Quaternion newRotation = Quaternion.Lerp (rigidbody.rotation, targetRotate, Time.deltaTime);//turnSmoothing * Time.deltaTime);
-//			
-//						// Change the players rotation to this new rotation.
-//						rigidbody.MoveRotation (newRotation);
-//		} 
-		rigidbody.AddForce (direction * moveForce);
 		anim.SetFloat("Speed", speed*5);
 	}
 
