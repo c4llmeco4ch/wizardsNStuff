@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public interface Spell {//: MonoBehaviour {
+public abstract class Spell : MonoBehaviour {
 
 	//defines how a given spell will fire
-	void cast();
+	public abstract void cast();
 	
 	//defines what happens when an object collides with a given spell
-	void onCollide(Object collider);
+	public abstract void onCollide(Object collider);
 
 	//defines spell changes when an element is put on a spell
-	void infuse(Element e);
+	public abstract void infuse(Element e);
 }

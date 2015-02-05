@@ -14,8 +14,9 @@ public class PlayerChar : MonoBehaviour {
 	bool isDead; //true if player is dead, else false
 	int stunT; //"0" when player is not stunned, else duration of stun remaining
 	bool facingRight; //true if sprite is facing right
+	bool block; //true if player is currenty blocking
 	public int playerNum; //the player and controler number
-	public Animator anim; 
+	public Animator anim; //
 
 	//instantiate new instance of player char. @param isP1 determines start location
 	public PlayerChar() {
@@ -68,11 +69,17 @@ public class PlayerChar : MonoBehaviour {
 		anim.SetFloat("Speed", speed*5);
 	}
 
+	//check if the amount of incoming damage is greater than the player's current hp. if so, player is die
+	//else, subtract player's hp by damage
 	public void takeDamage(int dmg){
 		if (dmg>=hp)
 			isDead=true;
 		else
 			hp-=dmg;
+	}
+	
+	public void stunned(int d){
+	
 	}
 
 }
