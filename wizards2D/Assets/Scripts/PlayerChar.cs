@@ -11,6 +11,7 @@ public class PlayerChar : MonoBehaviour {
 	public float maxSpeed = 5f;	// The fastest the player can travel in the x axis.
 	bool jump; //true if player is currently jumping?
 	int dotVal; //damage taken per second
+	int dotT; //"0" when player is not burned or poisoned, else duration of DoT
 	bool isDead; //true if player is dead, else false
 	int stunT; //"0" when player is not stunned, else duration of stun remaining
 	bool facingRight; //true if sprite is facing right
@@ -71,15 +72,27 @@ public class PlayerChar : MonoBehaviour {
 
 	//check if the amount of incoming damage is greater than the player's current hp. if so, player is die
 	//else, subtract player's hp by damage
-	public void takeDamage(int dmg){
-		if (dmg>=hp)
+	public void takeDamage(int dmg, Spell s){
+		int bd;
+		if(!block)
+			bd=dmg;
+		else if(s is Slash && block)
+			bd=dmg/2;
+		else
+			bd=dmg-(dmg/4);
+		if (bd>=hp)
 			isDead=true;
 		else
-			hp-=dmg;
+			hp-=bd;
 	}
 	
-	public void stunned(int d){
 	
+	public void stunned(int d){
+		if(d<=stunT)
+			return;
+		else{
+			stunT=d;
+		}
 	}
 
 }
