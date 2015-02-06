@@ -84,8 +84,8 @@ public class PlayerChar : MonoBehaviour {
 			isDead=true;
 		else
 			hp-=bd;
-		if(s.hasDot()){
-			dotVal=s.getDotVal();
+		if(s.getDotB()){
+			dotVal=s.getDotV();
 			dotT=s.getDotT();
 		}
 	}

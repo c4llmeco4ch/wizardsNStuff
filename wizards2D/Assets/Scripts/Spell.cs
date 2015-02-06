@@ -5,7 +5,8 @@ public abstract class Spell : MonoBehaviour {
 	bool hasDot;//does the spell have a DoT effect on hit.
 	int dotVal; //damage per second on DoT
 	int dotT;   //duration of DoT
-	
+	int dmg;
+	int spd;
 	//defines how a given spell will fire
 	public abstract void cast();
 	
