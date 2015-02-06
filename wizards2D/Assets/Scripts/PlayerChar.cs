@@ -1,22 +1,22 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System;
 
 public class PlayerChar : MonoBehaviour {
-	int hp; //the player's current hp
-	int mana; //the player's current mana
-	int es; //"0" if no element is stored, 1=fire, 2=water, 3=earth, 4=wind
-	int maxHp; //player's max hp
-	int maxMana; //player's max mana
+	public int hp; //the player's current hp
+	public int mana; //the player's current mana
+	public int es; //"0" if no element is stored, 1=fire, 2=water, 3=earth, 4=wind
+	private int maxHp; //player's max hp
+	private int maxMana; //player's max mana
 	public float moveForce = 40f; // Amount of force added to move the player left and right.
 	public float maxSpeed = 5f;	// The fastest the player can travel in the x axis.
-	bool jump; //true if player is currently jumping?
-	int dotVal; //damage taken per second
-	int dotT; //"0" when player is not burned or poisoned, else duration of DoT
-	bool isDead; //true if player is dead, else false
-	int stunT; //"0" when player is not stunned, else duration of stun remaining
-	bool facingRight; //true if sprite is facing right
-	bool block; //true if player is currenty blocking
-	public int playerNum; //the player and controler number
+	public bool jump; //true if player is currently jumping?
+	public int dotVal; //damage taken per second
+	public int dotT; //"0" when player is not burned or poisoned, else duration of DoT
+	public bool isDead; //true if player is dead, else false
+	public int stunT; //"0" when player is not stunned, else duration of stun remaining
+	private bool facingRight; //true if sprite is facing right
+	private bool block; //true if player is currenty blocking
+	public int playerNum; //the player and controller number
 	public Animator anim; //
 
 	//instantiate new instance of player char. @param isP1 determines start location
@@ -84,6 +84,10 @@ public class PlayerChar : MonoBehaviour {
 			isDead=true;
 		else
 			hp-=bd;
+		if(s.hasDot()){
+			dotVal=s.getDotVal();
+			dotT=s.getDotT();
+		}
 	}
 	
 	

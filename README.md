@@ -18,4 +18,4 @@ To get to first playable:
 	c) Air  
 	d) Fire  
 3) Characters that can fire spells and move n stuff  
-	Casting a spell stops movement  
+	Casting a spell stops movement

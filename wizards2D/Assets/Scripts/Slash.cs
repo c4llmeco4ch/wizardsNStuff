@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Slash : Spell {
 
+	
+	
 	//defines how a given spell will fire
 	override public void cast(){
 		
