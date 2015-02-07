@@ -14,7 +14,7 @@ public class PlayerChar : MonoBehaviour {
 	public int dotT; //"0" when player is not burned or poisoned, else duration of DoT
 	public bool isDead; //true if player is dead, else false
 	public int stunT; //"0" when player is not stunned, else duration of stun remaining
-	private bool facingRight; //true if sprite is facing right
+	public bool facingRight; //true if sprite is facing right
 	private bool block; //true if player is currenty blocking
 	public int playerNum; //the player and controller number
 	public Animator anim; //
@@ -93,7 +93,10 @@ public class PlayerChar : MonoBehaviour {
 		}
 	}
 	
-	
+	public void setBlock(bool b){block=b;}
+
+	public bool getBlock(){return block;}
+		
 	public void stunned(int d){
 		if(d<=stunT)
 			return;
