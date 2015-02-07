@@ -18,7 +18,6 @@ public class PlayerChar : MonoBehaviour {
 	private bool block; //true if player is currenty blocking
 	public int playerNum; //the player and controller number
 	public Animator anim; //
-//	public CircleCollider groundCollider;
 
 
 	//instantiate new instance of player char. @param isP1 determines start location
@@ -26,14 +25,6 @@ public class PlayerChar : MonoBehaviour {
 		maxHp = 100;
 		maxMana = 100;
 		es = 0;
-//		if (isP1) {
-//			xPos = 5;
-//			yPos = 5;
-//		} 
-//		else {
-//			xPos = 15;
-//			yPos = 5;
-//		}
 		jump=false;
 		dotVal=0;
 		hp=maxHp;
@@ -44,9 +35,6 @@ public class PlayerChar : MonoBehaviour {
 	}
 
 	public void Awake () {
-//		anim = this.GetComponent<Animator> ();
-//		groundCollider = this.GetComponent<CircleCollider2D> ();
-		//anim = GetComponent<Animator>();
 	}
 
 	// Update is called once per frame
@@ -104,11 +92,4 @@ public class PlayerChar : MonoBehaviour {
 			stunT=d;
 		}
 	}
-
-//	void OnCollisonEnter2D(Collider2D other) {
-//		if(other.tag.Equals("Ground")){
-//			Physics2D.IgnoreCollision(other, groundCollider, false);
-//			Debug.Log("HIT!!");
-//		}
-//	}
 }
