@@ -32,6 +32,7 @@ public class PlayerChar : MonoBehaviour {
 		isDead=false;
 		stunT=0;
 		playerNum = 1;
+		facingRight = true;
 	}
 
 	public void Awake () {
@@ -59,6 +60,22 @@ public class PlayerChar : MonoBehaviour {
 //						rigidbody.velocity = direction * maxSpeed;
 
 		anim.SetFloat("Speed", speed*5);
+
+		if (rawHorizontal < 0 && !facingRight)
+			Flip ();
+		else if (rawHorizontal > 0 && facingRight)
+			Flip ();
+	}
+
+	void Flip ()
+	{
+		// Switch the way the player is labelled as facing.
+		facingRight = !facingRight;
+		
+		// Multiply the player's x local scale by -1.
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
 	}
 
 	//check if the amount of incoming damage is greater than the player's current hp. if so, player is die
