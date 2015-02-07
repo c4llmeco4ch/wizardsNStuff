@@ -18,6 +18,8 @@ public class PlayerChar : MonoBehaviour {
 	private bool block; //true if player is currenty blocking
 	public int playerNum; //the player and controller number
 	public Animator anim; //
+//	public CircleCollider groundCollider;
+
 
 	//instantiate new instance of player char. @param isP1 determines start location
 	public PlayerChar() {
@@ -42,7 +44,8 @@ public class PlayerChar : MonoBehaviour {
 	}
 
 	public void Awake () {
-		anim = this.GetComponent<Animator> ();
+//		anim = this.GetComponent<Animator> ();
+//		groundCollider = this.GetComponent<CircleCollider2D> ();
 		//anim = GetComponent<Animator>();
 	}
 
@@ -59,7 +62,7 @@ public class PlayerChar : MonoBehaviour {
 		Vector3 direction = new Vector3(rawHorizontal, 0f, rawVertical);
 		float speed = (direction).magnitude;
 
-		
+
 //		Debug.Log ("Test speed: "+speed);
  		if((speed * rigidbody.velocity).magnitude < maxSpeed)
 			rigidbody.AddForce (direction * moveForce);
@@ -99,4 +102,10 @@ public class PlayerChar : MonoBehaviour {
 		}
 	}
 
+//	void OnCollisonEnter2D(Collider2D other) {
+//		if(other.tag.Equals("Ground")){
+//			Physics2D.IgnoreCollision(other, groundCollider, false);
+//			Debug.Log("HIT!!");
+//		}
+//	}
 }

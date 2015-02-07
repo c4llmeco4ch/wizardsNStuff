@@ -54,13 +54,13 @@ public class PlayerChar : MonoBehaviour {
 		// Cache the contoller input input.
 		float rawHorizontal = Input.GetAxis ("Player"+playerNum+"_Move_Horizontal_Mac");
 		float rawVertical = Input.GetAxis ("Player" + playerNum + "_Move_Vertical_Mac");
-		Vector3 direction = new Vector3(rawHorizontal, 0f, rawVertical);
+		Vector2 direction = new Vector2(rawHorizontal, rawVertical);
 		float speed = (direction).magnitude;
 
 		
 //		Debug.Log ("Test speed: "+speed);
  		if((speed * rigidbody.velocity).magnitude < maxSpeed)
-			rigidbody.AddForce (direction * moveForce);
+			rigidbody2D.AddForce (direction * moveForce);
 
 //		if (rigidbody.velocity.magnitude > maxSpeed)
 //						rigidbody.velocity = direction * maxSpeed;
