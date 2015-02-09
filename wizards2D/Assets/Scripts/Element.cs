@@ -16,7 +16,7 @@ public class Element : MonoBehaviour {
 	
 	//accessors and modifiers
 	//*
-	public void setDot(bool has, int val, int t){hasDot=has;dotVal=val;dotT=t;}
+	public void setDot(bool has, int val, int t){hasDot=has;dotV=val;dotT=t;}
 	
 	public bool getDotB(){return hasDot;}
 	
