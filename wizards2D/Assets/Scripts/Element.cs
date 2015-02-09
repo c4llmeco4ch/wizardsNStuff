@@ -2,17 +2,54 @@
 using System.Collections;
 
 public class Element : MonoBehaviour {
-	int dmg; //damage mod for element
-	int speed; //projectile mod for element
-	int cast; //cast point mod for element
+	int dmg;     //damage mod for element
+	int speed;   //projectile mod for element
+	int cast;    //cast point mod for element
+	int knock;   //knockback mod for element
+	bool hasDot; //true if element has on-hit
+	string dotN; //name of on-hit
+	int dotT;    //duration of on-hit
+	int dotV;    //value per second of on-hit
+	int range;   //range mod for element
+	int manaC;   //mana cost mod for element
+	string name; //name of element
 	
-	// Use this for initialization
-	void Start () {
+	//accessors and modifiers
+	//*
+	public void setDot(bool has, int val, int t){hasDot=has;dotVal=val;dotT=t;}
 	
-	}
+	public bool getDotB(){return hasDot;}
 	
-	// Update is called once per frame
-	void Update () {
+	public void setDotB(bool b){hasDot=b;}
 	
-	}
+	public int getDotV(){return dotV;}
+	
+	public void setDotV(int v){dotV=v;}
+	
+	public int getDotT(){return dotT;}
+	
+	public void setDotT(int t){dotT=t;}
+	
+	public int getDmg(){return dmg;}
+	
+	public void setDmg(int d){dmg=d;}
+	
+	public int getCast(){return cast;}
+	
+	public void setCast(int s){cast=s;}
+	
+	public int getKnock(){return knock;}
+	
+	public void setKnock(int k){knock=k;}
+	
+	public int getMana(){return manaC;}
+	
+	public void setMana(int m){manaC=m;}
+	
+	public int getRange(){return range;}
+	
+	public void setRange(int r){range=r;}
+	//*
+	//end of accessors and modifiers
+	
 }

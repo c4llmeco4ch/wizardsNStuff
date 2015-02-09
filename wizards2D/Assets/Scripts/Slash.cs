@@ -7,6 +7,11 @@ public class Slash : Spell {
 		
 	}
 	
+	//initialize a given spell
+	public void Awake(){
+		
+	}
+	
 	//defines how a given spell will fire
 	override public void cast(PlayerChar p){
 		float y=p.transform.position.y;
@@ -28,8 +33,4 @@ public class Slash : Spell {
 		
 	}
 	
-	//defines spell changes when an element is put on a spell
-	override public void infuse(Element e){
-		
-	}
 }

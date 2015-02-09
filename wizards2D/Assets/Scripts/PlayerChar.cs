@@ -20,7 +20,7 @@ public class PlayerChar : MonoBehaviour {
 	public Animator anim; //
 
 
-	//instantiate new instance of player char. @param isP1 determines start location
+	//instantiate new instance of player char. @param playerNum determines start location
 	public PlayerChar() {
 		maxHp = 100;
 		maxMana = 100;
