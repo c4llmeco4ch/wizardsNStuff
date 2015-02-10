@@ -48,6 +48,7 @@ public class PlayerChar : MonoBehaviour {
 		// Cache the contoller input input.
 		float rawHorizontal = Input.GetAxis ("Player"+playerNum+"_Move_Horizontal_Mac");
 		float rawVertical = Input.GetAxis ("Player" + playerNum + "_Move_Vertical_Mac");
+		rawVertical = rawVertical / 0.5f;
 		Vector3 direction = new Vector3(rawHorizontal, 0f, rawVertical);
 		float speed = (direction).magnitude;
 
