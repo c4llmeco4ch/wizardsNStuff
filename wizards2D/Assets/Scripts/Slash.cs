@@ -11,6 +11,7 @@ public class Slash : Spell {
 	
 	public void Start(){//call this method when you wish to cast the slash
 		cast(p);
+		casting=true;
 		
 	}
 	
@@ -27,28 +28,30 @@ public class Slash : Spell {
 	override public void cast(PlayerChar p){
 		float y=p.transform.position.y;
 		float x=p.transform.position.x;
-		BoxCollider2D sword = new BoxCollider2D();
-		sword.size=new Vector2((float)this.getRange(),(float)this.getRange());
+		float z=p.transform.position.z;
+		BoxCollider sword = new BoxCollider();
+		sword.size=new Vector3((float)this.getRange(),(float)this.getRange(),(float)this.getRange());
 		if(p.facingRight){
-			x=p.collider2D.bounds.size.x/2+x;
-			sword.center=new Vector2((float)x+(this.getRange()/2),(float)y);
+			x=p.collider.bounds.size.x/2+x;
+			sword.center=new Vector3((float)x+(this.getRange()/2),(float)y,(float)z);
 		}
 		else{
-			x=p.collider2D.bounds.size.x/2-x;
-			sword.center=new Vector2((float)x-(this.getRange()/2),(float)y);
+			x=p.collider.bounds.size.x/2-x;
+			sword.center=new Vector3((float)x-(this.getRange()/2),(float)y,(float)z);
 		}
+		sword.transform.Rotate((float)30,(float)0,(float)0,Space.World);
 	}
 	
 	//defines what happens when an object collides with a given spell
-//	override public void onCollisionEnter2D(Collision2D c){
-//		if(c.gameObject.name.Contains("Player")){
-//			PlayerChar p=c.gameObject.GetComponent(PlayerChar);//issues grabbing the playerchar from the gameobject
-//			p.takeDamage(this.getDmg(),this);
-//		}
-//		else if(c.gameObject.GetType()==Spell){ //same as above
-//			Spell s=c.gameObject;
-//		}
-//			
-//	}
+	override public void onCollisionEnter(Collision c){
+		if(c.gameObject.name.Contains("Player")){
+			PlayerChar p=c.gameObject.GetComponent(PlayerChar);//issues grabbing the playerchar from the gameobject
+			p.takeDamage(this.getDmg(),this);
+		}
+		else if(c.gameObject.GetType()==Spell){ //same as above
+			Spell s=c.gameObject;
+		}
+			
+	}
 	
 }

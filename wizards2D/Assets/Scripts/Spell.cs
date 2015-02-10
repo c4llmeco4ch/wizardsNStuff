@@ -16,7 +16,7 @@ public abstract class Spell : MonoBehaviour {
 	public abstract void cast(PlayerChar p);
 	
 	//defines what happens when an object collides with a given spell
-//	public abstract void onCollisionEnter2D(Collision2D c);
+	public abstract void onCollisionEnter(Collision c);
 
 	//defines spell changes when an element is put on a spell
 	public void infuse(Element e){
