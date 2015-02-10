@@ -40,8 +40,15 @@ public class Slash : Spell {
 	}
 	
 	//defines what happens when an object collides with a given spell
-	override public void onCollide(Object collider){
-		
+	override public void onCollisionEnter2D(Collision2D c){
+		if(c.gameObject.name.Contains("Player")){
+			PlayerChar p=c.gameObject.GetComponent(PlayerChar);//issues grabbing the playerchar from the gameobject
+			p.takeDamage(this.getDmg(),this);
+		}
+		else if(c.gameObject.GetType()==Spell){ //same as above
+			Spell s=c.gameObject;
+		}
+			
 	}
 	
 }
