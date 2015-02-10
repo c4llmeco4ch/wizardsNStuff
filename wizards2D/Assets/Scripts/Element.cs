@@ -12,7 +12,7 @@ public class Element : MonoBehaviour {
 	int dotV;    //value per second of on-hit
 	int range;   //range mod for element
 	int manaC;   //mana cost mod for element
-	string name; //name of element
+	string eName; //name of element
 	
 	//accessors and modifiers
 	//*
@@ -30,10 +30,18 @@ public class Element : MonoBehaviour {
 	
 	public void setDotT(int t){dotT=t;}
 	
+	public string getDotN(){return dotN;}
+	
+	public void setDotN(string s){dotN=s;}
+	
 	public int getDmg(){return dmg;}
 	
 	public void setDmg(int d){dmg=d;}
+
+	public int getSpd(){return speed;}
 	
+	public void setSpd(int s){speed=s;}
+			
 	public int getCast(){return cast;}
 	
 	public void setCast(int s){cast=s;}
@@ -49,6 +57,10 @@ public class Element : MonoBehaviour {
 	public int getRange(){return range;}
 	
 	public void setRange(int r){range=r;}
+	
+	public string getName(){return eName;}
+	
+	public void setName(string s){eName=s;}
 	//*
 	//end of accessors and modifiers
 	

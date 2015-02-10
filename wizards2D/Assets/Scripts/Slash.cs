@@ -1,15 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof (PlayerChar))]
 public class Slash : Spell {
-
+	PlayerChar p; //the player who is casting this slash
+	bool casting; //whether the slash is currently in effect
 	public void FixedUpdate(){
 		
 	}
 	
+	public void Start(){//call this method when you wish to cast the slash
+		cast(p);
+		
+	}
+	
+	public void prepSlash(PlayerChar p){this.p=p;}//call this immediately after creating this object
+	
+	
+	
 	//initialize a given spell
 	public void Awake(){
-		
+		casting=false;
 	}
 	
 	//defines how a given spell will fire
