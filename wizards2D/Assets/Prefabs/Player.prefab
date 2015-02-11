@@ -11,9 +11,9 @@ GameObject:
   - 33: {fileID: 3376676}
   - 23: {fileID: 2376676}
   - 54: {fileID: 5476676}
-  - 65: {fileID: 6576676}
   - 114: {fileID: 11476676}
   - 95: {fileID: 9576676}
+  - 136: {fileID: 13656610}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -28,8 +28,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176676}
   m_LocalRotation: {x: .258819073, y: 0, z: 0, w: .965925813}
-  m_LocalPosition: {x: -2.62102318, y: 2, z: 5}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalPosition: {x: -2.62102318, y: 2, z: -10}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,18 +75,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &6576676
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176676}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .961694121, y: .130032092, z: .337410986}
-  m_Center: {x: .0116065349, y: -.375300378, z: .168811947}
 --- !u!95 &9576676
 Animator:
   serializedVersion: 3
@@ -126,6 +114,19 @@ MonoBehaviour:
   facingRight: 0
   playerNum: 1
   anim: {fileID: 9576676}
+--- !u!136 &13656610
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176676}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: .0527436696
+  m_Height: .449999988
+  m_Direction: 0
+  m_Center: {x: -.0399999991, y: -.291000009, z: .1716021}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
