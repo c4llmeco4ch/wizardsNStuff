@@ -8,8 +8,10 @@ public class Slash : Spell {
 	int framesLeft;
 	BoxCollider sword;
 	public void FixedUpdate(){
-		if(Input.GetButtonDown("Player"+p.playerNum+"_Spell_Slash_Mac") && !casting)
+		if(Input.GetButtonDown("Player"+p.playerNum+"_Spell_Slash_Mac") && !casting){
 			Start ();
+			Debug.Log("it's pressed");
+		}
 		else if(framesLeft==0){
 			casting=false;
 			Destroy(sword);
