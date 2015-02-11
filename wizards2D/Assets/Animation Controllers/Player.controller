@@ -10,7 +10,7 @@ AnimatorController:
   m_AnimatorParameters:
   - m_Name: Speed
     m_Type: 1
-    m_DefaultFloat: 1
+    m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
@@ -26,7 +26,7 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1101 &110106570
+--- !u!1101 &110119028
 Transition:
   serializedVersion: 2
   m_ObjectHideFlags: 3
@@ -38,15 +38,15 @@ Transition:
   m_TransitionDuration: .100000001
   m_TransitionOffset: 0
   m_Conditions:
-  - m_ConditionMode: 5
-    m_ConditionEvent: 
-    m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: Speed
+    m_EventTreshold: .200000003
     m_ExitTime: .899999976
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
   m_CanTransitionToSelf: 0
---- !u!1101 &110175072
+--- !u!1101 &110192786
 Transition:
   serializedVersion: 2
   m_ObjectHideFlags: 3
@@ -55,17 +55,32 @@ Transition:
   m_Name: 
   m_SrcState: {fileID: 110257136}
   m_DstState: {fileID: 110267800}
-  m_TransitionDuration: .100000001
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_Conditions:
-  - m_ConditionMode: 5
-    m_ConditionEvent: 
-    m_EventTreshold: 0
-    m_ExitTime: .899999976
+  - m_ConditionMode: 3
+    m_ConditionEvent: Speed
+    m_EventTreshold: .200000003
+    m_ExitTime: 1
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
   m_CanTransitionToSelf: 0
+--- !u!1102 &110237384
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Running Player
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: f5b7c4b5aba684f119564df72e10c960, type: 2}
+  m_ParentStateMachine: {fileID: 110700118}
+  m_Position: {x: 263, y: -7, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
 --- !u!1102 &110257136
 State:
   m_ObjectHideFlags: 3
@@ -87,7 +102,7 @@ State:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Running
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Motions:
   - {fileID: 7400000, guid: a2631e24d356d4293938dcb62a3ec355, type: 2}
@@ -107,17 +122,18 @@ StateMachine:
   m_States:
   - {fileID: 110257136}
   - {fileID: 110267800}
+  - {fileID: 110237384}
   m_ChildStateMachine: []
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
-      first: {fileID: 110267800}
-      second:
-      - {fileID: 110106570}
-    data:
       first: {fileID: 110257136}
       second:
-      - {fileID: 110175072}
+      - {fileID: 110192786}
+    data:
+      first: {fileID: 110267800}
+      second:
+      - {fileID: 110119028}
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
