@@ -7,8 +7,8 @@ public class PlayerChar : MonoBehaviour {
 	public int es; //"0" if no element is stored, 1=fire, 2=water, 3=earth, 4=wind
 	private int maxHp; //player's max hp
 	private int maxMana; //player's max mana
-	public float moveForce = 40f; // Amount of force added to move the player left and right.
-	public float maxSpeed = 5f;	// The fastest the player can travel in the x axis.
+	public float moveForce = 300f; // Amount of force added to move the player left and right.
+	public float maxSpeed = 4f;	// The fastest the player can travel in the x axis.
 	public bool jump; //true if player is currently jumping?
 	public int dotVal; //damage taken per second
 	public int dotT; //"0" when player is not burned or poisoned, else duration of DoT
@@ -32,10 +32,10 @@ public class PlayerChar : MonoBehaviour {
 		isDead=false;
 		stunT=0;
 		playerNum = 1;
-		facingRight = true;
 	}
 
 	public void Awake () {
+		facingRight = true;
 	}
 
 	// Update is called once per frame
@@ -62,9 +62,9 @@ public class PlayerChar : MonoBehaviour {
 
 		anim.SetFloat("Speed", speed*5);
 
-		if (rawHorizontal < 0 && !facingRight)
+		if (rawHorizontal < 0 && facingRight)
 			Flip ();
-		else if (rawHorizontal > 0 && facingRight)
+		else if (rawHorizontal > 0 && !facingRight)
 			Flip ();
 	}
 

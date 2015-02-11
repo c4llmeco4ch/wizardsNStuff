@@ -78,7 +78,7 @@ NavMeshSettings:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 176676, guid: 184711791fe1948bb92e8080d9004524, type: 2}
-  m_PrefabInternal: {fileID: 1266516241}
+  m_PrefabInternal: {fileID: 1319674293}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 476569754}
@@ -101,7 +101,7 @@ Animator:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 9576676, guid: 184711791fe1948bb92e8080d9004524,
     type: 2}
-  m_PrefabInternal: {fileID: 1266516241}
+  m_PrefabInternal: {fileID: 1319674293}
   m_GameObject: {fileID: 476569746}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11476676, guid: 184711791fe1948bb92e8080d9004524,
     type: 2}
-  m_PrefabInternal: {fileID: 1266516241}
+  m_PrefabInternal: {fileID: 1319674293}
   m_GameObject: {fileID: 476569746}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -126,8 +126,8 @@ MonoBehaviour:
   hp: 100
   mana: 100
   es: 0
-  moveForce: 40
-  maxSpeed: 5
+  moveForce: 300
+  maxSpeed: 4
   jump: 0
   dotVal: 0
   dotT: 0
@@ -141,7 +141,7 @@ CapsuleCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 13656610, guid: 184711791fe1948bb92e8080d9004524,
     type: 2}
-  m_PrefabInternal: {fileID: 1266516241}
+  m_PrefabInternal: {fileID: 1319674293}
   m_GameObject: {fileID: 476569746}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -155,11 +155,11 @@ Rigidbody:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 5476676, guid: 184711791fe1948bb92e8080d9004524,
     type: 2}
-  m_PrefabInternal: {fileID: 1266516241}
+  m_PrefabInternal: {fileID: 1319674293}
   m_GameObject: {fileID: 476569746}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 5
+  m_Drag: 1
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -171,11 +171,11 @@ Renderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2376676, guid: 184711791fe1948bb92e8080d9004524,
     type: 2}
-  m_PrefabInternal: {fileID: 1266516241}
+  m_PrefabInternal: {fileID: 1319674293}
   m_GameObject: {fileID: 476569746}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
@@ -192,14 +192,14 @@ MeshFilter:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3376676, guid: 184711791fe1948bb92e8080d9004524,
     type: 2}
-  m_PrefabInternal: {fileID: 1266516241}
+  m_PrefabInternal: {fileID: 1319674293}
   m_GameObject: {fileID: 476569746}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &476569754
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 476676, guid: 184711791fe1948bb92e8080d9004524, type: 2}
-  m_PrefabInternal: {fileID: 1266516241}
+  m_PrefabInternal: {fileID: 1319674293}
   m_GameObject: {fileID: 476569746}
   m_LocalRotation: {x: .258819073, y: 0, z: 0, w: .965925813}
   m_LocalPosition: {x: -2.62102318, y: 2, z: -10}
@@ -291,7 +291,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!1001 &1266516241
+--- !u!1001 &1319674293
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -527,8 +527,8 @@ MonoBehaviour:
   hp: 100
   mana: 100
   es: 0
-  moveForce: 40
-  maxSpeed: 5
+  moveForce: 300
+  maxSpeed: 4
   jump: 0
   dotVal: 0
   dotT: 0
@@ -559,8 +559,8 @@ Rigidbody:
   m_PrefabInternal: {fileID: 1390412548}
   m_GameObject: {fileID: 1693466610}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 5
+  m_Drag: 1
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -576,7 +576,7 @@ Renderer:
   m_GameObject: {fileID: 1693466610}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
@@ -741,7 +741,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10, y: -2.21288967, z: .295023918}
-  m_Center: {x: 0, y: 1.10644484, z: 0}
+  m_Center: {x: 0, y: 1.10644484, z: .25}
 --- !u!65 &2059581733
 BoxCollider:
   m_ObjectHideFlags: 0

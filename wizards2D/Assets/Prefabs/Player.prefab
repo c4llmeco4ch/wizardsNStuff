@@ -41,7 +41,7 @@ Renderer:
   m_GameObject: {fileID: 176676}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
@@ -67,8 +67,8 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176676}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 5
+  m_Drag: 1
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -104,8 +104,8 @@ MonoBehaviour:
   hp: 100
   mana: 100
   es: 0
-  moveForce: 40
-  maxSpeed: 5
+  moveForce: 300
+  maxSpeed: 4
   jump: 0
   dotVal: 0
   dotT: 0
