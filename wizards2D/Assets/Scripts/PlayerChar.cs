@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using UnityEditor;
 
 public class PlayerChar : MonoBehaviour {
 	public int hp; //the player's current hp
@@ -61,10 +62,14 @@ public class PlayerChar : MonoBehaviour {
 		if(Input.GetButtonDown("Player"+playerNum+"_Spell_Slash_Mac")){
 			Slash s = (Slash)spells[0];
 			if(!s.casting){
-				s.Start();
-				Debug.Log("it's pressed");
+				slashMaker();
 			}
 		}
+	}
+	
+	public void slashMaker(){
+		UnityEngine.Object prefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Slash.prefab", typeof(GameObject));
+		GameObject slash = Instantiate(prefab,Vector3.zero,Quaternion.identity) as GameObject;
 	}
 
 	// FixedUpdate is called once per physics step 
