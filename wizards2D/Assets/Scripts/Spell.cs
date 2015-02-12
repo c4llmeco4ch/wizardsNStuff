@@ -13,16 +13,20 @@ public abstract class Spell : MonoBehaviour {
 	int range;  //range of the spell
 	Element element; //element the spell has been infused with
 	//defines how a given spell will fire
-	public abstract void cast(PlayerChar p);
+	public abstract void cast();
 	
 	//defines what happens when an object collides with a given spell
 	public abstract void onCollisionEnter(Collision c);
+	
+	//define what happens when a spell is finished
+	public abstract void kill();
 	
 	//defines what happens when a spell collides with a different spell
 	public abstract void versus(Spell s);
 
 	//defines spell changes when an element is put on a spell
 	public void infuse(Element e){
+		Debug.Log("Infusing spell with "+e.getName());
 		element=e;
 		hasDot=e.getDotB();
 		dotV=e.getDotV();
