@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof (PlayerChar))]
+
 public class Slash : Spell {
 	PlayerChar p; //the player who is casting this slash
 	bool casting; //whether the slash is currently in effect
