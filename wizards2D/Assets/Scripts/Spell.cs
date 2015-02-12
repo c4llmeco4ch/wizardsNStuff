@@ -17,6 +17,9 @@ public abstract class Spell : MonoBehaviour {
 	
 	//defines what happens when an object collides with a given spell
 	public abstract void onCollisionEnter(Collision c);
+	
+	//defines what happens when a spell collides with a different spell
+	public abstract void versus(Spell s);
 
 	//defines spell changes when an element is put on a spell
 	public void infuse(Element e){

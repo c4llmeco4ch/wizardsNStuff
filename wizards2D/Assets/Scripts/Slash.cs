@@ -53,15 +53,20 @@ public class Slash : Spell {
 		sword.transform.Rotate((float)30,(float)0,(float)0,Space.World);
 	}
 	
+	override public void versus(Spell s){
+	
+	}
+	
 	//defines what happens when an object collides with a given spell
 	override public void onCollisionEnter(Collision c){
-		/*if(c.gameObject.name.Contains("Player")){
-			PlayerChar p=c.gameObject.GetComponent(PlayerChar);//issues grabbing the playerchar from the gameobject
+		if(c.gameObject.name.Contains("Player")){
+			PlayerChar p=c.gameObject.GetComponent("PlayerChar") as PlayerChar;//issues grabbing the playerchar from the gameobject
 			p.takeDamage(this.getDmg(),this);
 		}
-		else if(c.gameObject.GetType()==Spell){ //same as above
-			Spell s=c.gameObject;
-		}*/
+		else if(c.gameObject.name.Contains("Spell")){ //same as above
+			Spell s=c.gameObject.GetComponent("Spell") as Spell;//issues grabbing the playerchar from the gameobject
+			s.versus(this);
+		}
 			
 	}
 	
