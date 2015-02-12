@@ -4,16 +4,14 @@ using System.Collections;
 
 public class Slash : Spell {
 	PlayerChar p; //the player who is casting this slash
-	bool casting; //whether the slash is currently in effect
+	public bool casting; //whether the slash is currently in effect
 	int framesLeft; //how many frames till the spell ends
 	BoxCollider sword; //the collider for this spell
 	
 	//called once per engine step
 	public void FixedUpdate(){
-		if(Input.GetButtonDown("Player"+p.playerNum+"_Spell_Slash_Mac") && !casting){
-			Start ();
-			Debug.Log("it's pressed");
-		}
+		if(!casting)
+			return;
 		else if(framesLeft==0){
 			kill();
 		}

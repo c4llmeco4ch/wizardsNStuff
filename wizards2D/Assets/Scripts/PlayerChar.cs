@@ -17,8 +17,9 @@ public class PlayerChar : MonoBehaviour {
 	public bool facingRight; //true if sprite is facing right
 	private bool block; //true if player is currenty blocking
 	public int playerNum; //the player and controller number
-	public Animator anim; //
-
+	public Animator anim; //all the animations this char can have
+	public Spell[] spells; //list of spells player has access to; 0=slash, 1=missile, 2=wall
+	public Element[] elements; //list of elements player has access to
 
 	//instantiate new instance of player char. @param playerNum determines start location
 	public PlayerChar() {
@@ -32,15 +33,38 @@ public class PlayerChar : MonoBehaviour {
 		isDead=false;
 		stunT=0;
 		playerNum = 1;
+		spells = new Spell[4];
+		elements=new Element[2];
 	}
+
+	
 
 	public void Awake () {
 		facingRight = true;
+		
+		//instantiate slash for player
+		Slash s= new Slash();
+		s.prepSlash(this);
+		spells[0]=s;
+		
+		/*
+		* instantiate missile for player
+		*/
+		
+		/*
+		* instantiate wall for player
+		*/
 	}
 
 	// Update is called once per frame
 	public void Update () {
-	
+		if(Input.GetButtonDown("Player"+playerNum+"_Spell_Slash_Mac")){
+			Slash s = (Slash)spells[0];
+			if(!s.casting){
+				s.Start();
+				Debug.Log("it's pressed");
+			}
+		}
 	}
 
 	// FixedUpdate is called once per physics step 
