@@ -17,6 +17,7 @@ public class Slash : Spell {
 		}
 		else if(framesLeft>0)
 			framesLeft--;	
+		Debug.Log(p.facingRight);
 	}
 	
 	//call this method when you wish to cast the slash
@@ -42,21 +43,18 @@ public class Slash : Spell {
 	}
 	
 	//defines how a given spell will fire
-	override public void cast(){
+	override public Vector3 cast(){
 		float y=p.transform.position.y;
 		float x=p.transform.position.x;
 		float z=p.transform.position.z;
-		sword = new BoxCollider();
-		sword.size=new Vector3((float)this.getRange(),(float)this.getRange(),(float)this.getRange());
 		if(p.facingRight){
 			x=p.collider.bounds.size.x/2+x;
-			sword.center=new Vector3((float)x+(this.getRange()/2),(float)y,(float)z);
+			return new Vector3((float)x+(this.getRange()/2),(float)y,(float)z);
 		}
 		else{
 			x=p.collider.bounds.size.x/2-x;
-			sword.center=new Vector3((float)x-(this.getRange()/2),(float)y,(float)z);
+			return new Vector3((float)x-(this.getRange()/2),(float)y,(float)z);
 		}
-		sword.transform.Rotate((float)30,(float)0,(float)0,Space.World);
 	}
 	
 	//what happens when this collides with a different spell
