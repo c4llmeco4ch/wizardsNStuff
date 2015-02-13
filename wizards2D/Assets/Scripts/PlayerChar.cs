@@ -67,12 +67,12 @@ public class PlayerChar : MonoBehaviour {
 			}
 			Debug.Log(spells[0].transform.position+" HI");
 			Slash slash=spells[0].GetComponent("Slash") as Slash;
-			spells[0].transform.Translate(slash.cast(),Space.World);
+			//spells[0].transform.Translate(slash.cast(),Space.World);
 			if(slash.casting){return;}
 			if(!justMade){
 				Slash s = spells[0].GetComponent("Slash") as Slash;
 				s.Start();
-				spells[0].transform.Translate(slash.cast(),Space.World);
+				spells[0].transform.position=s.cast();
 				spells[0].SetActive(true);
 			}
 		}
