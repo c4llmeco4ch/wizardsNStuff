@@ -22,7 +22,7 @@ public class Slash : Spell {
 	
 	//call this method when you wish to cast the slash
 	public void Start(){
-		g.transform.position=Vector3.zero;
+		g.transform.position=cast();
 		casting=true;
 		framesLeft=64;
 	}
@@ -49,12 +49,12 @@ public class Slash : Spell {
 		float z=p.transform.position.z;
 		if(p.facingRight){
 			Debug.Log("X: "+x+"||Y: "+y+"||Z: "+x);
-			x=p.collider.bounds.size.x/2+x;
+			x=p.collider.bounds.size.x/2+x+(float).25;
 			return new Vector3((float)x+(this.getRange()/2),y,z);
 		}
 		else{
 			Debug.Log("X: "+x+"||Y: "+y+"||Z: "+x);
-			x=x-(p.collider.bounds.size.x/2);
+			x=x-(float)1-(p.collider.bounds.size.x/2);
 			return new Vector3((float)x-(this.getRange()/2),y,z);
 		}
 	}
