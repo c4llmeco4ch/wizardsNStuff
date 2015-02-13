@@ -75,26 +75,30 @@ public class PlayerChar : MonoBehaviour {
 	// FixedUpdate is called once per physics step 
 	public void FixedUpdate () {
 		// Cache the contoller input input.
-		float rawHorizontal = Input.GetAxis ("Player"+playerNum+"_Move_Horizontal_Mac");
-		float rawVertical = Input.GetAxis ("Player" + playerNum + "_Move_Vertical_Mac");
-		rawVertical = rawVertical / 0.5f;
-		Vector3 direction = new Vector3(rawHorizontal, 0f, rawVertical);
-		float speed = (direction).magnitude;
+//		if(!Input.GetButtonDown("Player1_Element_L_P_Mac" && !Input.GetButtonDown("Player1_Element_R_P_Mac") || Mathf.Abs(Input.GetAxis("Player1_Element_L_X_Mac")) > .05f && Mathf.Abs(Input.GetAxis("Player1_Element_R_X_Mac")) > .05f) {
+			float rawHorizontal = Input.GetAxis ("Player"+playerNum+"_Move_Horizontal_Mac");
+			float rawVertical = Input.GetAxis ("Player" + playerNum + "_Move_Vertical_Mac");
+			rawVertical = rawVertical / 0.5f;
+			Vector3 direction = new Vector3(rawHorizontal, 0f, rawVertical);
+			float speed = (direction).magnitude;
 
 
-//		Debug.Log ("Test speed: "+speed);
- 		if((speed * rigidbody.velocity).magnitude < maxSpeed)
-			rigidbody.AddForce (direction * moveForce);
+	//		Debug.Log ("Test speed: "+speed);
+	 		if((speed * rigidbody.velocity).magnitude < maxSpeed)
+				rigidbody.AddForce (direction * moveForce);
 
-//		if (rigidbody.velocity.magnitude > maxSpeed)
-//						rigidbody.velocity = direction * maxSpeed;
+	//		if (rigidbody.velocity.magnitude > maxSpeed)
+	//						rigidbody.velocity = direction * maxSpeed;
 
-		anim.SetFloat("Speed", speed*5);
+			anim.SetFloat("Speed", speed*5);
 
-		if (rawHorizontal < 0 && facingRight)
-			Flip ();
-		else if (rawHorizontal > 0 && !facingRight)
-			Flip ();
+			if (rawHorizontal < 0 && facingRight)
+				Flip ();
+			else if (rawHorizontal > 0 && !facingRight)
+				Flip ();
+//		}
+//		else {
+
 	}
 
 	void Flip ()
