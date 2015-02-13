@@ -3,7 +3,8 @@ using System.Collections;
 
 
 public class Slash : Spell {
-	PlayerChar p; //the player who is casting this slash
+	public PlayerChar p; //the player who is casting this slash
+	GameObject g;
 	public bool casting; //whether the slash is currently in effect
 	int framesLeft; //how many frames till the spell ends
 	
@@ -16,23 +17,24 @@ public class Slash : Spell {
 		}
 		else if(framesLeft>0)
 			framesLeft--;	
-		Debug.Log(p.facingRight);
+		//Debug.Log(p.facingRight);
 	}
 	
 	//call this method when you wish to cast the slash
 	public void Start(){
-		cast();
+		g.transform.position=Vector3.zero;
 		casting=true;
 		framesLeft=64;
 	}
 	
 	//call this immediately after creating this object
-	public void prepSlash(PlayerChar p){this.p=p;}
+	public void prepSlash(PlayerChar p,GameObject g){this.p=p; this.g=g;}
 	
 	//what happens when the spell ends
 	override public void kill(){
 		casting=false;
 		framesLeft=0;
+		g.SetActive(false);
 	}
 	
 	//initialize a given spell
@@ -46,12 +48,14 @@ public class Slash : Spell {
 		float x=p.transform.position.x;
 		float z=p.transform.position.z;
 		if(p.facingRight){
+			Debug.Log("X: "+x+"||Y: "+y+"||Z: "+x);
 			x=p.collider.bounds.size.x/2+x;
-			return new Vector3((float)x+(this.getRange()/2),(float)y,(float)z);
+			return new Vector3((float)x+(this.getRange()/2),y,z);
 		}
 		else{
-			x=p.collider.bounds.size.x/2-x;
-			return new Vector3((float)x-(this.getRange()/2),(float)y,(float)z);
+			Debug.Log("X: "+x+"||Y: "+y+"||Z: "+x);
+			x=x-(p.collider.bounds.size.x/2);
+			return new Vector3((float)x-(this.getRange()/2),y,z);
 		}
 	}
 	

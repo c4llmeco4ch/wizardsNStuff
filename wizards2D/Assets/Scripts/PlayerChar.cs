@@ -42,11 +42,8 @@ public class PlayerChar : MonoBehaviour {
 
 	public void Awake () {
 		facingRight = true;
-		Debug.Log("making first slash");
 		//instantiate slash for player
-		slashMaker();
-		Slash s=spells[0].GetComponent("Slash") as Slash;
-		s.prepSlash(this);
+		
 		
 		/*
 		* instantiate missile for player
@@ -60,21 +57,35 @@ public class PlayerChar : MonoBehaviour {
 	// Update is called once per frame
 	public void Update () {
 		if(Input.GetButtonDown("Player"+playerNum+"_Spell_Slash_Mac")){
-			if(spells[0]==null){return;}
-			Slash s = spells[0].GetComponent("Slash") as Slash;
-			if(!s.casting){
-				spells[0].transform.Translate(s.cast(),Space.World);
+			Debug.Log ("Rito pls");
+			bool justMade=false;
+			if(spells[0]==null){
+				slashMaker();
+				Slash s=spells[0].GetComponent("Slash") as Slash;
+				justMade=true;
+				//s.prepSlash(this,spells[0]);
+			}
+			Debug.Log(spells[0].transform.position+" HI");
+			Slash slash=spells[0].GetComponent("Slash") as Slash;
+			spells[0].transform.Translate(slash.cast(),Space.World);
+			if(slash.casting){return;}
+			if(!justMade){
+				Slash s = spells[0].GetComponent("Slash") as Slash;
+				s.Start();
+				spells[0].transform.Translate(slash.cast(),Space.World);
 				spells[0].SetActive(true);
 			}
 		}
 	}
 	
 	public void slashMaker(){
-		/*UnityEngine.Object prefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Slash.prefab", typeof(GameObject));
-		GameObject slash = Instantiate(prefab,Vector3.zero,Quaternion.identity) as GameObject;
-		Debug.Log("-.-");
+		UnityEngine.Object prefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Slash.prefab", typeof(GameObject));
+		GameObject slash = Instantiate(prefab,transform.position,Quaternion.identity) as GameObject;
 		Slash s = slash.GetComponent("Slash") as Slash;
-		slash.transform.Translate(s.cast(),Space.World);*/
+		s.prepSlash(this,slash);
+		//slash.transform.Translate(s.cast(),Space.World);
+		spells[0]=slash;
+		Debug.Log("-.-");
 	}
 
 	// FixedUpdate is called once per physics step 
@@ -106,8 +117,7 @@ public class PlayerChar : MonoBehaviour {
 
 	}
 
-	void Flip ()
-	{
+	public void Flip (){
 		// Switch the way the player is labelled as facing.
 		facingRight = !facingRight;
 		
