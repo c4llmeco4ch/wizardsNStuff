@@ -13,7 +13,7 @@ public abstract class Spell : MonoBehaviour {
 	int range;  //range of the spell
 	Element element; //element the spell has been infused with
 	//defines how a given spell will fire
-	public abstract void cast();
+	public abstract Vector3 cast();
 	
 	//defines what happens when an object collides with a given spell
 	public abstract void onCollisionEnter(Collision c);

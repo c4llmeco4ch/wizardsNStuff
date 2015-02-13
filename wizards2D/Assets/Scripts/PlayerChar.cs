@@ -19,7 +19,7 @@ public class PlayerChar : MonoBehaviour {
 	private bool block; //true if player is currenty blocking
 	public int playerNum; //the player and controller number
 	public Animator anim; //all the animations this char can have
-	public Spell[] spells; //list of spells player has access to; 0=slash, 1=missile, 2=wall
+	public GameObject[] spells; //list of spells player has access to; 0=slash, 1=missile, 2=wall
 	public Element[] elements; //list of elements player has access to
 
 	//instantiate new instance of player char. @param playerNum determines start location
@@ -34,7 +34,7 @@ public class PlayerChar : MonoBehaviour {
 		isDead=false;
 		stunT=0;
 		playerNum = 1;
-		spells = new Spell[4];
+		spells = new GameObject[4];
 		elements=new Element[2];
 	}
 
@@ -42,11 +42,11 @@ public class PlayerChar : MonoBehaviour {
 
 	public void Awake () {
 		facingRight = true;
-		
+		Debug.Log("making first slash");
 		//instantiate slash for player
-		Slash s= new Slash();
+		slashMaker();
+		Slash s=spells[0].GetComponent("Slash") as Slash;
 		s.prepSlash(this);
-		spells[0]=s;
 		
 		/*
 		* instantiate missile for player
@@ -60,16 +60,21 @@ public class PlayerChar : MonoBehaviour {
 	// Update is called once per frame
 	public void Update () {
 		if(Input.GetButtonDown("Player"+playerNum+"_Spell_Slash_Mac")){
-			Slash s = (Slash)spells[0];
+			if(spells[0]==null){return;}
+			Slash s = spells[0].GetComponent("Slash") as Slash;
 			if(!s.casting){
-				slashMaker();
+				spells[0].transform.Translate(s.cast(),Space.World);
+				spells[0].SetActive(true);
 			}
 		}
 	}
 	
 	public void slashMaker(){
-		UnityEngine.Object prefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Slash.prefab", typeof(GameObject));
+		/*UnityEngine.Object prefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Slash.prefab", typeof(GameObject));
 		GameObject slash = Instantiate(prefab,Vector3.zero,Quaternion.identity) as GameObject;
+		Debug.Log("-.-");
+		Slash s = slash.GetComponent("Slash") as Slash;
+		slash.transform.Translate(s.cast(),Space.World);*/
 	}
 
 	// FixedUpdate is called once per physics step 

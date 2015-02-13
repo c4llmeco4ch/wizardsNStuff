@@ -6,7 +6,6 @@ public class Slash : Spell {
 	PlayerChar p; //the player who is casting this slash
 	public bool casting; //whether the slash is currently in effect
 	int framesLeft; //how many frames till the spell ends
-	BoxCollider sword; //the collider for this spell
 	
 	//called once per engine step
 	public void FixedUpdate(){
@@ -33,7 +32,6 @@ public class Slash : Spell {
 	//what happens when the spell ends
 	override public void kill(){
 		casting=false;
-		Destroy(sword);
 		framesLeft=0;
 	}
 	
