@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
-using UnityEditor;
+//using UnityEditor;
+//using TreeEditor;
 
 public class PlayerChar : MonoBehaviour {
 	public int hp; //the player's current hp
@@ -67,7 +68,7 @@ public class PlayerChar : MonoBehaviour {
 			}
 			Debug.Log(spells[0].transform.position+" HI");
 			Slash slash=spells[0].GetComponent("Slash") as Slash;
-			spells[0].transform.Translate(slash.cast(),Space.World);
+//			spells[0].transform.Translate(slash.cast(),Space.World);
 			if(slash.casting){return;}
 			if(!justMade){
 				Slash s = spells[0].GetComponent("Slash") as Slash;
@@ -79,8 +80,10 @@ public class PlayerChar : MonoBehaviour {
 	}
 	
 	public void slashMaker(){
-		UnityEngine.Object prefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Slash.prefab", typeof(GameObject));
-		GameObject slash = Instantiate(prefab,transform.position,Quaternion.identity) as GameObject;
+//		this.
+//		UnityEngine.Object prefab = EditorMethods.getPrefab ("Assets/Prefabs/Slash.prefab");
+//		UnityEngine.Object prefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Slash.prefab", typeof(GameObject));
+		GameObject slash = Instantiate(Resources.LoadAssetAtPath("Assets/Prefabs/Slash.prefab", typeof(GameObject)),transform.position,Quaternion.identity) as GameObject;
 		Slash s = slash.GetComponent("Slash") as Slash;
 		s.prepSlash(this,slash);
 		//slash.transform.Translate(s.cast(),Space.World);
