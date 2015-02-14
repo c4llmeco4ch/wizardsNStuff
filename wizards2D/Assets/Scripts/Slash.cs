@@ -6,7 +6,8 @@ public class Slash : Spell {
 	public PlayerChar p; //the player who is casting this slash
 	GameObject g;
 	public bool casting; //whether the slash is currently in effect
-	int framesLeft; //how many frames till the spell ends
+	public int framesLeft; //how many frames till the spell ends
+
 	
 	//called once per engine step
 	public void FixedUpdate(){
@@ -24,7 +25,7 @@ public class Slash : Spell {
 	public void Start(){
 		g.transform.position=cast();
 		casting=true;
-		framesLeft=64;
+		framesLeft=30;
 	}
 	
 	//call this immediately after creating this object
