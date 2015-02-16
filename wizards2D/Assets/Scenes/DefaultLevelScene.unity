@@ -415,7 +415,7 @@ Camera:
   m_GameObject: {fileID: 1149642966}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 3
   m_BackGroundColor: {r: 0, g: .793103218, b: 1, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -911,7 +911,7 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .550000012
+  m_Intensity: .74000001
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
