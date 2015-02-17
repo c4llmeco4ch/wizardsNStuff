@@ -147,6 +147,7 @@ public class PlayerChar : MonoBehaviour {
 	//check if the amount of incoming damage is greater than the player's current hp. if so, player is die
 	//else, subtract player's hp by damage
 	public void takeDamage(int dmg, Spell s){
+		Debug.Log ("Taking "+ dmg+" Damage as "+playerNum);
 		int bd;
 		if(!block)
 			bd=dmg;
@@ -156,8 +157,10 @@ public class PlayerChar : MonoBehaviour {
 			bd=dmg-(dmg/4);
 		if (bd>=hp)
 			isDead=true;
-		else
+		else{
 			hp-=bd;
+			Debug.Log("Player "+playerNum+": "+hp);
+		}
 		if(s.getDotB()){
 			dotVal=s.getDotV();
 			dotT=s.getDotT();
