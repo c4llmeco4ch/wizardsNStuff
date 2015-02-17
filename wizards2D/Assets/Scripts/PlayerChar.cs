@@ -61,7 +61,8 @@ public class PlayerChar : MonoBehaviour {
 	public void Update () {
 		if (anim.GetBool ("Slash"))
 						anim.SetBool ("Slash", false);
-
+		if(mana!=100)
+			++mana;
 		healthText.text = "Health: " + hp;
 		manaText.text = "Mana: " + mana;
 
@@ -71,6 +72,7 @@ public class PlayerChar : MonoBehaviour {
 			if(spells[0]==null){
 				slashMaker();
 				Slash s=spells[0].GetComponent("Slash") as Slash;
+				reduceMana(s);
 				justMade=true;
 				//s.prepSlash(this,spells[0]);
 			}
@@ -165,7 +167,11 @@ public class PlayerChar : MonoBehaviour {
 	public void setBlock(bool b){block=b;}
 
 	public bool getBlock(){return block;}
-		
+	
+	public void reduceMana(Spell s){
+		mana-=s.getMana();
+	}
+	
 	public void stunned(int d){
 		if(d<=stunT)
 			return;
