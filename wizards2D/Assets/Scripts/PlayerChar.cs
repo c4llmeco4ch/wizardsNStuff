@@ -97,7 +97,7 @@ public class PlayerChar : MonoBehaviour {
 //		UnityEngine.Object prefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Slash.prefab", typeof(GameObject));
 		GameObject slash = Instantiate(Resources.Load("Prefabs/Slash", typeof(GameObject)),transform.position,Quaternion.identity) as GameObject;
 		Slash s = slash.GetComponent("Slash") as Slash;
-		s.prepSlash(this,slash, facingRight);
+		s.prepSlash(this,slash);
 		//slash.transform.Translate(s.cast(),Space.World);
 		spells[0]=slash;
 //		Debug.Log("-.-");

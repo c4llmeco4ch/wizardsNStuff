@@ -8,6 +8,7 @@ public class Slash : Spell {
 	public bool casting; //whether the slash is currently in effect
 	public int framesLeft; //how many frames till the spell ends
 	public bool facingRight; //true if sprite is facing right
+	
 	//called once per engine step
 	public void FixedUpdate(){
 		if(!casting)
@@ -28,7 +29,7 @@ public class Slash : Spell {
 	}
 	
 	//call this immediately after creating this object
-	public void prepSlash(PlayerChar p,GameObject g, bool right){this.p=p; this.g=g; facingRight = right;}
+	public void prepSlash(PlayerChar p,GameObject g){this.p=p; this.g=g; facingRight = true;}
 	
 	//what happens when the spell ends
 	override public void kill(){
