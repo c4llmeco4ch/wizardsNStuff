@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System;
-//using UnityEditor;
-//using TreeEditor;
+using UnityEngine.UI;
 
 public class PlayerChar : MonoBehaviour {
 	public int hp; //the player's current hp
@@ -22,6 +21,9 @@ public class PlayerChar : MonoBehaviour {
 	public Animator anim; //all the animations this char can have
 	public GameObject[] spells; //list of spells player has access to; 0=slash, 1=missile, 2=wall
 	public Element[] elements; //list of elements player has access to
+	
+	public Text healthText;
+	public Text manaText;
 
 	//instantiate new instance of player char. @param playerNum determines start location
 	public PlayerChar() {
@@ -57,6 +59,10 @@ public class PlayerChar : MonoBehaviour {
 
 	// Update is called once per frame
 	public void Update () {
+
+		healthText.text = "Health: " + hp;
+		manaText.text = "Mana: " + mana;
+
 		if(Input.GetButtonDown("Player"+playerNum+"_Spell_Slash_Mac")){
 			Debug.Log ("Rito pls");
 			bool justMade=false;
