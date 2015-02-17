@@ -66,7 +66,7 @@ public class PlayerChar : MonoBehaviour {
 		manaText.text = "Mana: " + mana;
 
 		if(Input.GetButtonDown("Player"+playerNum+"_Spell_Slash_Mac")){
-			Debug.Log ("Rito pls");
+//			Debug.Log ("Rito pls");
 			bool justMade=false;
 			if(spells[0]==null){
 				slashMaker();
@@ -74,7 +74,7 @@ public class PlayerChar : MonoBehaviour {
 				justMade=true;
 				//s.prepSlash(this,spells[0]);
 			}
-			Debug.Log(spells[0].transform.position+" HI");
+//			Debug.Log(spells[0].transform.position+" HI");
 			Slash slash=spells[0].GetComponent("Slash") as Slash;
 			if(slash.casting){return;}
 			if(!justMade){
@@ -100,7 +100,7 @@ public class PlayerChar : MonoBehaviour {
 		s.prepSlash(this,slash, facingRight);
 		//slash.transform.Translate(s.cast(),Space.World);
 		spells[0]=slash;
-		Debug.Log("-.-");
+//		Debug.Log("-.-");
 	}
 
 	// FixedUpdate is called once per physics step 

@@ -8,7 +8,6 @@ public class Slash : Spell {
 	public bool casting; //whether the slash is currently in effect
 	public int framesLeft; //how many frames till the spell ends
 	public bool facingRight; //true if sprite is facing right
-	
 	//called once per engine step
 	public void FixedUpdate(){
 		if(!casting)
@@ -49,12 +48,12 @@ public class Slash : Spell {
 		float x=p.transform.position.x;
 		float z=p.transform.position.z;
 		if(p.facingRight){
-			Debug.Log("X: "+x+"||Y: "+y+"||Z: "+x);
+//			Debug.Log("X: "+x+"||Y: "+y+"||Z: "+x);
 			x=p.collider.bounds.size.x/2+x+(float).25;
 			return new Vector3((float)x+(this.getRange()/2),y,z);
 		}
 		else{
-			Debug.Log("X: "+x+"||Y: "+y+"||Z: "+x);
+//			Debug.Log("X: "+x+"||Y: "+y+"||Z: "+x);
 			x=x-(float)1-(p.collider.bounds.size.x/2);
 			return new Vector3((float)x-(this.getRange()/2),y,z);
 		}
@@ -152,7 +151,9 @@ public class Slash : Spell {
 	
 	//defines what happens when an object collides with a given spell
 	override public void onCollisionEnter(Collision c){
-		if(c.gameObject.name.Contains("Player")){
+		Debug.Log ("Anything!!??!!"+c.gameObject.name);
+		if(c.gameObject.tag.Equals("Player")){
+			Debug.Log("Collision!!");
 			PlayerChar p=c.gameObject.GetComponent("PlayerChar") as PlayerChar;//issues grabbing the playerchar from the gameobject
 			p.takeDamage(this.getDmg(),this);
 		}

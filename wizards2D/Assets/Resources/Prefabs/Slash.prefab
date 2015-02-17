@@ -10,9 +10,10 @@ GameObject:
   - 4: {fileID: 419316}
   - 33: {fileID: 3319316}
   - 23: {fileID: 2319316}
-  - 65: {fileID: 6519316}
   - 54: {fileID: 5419316}
+  - 65: {fileID: 6519316}
   - 114: {fileID: 11402028}
+  - 95: {fileID: 9558210}
   m_Layer: 0
   m_Name: Slash
   m_TagString: Untagged
@@ -70,9 +71,9 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 124
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!65 &6519316
 BoxCollider:
@@ -86,6 +87,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .634374976, y: .956728458, z: 1.05512035}
   m_Center: {x: .182812512, y: .00716197491, z: .153656006}
+--- !u!95 &9558210
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 119316}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26d7a4851ad594d5e89f00975cda8569, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11402028
 MonoBehaviour:
   m_ObjectHideFlags: 1
