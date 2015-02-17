@@ -52,7 +52,7 @@ public class Slash : Spell {
 		float z=p.transform.position.z;
 		if(p.facingRight){
 //			Debug.Log("X: "+x+"||Y: "+y+"||Z: "+x);
-			x=p.collider.bounds.size.x/2+x+(float).25;
+			x=p.collider.bounds.size.x/2+x+(float).75;
 			return new Vector3((float)x+(this.getRange()/2),y,z);
 		}
 		else{

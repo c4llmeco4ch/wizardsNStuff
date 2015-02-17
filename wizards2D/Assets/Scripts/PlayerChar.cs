@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 public class PlayerChar : MonoBehaviour {
 	public int hp; //the player's current hp
-	public int mana; //the player's current mana
+	public float mana; //the player's current mana
 	public int es; //"0" if no element is stored, 1=fire, 2=water, 3=earth, 4=wind
 	private int maxHp; //player's max hp
-	private int maxMana; //player's max mana
+	private float maxMana; //player's max mana
 	public float moveForce = 300f; // Amount of force added to move the player left and right.
 	public float maxSpeed = 4f;	// The fastest the player can travel in the x axis.
 	public bool jump; //true if player is currently jumping?
@@ -61,23 +61,23 @@ public class PlayerChar : MonoBehaviour {
 	public void Update () {
 		if (anim.GetBool ("Slash"))
 						anim.SetBool ("Slash", false);
-		if(mana!=100)
-			++mana;
+		regenMana();
+		if(mana>100) mana=100;
 		healthText.text = "Health: " + hp;
-		manaText.text = "Mana: " + mana;
+		manaText.text = "Mana: " + (int)mana;
 
 		if(Input.GetButtonDown("Player"+playerNum+"_Spell_Slash_Mac")){
 //			Debug.Log ("Rito pls");
 			bool justMade=false;
 			if(spells[0]==null){
 				slashMaker();
-				Slash s=spells[0].GetComponent("Slash") as Slash;
-				reduceMana(s);
+				//Slash s=spells[0].GetComponent("Slash") as Slash;
 				justMade=true;
 				//s.prepSlash(this,spells[0]);
 			}
 //			Debug.Log(spells[0].transform.position+" HI");
 			Slash slash=spells[0].GetComponent("Slash") as Slash;
+			reduceMana(slash);
 			if(slash.casting){return;}
 			if(!justMade){
 				Slash s = spells[0].GetComponent("Slash") as Slash;
@@ -173,6 +173,11 @@ public class PlayerChar : MonoBehaviour {
 	
 	public void reduceMana(Spell s){
 		mana-=s.getMana();
+	}
+	
+	public void regenMana(){
+		if(mana<maxMana)
+			mana+=(float).075;
 	}
 	
 	public void stunned(int d){
