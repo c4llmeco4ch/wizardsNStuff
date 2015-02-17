@@ -16,7 +16,7 @@ public abstract class Spell : MonoBehaviour {
 	public abstract Vector3 cast();
 	
 	//defines what happens when an object collides with a given spell
-	public abstract void onCollisionEnter(Collision c);
+	public void OnCollisionEnter(Collision c){}
 	
 	//define what happens when a spell is finished
 	public abstract void kill();
