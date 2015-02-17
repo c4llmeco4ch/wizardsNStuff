@@ -59,6 +59,8 @@ public class PlayerChar : MonoBehaviour {
 
 	// Update is called once per frame
 	public void Update () {
+		if (anim.GetBool ("Slash"))
+						anim.SetBool ("Slash", false);
 
 		healthText.text = "Health: " + hp;
 		manaText.text = "Mana: " + mana;
@@ -81,7 +83,7 @@ public class PlayerChar : MonoBehaviour {
 				spells[0].transform.position=s.cast();
 				spells[0].SetActive(true);
 			}
-
+			anim.SetBool("Slash", true);
 			if (slash.facingRight && !facingRight)
 				slash.Flip ();
 			else if (!slash.facingRight && facingRight)
