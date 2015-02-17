@@ -81,6 +81,7 @@ public class PlayerChar : MonoBehaviour {
 				spells[0].transform.position=s.cast();
 				spells[0].SetActive(true);
 			}
+//			spells[0].transform.Rotate(30, 0, 0, Space.World); 
 		}
 	}
 	
@@ -90,7 +91,7 @@ public class PlayerChar : MonoBehaviour {
 //		UnityEngine.Object prefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Slash.prefab", typeof(GameObject));
 		GameObject slash = Instantiate(Resources.Load("Prefabs/Slash", typeof(GameObject)),transform.position,Quaternion.identity) as GameObject;
 		Slash s = slash.GetComponent("Slash") as Slash;
-		s.prepSlash(this,slash);
+		s.prepSlash(this,slash, facingRight);
 		//slash.transform.Translate(s.cast(),Space.World);
 		spells[0]=slash;
 		Debug.Log("-.-");

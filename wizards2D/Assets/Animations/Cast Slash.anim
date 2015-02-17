@@ -19,13 +19,13 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 2100000, guid: bf0ac1e29f8694dd8b0379a867167a96, type: 2}
-    - time: .433333337
+    - time: .0833333358
       value: {fileID: 2100000, guid: 6aa901fe56b2348cb9ff66de1fff056f, type: 2}
-    - time: .833333313
+    - time: .166666672
       value: {fileID: 2100000, guid: 5595a134e5aa643e980a5158e0392aab, type: 2}
-    - time: 1.16666663
+    - time: .25
       value: {fileID: 2100000, guid: 265a1007ed50a4072b74d09c797fd1d2, type: 2}
-    - time: 1.5
+    - time: .333333343
       value: {fileID: 2100000, guid: b44fff525a2ce45c8ae9167acdeb732b, type: 2}
     attribute: m_Materials.Array.data[0]
     path: 
@@ -53,7 +53,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: 1.51666665
+    m_StopTime: .350000024
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
