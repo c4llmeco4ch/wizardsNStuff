@@ -61,7 +61,8 @@ public class PlayerChar : MonoBehaviour {
 	public void Update () {
 		if (anim.GetBool ("Slash"))
 						anim.SetBool ("Slash", false);
-
+		if(mana!=100)
+			++mana;
 		healthText.text = "Health: " + hp;
 		manaText.text = "Mana: " + mana;
 
@@ -71,6 +72,7 @@ public class PlayerChar : MonoBehaviour {
 			if(spells[0]==null){
 				slashMaker();
 				Slash s=spells[0].GetComponent("Slash") as Slash;
+				reduceMana(s);
 				justMade=true;
 				//s.prepSlash(this,spells[0]);
 			}
@@ -145,6 +147,7 @@ public class PlayerChar : MonoBehaviour {
 	//check if the amount of incoming damage is greater than the player's current hp. if so, player is die
 	//else, subtract player's hp by damage
 	public void takeDamage(int dmg, Spell s){
+		Debug.Log ("Taking "+ dmg+" Damage as "+playerNum);
 		int bd;
 		if(!block)
 			bd=dmg;
@@ -154,8 +157,10 @@ public class PlayerChar : MonoBehaviour {
 			bd=dmg-(dmg/4);
 		if (bd>=hp)
 			isDead=true;
-		else
+		else{
 			hp-=bd;
+			Debug.Log("Player "+playerNum+": "+hp);
+		}
 		if(s.getDotB()){
 			dotVal=s.getDotV();
 			dotT=s.getDotT();
@@ -165,7 +170,11 @@ public class PlayerChar : MonoBehaviour {
 	public void setBlock(bool b){block=b;}
 
 	public bool getBlock(){return block;}
-		
+	
+	public void reduceMana(Spell s){
+		mana-=s.getMana();
+	}
+	
 	public void stunned(int d){
 		if(d<=stunT)
 			return;

@@ -41,6 +41,8 @@ public class Slash : Spell {
 	//initialize a given spell
 	public void Awake(){
 		casting=false;
+		setDmg(5);
+		setMana(5);
 	}
 	
 	//defines how a given spell will fire
@@ -151,7 +153,7 @@ public class Slash : Spell {
 	}
 	
 	//defines what happens when an object collides with a given spell
-	override public void onCollisionEnter(Collision c){
+	public void OnCollisionEnter(Collision c){
 		Debug.Log ("Anything!!??!!"+c.gameObject.name);
 		if(c.gameObject.tag.Equals("Player")){
 			Debug.Log("Collision!!");
