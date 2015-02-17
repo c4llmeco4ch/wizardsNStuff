@@ -81,7 +81,11 @@ public class PlayerChar : MonoBehaviour {
 				spells[0].transform.position=s.cast();
 				spells[0].SetActive(true);
 			}
-//			spells[0].transform.Rotate(30, 0, 0, Space.World); 
+
+			if (slash.facingRight && !facingRight)
+				slash.Flip ();
+			else if (!slash.facingRight && facingRight)
+				slash.Flip ();
 		}
 	}
 	
