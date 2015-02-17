@@ -36,6 +36,7 @@ public class Slash : Spell {
 		casting=false;
 		framesLeft=0;
 		g.SetActive(false);
+		p.casting=false;
 	}
 	
 	//initialize a given spell

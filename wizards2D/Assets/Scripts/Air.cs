@@ -10,6 +10,7 @@ public class Air : Element {
 		setSpd(5);
 		setDot(false,0,0);
 		setRange(5);
+		setKnock(3);
 		setMana(5);
 		setDotN("none");
 		setName("air");

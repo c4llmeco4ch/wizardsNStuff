@@ -17,6 +17,7 @@ public class PlayerChar : MonoBehaviour {
 	public int stunT; //"0" when player is not stunned, else duration of stun remaining
 	public bool facingRight; //true if sprite is facing right
 	private bool block; //true if player is currenty blocking
+	public bool casting; //true if player is in casting animation
 	public int playerNum; //the player and controller number
 	public Animator anim; //all the animations this char can have
 	public GameObject[] spells; //list of spells player has access to; 0=slash, 1=missile, 2=wall
@@ -27,6 +28,7 @@ public class PlayerChar : MonoBehaviour {
 
 	//instantiate new instance of player char. @param playerNum determines start location
 	public PlayerChar() {
+		casting = false;
 		maxHp = 100;
 		maxMana = 100;
 		es = 0;
@@ -78,6 +80,7 @@ public class PlayerChar : MonoBehaviour {
 //			Debug.Log(spells[0].transform.position+" HI");
 			Slash slash=spells[0].GetComponent("Slash") as Slash;
 			reduceMana(slash);
+			casting=true;
 			if(slash.casting){return;}
 			if(!justMade){
 				Slash s = spells[0].GetComponent("Slash") as Slash;
@@ -109,6 +112,8 @@ public class PlayerChar : MonoBehaviour {
 	public void FixedUpdate () {
 		// Cache the contoller input input.
 //		if(!Input.GetButtonDown("Player1_Element_L_P_Mac" && !Input.GetButtonDown("Player1_Element_R_P_Mac") || Mathf.Abs(Input.GetAxis("Player1_Element_L_X_Mac")) > .05f && Mathf.Abs(Input.GetAxis("Player1_Element_R_X_Mac")) > .05f) {
+			if(casting)
+				return;
 			float rawHorizontal = Input.GetAxis ("Player"+playerNum+"_Move_Horizontal_Mac");
 			float rawVertical = Input.GetAxis ("Player" + playerNum + "_Move_Vertical_Mac");
 			rawVertical = rawVertical / 0.5f;
@@ -155,8 +160,10 @@ public class PlayerChar : MonoBehaviour {
 			bd=dmg/2;
 		else
 			bd=dmg-(dmg/4);
-		if (bd>=hp)
+		if (bd>=hp){
 			isDead=true;
+			hp=0;
+		}
 		else{
 			hp-=bd;
 			Debug.Log("Player "+playerNum+": "+hp);
