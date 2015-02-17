@@ -1574,10 +1574,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 2059581731}
   - 65: {fileID: 2059581730}
-  - 54: {fileID: 2059581729}
   - 65: {fileID: 2059581734}
   - 65: {fileID: 2059581733}
   - 65: {fileID: 2059581732}
+  - 136: {fileID: 2059581729}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1585,28 +1585,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!54 &2059581729
-Rigidbody:
+--- !u!136 &2059581729
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2059581728}
-  serializedVersion: 2
-  m_Mass: 400
-  m_Drag: 100
-  m_AngularDrag: .0500000007
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: .400000006
+  m_Height: 11
+  m_Direction: 0
+  m_Center: {x: 0, y: .699999988, z: 5}
 --- !u!65 &2059581730
 BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2059581728}
-  m_Material: {fileID: 13400000, guid: 56065489943344e53918038b8db0ff76, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1630,7 +1628,7 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2059581728}
-  m_Material: {fileID: 13400000, guid: 56065489943344e53918038b8db0ff76, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1642,7 +1640,7 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2059581728}
-  m_Material: {fileID: 13400000, guid: 56065489943344e53918038b8db0ff76, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1654,7 +1652,7 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2059581728}
-  m_Material: {fileID: 13400000, guid: 56065489943344e53918038b8db0ff76, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
