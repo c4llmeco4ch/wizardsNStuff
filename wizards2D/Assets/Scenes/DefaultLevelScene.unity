@@ -211,7 +211,7 @@ MonoBehaviour:
   hp: 100
   mana: 100
   es: 0
-  moveForce: 132000
+  moveForce: 58000
   maxSpeed: 8
   jump: 0
   dotVal: 0
@@ -584,7 +584,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11476676, guid: 184711791fe1948bb92e8080d9004524, type: 2}
       propertyPath: moveForce
-      value: 132000
+      value: 58000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 184711791fe1948bb92e8080d9004524, type: 2}
