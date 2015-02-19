@@ -21,8 +21,15 @@ public class Slash : Spell {
 		//Debug.Log(p.facingRight);
 	}
 	
+	//call every time after spell fades to reset base values
 	override public void resetSpell(){
-		
+		element=null;
+		setDot(false,0,0);
+		setDmg(5);
+		setKnock(0);
+		setMana(5);
+		setRange(0);
+		setSpd(0);
 	}
 	
 	//call this method when you wish to cast the slash
@@ -41,6 +48,7 @@ public class Slash : Spell {
 		framesLeft=0;
 		g.SetActive(false);
 		p.casting=false;
+		resetSpell();
 	}
 	
 	//initialize a given spell
