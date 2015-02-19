@@ -47,6 +47,8 @@ public class PlayerChar : MonoBehaviour {
 
 	public void Awake () {
 		facingRight = true;
+		elements[0]=new Earth();
+		elements[1]=new Air();
 		//instantiate slash for player
 		
 		
@@ -63,6 +65,8 @@ public class PlayerChar : MonoBehaviour {
 	public void Update () {
 		if (anim.GetBool ("Slash"))
 						anim.SetBool ("Slash", false);
+		bool lt=Input.GetButton ("Player"+playerNum+"_Element_L_P_Mac"); //true if left trigger is pushed, else false
+		bool rt=Input.GetButton ("Player"+playerNum+"_Element_R_P_Mac"); //true if right trigger is pushed, else false
 		regenMana();
 		if(mana>100) mana=100;
 		healthText.text = "Health: " + hp;
@@ -70,29 +74,39 @@ public class PlayerChar : MonoBehaviour {
 
 		if(Input.GetButtonDown("Player"+playerNum+"_Spell_Slash_Mac")){
 //			Debug.Log ("Rito pls");
-			bool justMade=false;
-			if(spells[0]==null){
-				slashMaker();
-				//Slash s=spells[0].GetComponent("Slash") as Slash;
-				justMade=true;
-				//s.prepSlash(this,spells[0]);
+			if(!(rt|| lt)){
+				//Actually, punch, but for now, nothing
+				Debug.Log ("I'm here");
 			}
-//			Debug.Log(spells[0].transform.position+" HI");
-			Slash slash=spells[0].GetComponent("Slash") as Slash;
-			reduceMana(slash);
-			casting=true;
-			if(slash.casting){return;}
-			if(!justMade){
-				Slash s = spells[0].GetComponent("Slash") as Slash;
-				s.Start();
-				spells[0].transform.position=s.cast();
-				spells[0].SetActive(true);
+			else{
+				bool justMade=false;
+				if(spells[0]==null){
+					slashMaker();
+					//Slash s=spells[0].GetComponent("Slash") as Slash;
+					justMade=true;
+					//s.prepSlash(this,spells[0]);
+				}
+	//			Debug.Log(spells[0].transform.position+" HI");
+				Slash slash=spells[0].GetComponent("Slash") as Slash;
+				if(lt)
+					slash.setElement(elements[0]);
+				else
+					slash.setElement(elements[1]);	
+				reduceMana(slash);
+				casting=true;
+				if(slash.casting){return;}
+				if(!justMade){
+					Slash s = spells[0].GetComponent("Slash") as Slash;
+					s.Start();
+					spells[0].transform.position=s.cast();
+					spells[0].SetActive(true);
+				}
+				anim.SetBool("Slash", true);
+				if (slash.facingRight && !facingRight)
+					slash.Flip ();
+				else if (!slash.facingRight && facingRight)
+					slash.Flip ();
 			}
-			anim.SetBool("Slash", true);
-			if (slash.facingRight && !facingRight)
-				slash.Flip ();
-			else if (!slash.facingRight && facingRight)
-				slash.Flip ();
 		}
 	}
 	
