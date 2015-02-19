@@ -75,7 +75,7 @@ public class PlayerChar : MonoBehaviour {
 
 		if(Input.GetButtonDown("Player"+playerNum+"_Spell_Slash_Mac")){
 //			Debug.Log ("Rito pls");
-			if(!(rt>0|| lt>0)){
+			if(!(rt>0|| lt>0) || casting){
 				//Actually, punch, but for now, nothing
 				//Debug.Log ("I'm here");
 			}
@@ -94,20 +94,24 @@ public class PlayerChar : MonoBehaviour {
 				else if(rt>0)
 					slash.infuse(elements[1]);	
 				Debug.Log ("Slash's Element is "+slash.getElement().getName());
-				reduceMana(slash);
-				casting=true;
-				if(slash.casting){return;}
-				if(!justMade){
-					Slash s = spells[0].GetComponent("Slash") as Slash;
-					s.Start();
-					spells[0].transform.position=s.cast();
-					spells[0].SetActive(true);
+				if(mana<slash.getMana())
+					slash.kill();
+				else{
+					reduceMana(slash);
+					casting=true;
+					if(slash.casting){return;}
+					if(!justMade){
+						Slash s = spells[0].GetComponent("Slash") as Slash;
+						s.Start();
+						spells[0].transform.position=s.cast();
+						spells[0].SetActive(true);
+					}
+					anim.SetBool("Slash", true);
+					if (slash.facingRight && !facingRight)
+						slash.Flip ();
+					else if (!slash.facingRight && facingRight)
+						slash.Flip ();
 				}
-				anim.SetBool("Slash", true);
-				if (slash.facingRight && !facingRight)
-					slash.Flip ();
-				else if (!slash.facingRight && facingRight)
-					slash.Flip ();
 			}
 		}
 	}
