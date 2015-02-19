@@ -162,7 +162,7 @@ Prefab:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 176676, guid: 184711791fe1948bb92e8080d9004524, type: 2}
-  m_PrefabInternal: {fileID: 1054023955}
+  m_PrefabInternal: {fileID: 968765730}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 476569754}
@@ -186,7 +186,7 @@ Animator:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 9576676, guid: 184711791fe1948bb92e8080d9004524,
     type: 2}
-  m_PrefabInternal: {fileID: 1054023955}
+  m_PrefabInternal: {fileID: 968765730}
   m_GameObject: {fileID: 476569746}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11476676, guid: 184711791fe1948bb92e8080d9004524,
     type: 2}
-  m_PrefabInternal: {fileID: 1054023955}
+  m_PrefabInternal: {fileID: 968765730}
   m_GameObject: {fileID: 476569746}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -219,14 +219,12 @@ MonoBehaviour:
   isDead: 0
   stunT: 0
   facingRight: 0
+  casting: 0
   playerNum: 1
   anim: {fileID: 476569747}
   spells:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  elements:
   - {fileID: 0}
   - {fileID: 0}
   healthText: {fileID: 546670622}
@@ -236,7 +234,7 @@ CapsuleCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 13656610, guid: 184711791fe1948bb92e8080d9004524,
     type: 2}
-  m_PrefabInternal: {fileID: 1054023955}
+  m_PrefabInternal: {fileID: 968765730}
   m_GameObject: {fileID: 476569746}
   m_Material: {fileID: 13400000, guid: 329d7b5e20c1a48658553ae5b7c671bb, type: 2}
   m_IsTrigger: 0
@@ -250,7 +248,7 @@ Rigidbody:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 5476676, guid: 184711791fe1948bb92e8080d9004524,
     type: 2}
-  m_PrefabInternal: {fileID: 1054023955}
+  m_PrefabInternal: {fileID: 968765730}
   m_GameObject: {fileID: 476569746}
   serializedVersion: 2
   m_Mass: 5
@@ -266,7 +264,7 @@ Renderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2376676, guid: 184711791fe1948bb92e8080d9004524,
     type: 2}
-  m_PrefabInternal: {fileID: 1054023955}
+  m_PrefabInternal: {fileID: 968765730}
   m_GameObject: {fileID: 476569746}
   m_Enabled: 1
   m_CastShadows: 1
@@ -287,31 +285,31 @@ BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 6597994, guid: 184711791fe1948bb92e8080d9004524,
     type: 2}
-  m_PrefabInternal: {fileID: 1054023955}
+  m_PrefabInternal: {fileID: 968765730}
   m_GameObject: {fileID: 476569746}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: .433603764, y: .645615041, z: -.77480191}
-  m_Center: {x: -.0155613897, y: .0690281764, z: .387414724}
+  m_Center: {x: -.0155613897, y: .0690281764, z: -.0874146968}
 --- !u!33 &476569753
 MeshFilter:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3376676, guid: 184711791fe1948bb92e8080d9004524,
     type: 2}
-  m_PrefabInternal: {fileID: 1054023955}
+  m_PrefabInternal: {fileID: 968765730}
   m_GameObject: {fileID: 476569746}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &476569754
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 476676, guid: 184711791fe1948bb92e8080d9004524, type: 2}
-  m_PrefabInternal: {fileID: 1054023955}
+  m_PrefabInternal: {fileID: 968765730}
   m_GameObject: {fileID: 476569746}
   m_LocalRotation: {x: .258819073, y: 0, z: 0, w: .965925813}
   m_LocalPosition: {x: -2.62102318, y: 2, z: -10}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 4, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -616,7 +614,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!1001 &1054023955
+--- !u!1001 &968765730
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -660,13 +658,13 @@ Prefab:
       value: Player1
       objectReference: {fileID: 0}
     - target: {fileID: 11476676, guid: 184711791fe1948bb92e8080d9004524, type: 2}
-      propertyPath: manaText
-      value: 
-      objectReference: {fileID: 1955456985}
-    - target: {fileID: 11476676, guid: 184711791fe1948bb92e8080d9004524, type: 2}
       propertyPath: healthText
       value: 
       objectReference: {fileID: 546670622}
+    - target: {fileID: 11476676, guid: 184711791fe1948bb92e8080d9004524, type: 2}
+      propertyPath: manaText
+      value: 
+      objectReference: {fileID: 1955456985}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 184711791fe1948bb92e8080d9004524, type: 2}
   m_RootGameObject: {fileID: 476569746}
@@ -1014,18 +1012,6 @@ Prefab:
       propertyPath: playerNum
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 176676, guid: 184711791fe1948bb92e8080d9004524, type: 2}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 11476676, guid: 184711791fe1948bb92e8080d9004524, type: 2}
-      propertyPath: manaText
-      value: 
-      objectReference: {fileID: 1208923503}
-    - target: {fileID: 11476676, guid: 184711791fe1948bb92e8080d9004524, type: 2}
-      propertyPath: healthText
-      value: 
-      objectReference: {fileID: 643579662}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 184711791fe1948bb92e8080d9004524, type: 2}
   m_RootGameObject: {fileID: 1693466610}
@@ -1337,6 +1323,7 @@ MonoBehaviour:
   isDead: 0
   stunT: 0
   facingRight: 0
+  casting: 0
   playerNum: 2
   anim: {fileID: 1693466611}
   spells:
@@ -1344,11 +1331,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  elements:
-  - {fileID: 0}
-  - {fileID: 0}
-  healthText: {fileID: 643579662}
-  manaText: {fileID: 1208923503}
+  healthText: {fileID: 0}
+  manaText: {fileID: 0}
 --- !u!136 &1693466613
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1416,7 +1400,7 @@ Transform:
   m_GameObject: {fileID: 1693466610}
   m_LocalRotation: {x: .258819073, y: 0, z: 0, w: .965925813}
   m_LocalPosition: {x: 2, y: 2, z: -9}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 4, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1432,7 +1416,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: .433603764, y: .645615041, z: -.77480191}
-  m_Center: {x: -.0155613897, y: .0690281764, z: .387414724}
+  m_Center: {x: -.0155613897, y: .0690281764, z: -.0874146968}
 --- !u!1 &1718457525
 GameObject:
   m_ObjectHideFlags: 0

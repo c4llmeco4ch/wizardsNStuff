@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 176676}
   m_LocalRotation: {x: .258819073, y: 0, z: 0, w: .965925813}
   m_LocalPosition: {x: -2.62102318, y: 2, z: -10}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 4, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -87,7 +87,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: .433603764, y: .645615041, z: -.77480191}
-  m_Center: {x: -.0155613897, y: .0690281764, z: .387414724}
+  m_Center: {x: -.0155613897, y: .0690281764, z: -.0874146968}
 --- !u!95 &9576676
 Animator:
   serializedVersion: 3
@@ -125,6 +125,7 @@ MonoBehaviour:
   isDead: 0
   stunT: 0
   facingRight: 0
+  casting: 0
   playerNum: 1
   anim: {fileID: 9576676}
   spells:
@@ -132,9 +133,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  elements:
-  - {fileID: 0}
-  - {fileID: 0}
+  healthText: {fileID: 0}
+  manaText: {fileID: 0}
 --- !u!136 &13656610
 CapsuleCollider:
   m_ObjectHideFlags: 1
