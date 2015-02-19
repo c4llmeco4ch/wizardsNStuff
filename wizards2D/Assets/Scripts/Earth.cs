@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Earth : Element {
 	
-	void Awake(){
+	public Earth(){
 		setDmg(5);
 		setCast(1);
 		setSpd(2);

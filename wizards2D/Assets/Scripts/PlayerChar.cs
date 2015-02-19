@@ -64,9 +64,10 @@ public class PlayerChar : MonoBehaviour {
 	// Update is called once per frame
 	public void Update () {
 		if (anim.GetBool ("Slash"))
-						anim.SetBool ("Slash", false);
-		bool lt=Input.GetButton ("Player"+playerNum+"_Element_L_P_Mac"); //true if left trigger is pushed, else false
-		bool rt=Input.GetButton ("Player"+playerNum+"_Element_R_P_Mac"); //true if right trigger is pushed, else false
+			anim.SetBool ("Slash", false);
+		float lt=Input.GetAxis ("Player"+playerNum+"_Element_L_X_Mac"); //true if left trigger is pushed, else false
+		float rt=Input.GetAxis ("Player"+playerNum+"_Element_R_X_Mac"); //true if right trigger is pushed, else false
+		//Debug.Log (lt+" || "+rt);
 		regenMana();
 		if(mana>100) mana=100;
 		healthText.text = "Health: " + hp;
@@ -74,9 +75,9 @@ public class PlayerChar : MonoBehaviour {
 
 		if(Input.GetButtonDown("Player"+playerNum+"_Spell_Slash_Mac")){
 //			Debug.Log ("Rito pls");
-			if(!(rt|| lt)){
+			if(!(rt>0|| lt>0)){
 				//Actually, punch, but for now, nothing
-				Debug.Log ("I'm here");
+				//Debug.Log ("I'm here");
 			}
 			else{
 				bool justMade=false;
@@ -88,10 +89,11 @@ public class PlayerChar : MonoBehaviour {
 				}
 	//			Debug.Log(spells[0].transform.position+" HI");
 				Slash slash=spells[0].GetComponent("Slash") as Slash;
-				if(lt)
-					slash.setElement(elements[0]);
-				else
-					slash.setElement(elements[1]);	
+				if(lt>0)
+					slash.infuse(elements[0]);
+				else if(rt>0)
+					slash.infuse(elements[1]);	
+				Debug.Log ("Slash's Element is "+slash.getElement().getName());
 				reduceMana(slash);
 				casting=true;
 				if(slash.casting){return;}

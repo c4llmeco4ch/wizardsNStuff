@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Water : Element {
 	
-	void Awake(){
+	public Water(){
 		setDmg(3);
 		setCast(3);
 		setSpd(3);

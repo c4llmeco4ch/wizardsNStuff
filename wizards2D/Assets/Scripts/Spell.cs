@@ -11,7 +11,7 @@ public abstract class Spell : MonoBehaviour {
 	int knock;  //base knockback of spell
 	int manaC;  //mana cost to use spell
 	int range;  //range of the spell
-	Element element; //element the spell has been infused with
+	public Element element; //element the spell has been infused with
 	//defines how a given spell will fire
 	public abstract Vector3 cast();
 	
@@ -31,11 +31,13 @@ public abstract class Spell : MonoBehaviour {
 		hasDot=e.getDotB();
 		dotV=e.getDotV();
 		dotT=e.getDotT();
-		dmg+=e.getDmg();
-		knock+=e.getKnock();
-		manaC+=e.getMana();
-		range+=e.getRange();
+		dmg=e.getDmg();
+		knock=e.getKnock();
+		manaC=e.getMana();
+		range=e.getRange();
 	}
+	
+	public abstract void resetSpell();
 	
 	//Accessors and modifiers
 	public void setDot(bool has, int val, int t){hasDot=has;dotV=val;dotT=t;}

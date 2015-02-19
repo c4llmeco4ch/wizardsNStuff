@@ -21,6 +21,10 @@ public class Slash : Spell {
 		//Debug.Log(p.facingRight);
 	}
 	
+	override public void resetSpell(){
+		
+	}
+	
 	//call this method when you wish to cast the slash
 	public void Start(){
 		g.transform.position=cast();
@@ -54,12 +58,12 @@ public class Slash : Spell {
 		if(p.facingRight){
 //			Debug.Log("X: "+x+"||Y: "+y+"||Z: "+x);
 			x=p.collider.bounds.size.x/2+x+(float).75;
-			return new Vector3((float)x+(this.getRange()/2),y,z);
+			return new Vector3((float)x+(getRange()/4),y,z);
 		}
 		else{
 //			Debug.Log("X: "+x+"||Y: "+y+"||Z: "+x);
 			x=x-(float)1-(p.collider.bounds.size.x/2);
-			return new Vector3((float)x-(this.getRange()/2),y,z);
+			return new Vector3((float)x-(getRange()/4),y,z);
 		}
 	}
 	

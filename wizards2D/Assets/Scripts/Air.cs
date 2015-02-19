@@ -3,8 +3,7 @@ using System.Collections;
 
 public class Air : Element {
 
-	// Use this for initialization
-	public void Awake () {
+	public Air() {
 		setDmg(1);
 		setCast(5);
 		setSpd(5);

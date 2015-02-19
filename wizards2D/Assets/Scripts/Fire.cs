@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Fire : Element {
 
-	void Awake(){
+	public Fire(){
 		setDmg(2);
 		setCast(3);
 		setSpd(4);
