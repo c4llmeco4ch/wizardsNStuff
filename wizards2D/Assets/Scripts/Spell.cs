@@ -31,10 +31,11 @@ public abstract class Spell : MonoBehaviour {
 		hasDot=e.getDotB();
 		dotV=e.getDotV();
 		dotT=e.getDotT();
-		dmg=e.getDmg();
-		knock=e.getKnock();
-		manaC=e.getMana();
-		range=e.getRange();
+		modDmg(e.getDmg());
+		modSpd(e.getSpd());
+		setKnock(e.getKnock());
+		modMana(e.getMana());
+		modRange(e.getRange());
 	}
 	
 	public abstract void resetSpell();
