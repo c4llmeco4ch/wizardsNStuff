@@ -132,7 +132,7 @@ public class PlayerChar : MonoBehaviour {
 				return;
 			float rawHorizontal = Input.GetAxis ("Player"+playerNum+"_Move_Horizontal_Mac");
 			float rawVertical = Input.GetAxis ("Player" + playerNum + "_Move_Vertical_Mac");
-			rawHorizontal = rawHorizontal+ ( rawHorizontal * 0.75f);
+			rawHorizontal = rawHorizontal+ ( rawHorizontal * 0.65f);
 			Vector3 direction = new Vector3(rawHorizontal, 0f, rawVertical);
 			float speed = (direction).magnitude;
 
