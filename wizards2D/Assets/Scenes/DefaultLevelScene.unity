@@ -162,7 +162,7 @@ Prefab:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 176676, guid: 184711791fe1948bb92e8080d9004524, type: 2}
-  m_PrefabInternal: {fileID: 968765730}
+  m_PrefabInternal: {fileID: 1113922635}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 476569754}
@@ -186,7 +186,7 @@ Animator:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 9576676, guid: 184711791fe1948bb92e8080d9004524,
     type: 2}
-  m_PrefabInternal: {fileID: 968765730}
+  m_PrefabInternal: {fileID: 1113922635}
   m_GameObject: {fileID: 476569746}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11476676, guid: 184711791fe1948bb92e8080d9004524,
     type: 2}
-  m_PrefabInternal: {fileID: 968765730}
+  m_PrefabInternal: {fileID: 1113922635}
   m_GameObject: {fileID: 476569746}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -211,8 +211,8 @@ MonoBehaviour:
   hp: 100
   mana: 100
   es: 0
-  moveForce: 300
-  maxSpeed: 4
+  moveForce: 1200
+  maxSpeed: 6
   jump: 0
   dotVal: 0
   dotT: 0
@@ -234,7 +234,7 @@ CapsuleCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 13656610, guid: 184711791fe1948bb92e8080d9004524,
     type: 2}
-  m_PrefabInternal: {fileID: 968765730}
+  m_PrefabInternal: {fileID: 1113922635}
   m_GameObject: {fileID: 476569746}
   m_Material: {fileID: 13400000, guid: 329d7b5e20c1a48658553ae5b7c671bb, type: 2}
   m_IsTrigger: 0
@@ -248,11 +248,11 @@ Rigidbody:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 5476676, guid: 184711791fe1948bb92e8080d9004524,
     type: 2}
-  m_PrefabInternal: {fileID: 968765730}
+  m_PrefabInternal: {fileID: 1113922635}
   m_GameObject: {fileID: 476569746}
   serializedVersion: 2
   m_Mass: 5
-  m_Drag: 1
+  m_Drag: 5
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -264,7 +264,7 @@ Renderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2376676, guid: 184711791fe1948bb92e8080d9004524,
     type: 2}
-  m_PrefabInternal: {fileID: 968765730}
+  m_PrefabInternal: {fileID: 1113922635}
   m_GameObject: {fileID: 476569746}
   m_Enabled: 1
   m_CastShadows: 1
@@ -285,7 +285,7 @@ BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 6597994, guid: 184711791fe1948bb92e8080d9004524,
     type: 2}
-  m_PrefabInternal: {fileID: 968765730}
+  m_PrefabInternal: {fileID: 1113922635}
   m_GameObject: {fileID: 476569746}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -298,14 +298,14 @@ MeshFilter:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 3376676, guid: 184711791fe1948bb92e8080d9004524,
     type: 2}
-  m_PrefabInternal: {fileID: 968765730}
+  m_PrefabInternal: {fileID: 1113922635}
   m_GameObject: {fileID: 476569746}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &476569754
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 476676, guid: 184711791fe1948bb92e8080d9004524, type: 2}
-  m_PrefabInternal: {fileID: 968765730}
+  m_PrefabInternal: {fileID: 1113922635}
   m_GameObject: {fileID: 476569746}
   m_LocalRotation: {x: .258819073, y: 0, z: 0, w: .965925813}
   m_LocalPosition: {x: -2.62102318, y: 2, z: -10}
@@ -614,7 +614,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!1001 &968765730
+--- !u!1001 &1113922635
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -665,6 +665,10 @@ Prefab:
       propertyPath: manaText
       value: 
       objectReference: {fileID: 1955456985}
+    - target: {fileID: 11476676, guid: 184711791fe1948bb92e8080d9004524, type: 2}
+      propertyPath: maxSpeed
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 184711791fe1948bb92e8080d9004524, type: 2}
   m_RootGameObject: {fileID: 476569746}
@@ -1012,6 +1016,14 @@ Prefab:
       propertyPath: playerNum
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11476676, guid: 184711791fe1948bb92e8080d9004524, type: 2}
+      propertyPath: healthText
+      value: 
+      objectReference: {fileID: 643579662}
+    - target: {fileID: 11476676, guid: 184711791fe1948bb92e8080d9004524, type: 2}
+      propertyPath: manaText
+      value: 
+      objectReference: {fileID: 1208923503}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 184711791fe1948bb92e8080d9004524, type: 2}
   m_RootGameObject: {fileID: 1693466610}
@@ -1315,7 +1327,7 @@ MonoBehaviour:
   hp: 100
   mana: 100
   es: 0
-  moveForce: 300
+  moveForce: 1200
   maxSpeed: 4
   jump: 0
   dotVal: 0
@@ -1331,8 +1343,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  healthText: {fileID: 0}
-  manaText: {fileID: 0}
+  healthText: {fileID: 643579662}
+  manaText: {fileID: 1208923503}
 --- !u!136 &1693466613
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1356,7 +1368,7 @@ Rigidbody:
   m_GameObject: {fileID: 1693466610}
   serializedVersion: 2
   m_Mass: 5
-  m_Drag: 1
+  m_Drag: 5
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0

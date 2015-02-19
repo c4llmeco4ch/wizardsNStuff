@@ -9,7 +9,7 @@ public class PlayerChar : MonoBehaviour {
 	private int maxHp; //player's max hp
 	private float maxMana; //player's max mana
 	public float moveForce = 300f; // Amount of force added to move the player left and right.
-	public float maxSpeed = 4f;	// The fastest the player can travel in the x axis.
+	public float maxSpeed = 6f;	// The fastest the player can travel in the x axis.
 	public bool jump; //true if player is currently jumping?
 	public int dotVal; //damage taken per second
 	public int dotT; //"0" when player is not burned or poisoned, else duration of DoT
@@ -75,7 +75,7 @@ public class PlayerChar : MonoBehaviour {
 
 		if(Input.GetButtonDown("Player"+playerNum+"_Spell_Slash_Mac")){
 //			Debug.Log ("Rito pls");
-			if(!(rt>0|| lt>0) || casting){
+			if(!(rt>0|| lt>0)){
 				//Actually, punch, but for now, nothing
 				//Debug.Log ("I'm here");
 			}
@@ -94,24 +94,20 @@ public class PlayerChar : MonoBehaviour {
 				else if(rt>0)
 					slash.infuse(elements[1]);	
 				Debug.Log ("Slash's Element is "+slash.getElement().getName());
-				if(mana<slash.getMana())
-					slash.kill();
-				else{
-					reduceMana(slash);
-					casting=true;
-					if(slash.casting){return;}
-					if(!justMade){
-						Slash s = spells[0].GetComponent("Slash") as Slash;
-						s.Start();
-						spells[0].transform.position=s.cast();
-						spells[0].SetActive(true);
-					}
-					anim.SetBool("Slash", true);
-					if (slash.facingRight && !facingRight)
-						slash.Flip ();
-					else if (!slash.facingRight && facingRight)
-						slash.Flip ();
+				reduceMana(slash);
+				casting=true;
+				if(slash.casting){return;}
+				if(!justMade){
+					Slash s = spells[0].GetComponent("Slash") as Slash;
+					s.Start();
+					spells[0].transform.position=s.cast();
+					spells[0].SetActive(true);
 				}
+				anim.SetBool("Slash", true);
+				if (slash.facingRight && !facingRight)
+					slash.Flip ();
+				else if (!slash.facingRight && facingRight)
+					slash.Flip ();
 			}
 		}
 	}
@@ -136,7 +132,7 @@ public class PlayerChar : MonoBehaviour {
 				return;
 			float rawHorizontal = Input.GetAxis ("Player"+playerNum+"_Move_Horizontal_Mac");
 			float rawVertical = Input.GetAxis ("Player" + playerNum + "_Move_Vertical_Mac");
-			rawVertical = rawVertical / 0.5f;
+			rawHorizontal = rawHorizontal+ ( rawHorizontal * 0.75f);
 			Vector3 direction = new Vector3(rawHorizontal, 0f, rawVertical);
 			float speed = (direction).magnitude;
 
