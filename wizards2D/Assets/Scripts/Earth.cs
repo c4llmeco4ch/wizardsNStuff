@@ -12,6 +12,6 @@ public class Earth : Element {
 		setRange(3);
 		setMana(2);
 		setDotN("stun");
-		setName("earth");
+		setName("Earth");
 	}
 }

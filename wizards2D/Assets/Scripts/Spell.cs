@@ -2,6 +2,7 @@
 using System.Collections;
 
 public abstract class Spell : MonoBehaviour {
+	string name;//spell's type
 	bool hasDot;//does the spell have a DoT effect on hit.
 	string dotName; //name of on-hit effect
 	int dotV; //damage per second on DoT
@@ -36,11 +37,23 @@ public abstract class Spell : MonoBehaviour {
 		setKnock(e.getKnock());
 		modMana(e.getMana());
 		modRange(e.getRange());
+		
+		picSwap(e);
+	}
+	
+	private void picSwap(Element e){
+		MeshRenderer mr=this.gameObject.GetComponent<MeshRenderer>() as MeshRenderer;
+		Material ma=Resources.Load("Materials/"+e.getName+" "+name, typeof(Material));
+		mr.material=ma;
 	}
 	
 	public abstract void resetSpell();
 	
 	//Accessors and modifiers
+	public void setName(string s){name=s;}
+	
+	public string getName(){return name;}
+	
 	public void setDot(bool has, int val, int t){hasDot=has;dotV=val;dotT=t;}
 	
 	public bool getDotB(){return hasDot;}

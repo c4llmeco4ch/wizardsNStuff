@@ -23,6 +23,7 @@ public class Slash : Spell {
 	
 	//call every time after spell fades to reset base values
 	override public void resetSpell(){
+		setName("Slash");
 		element=null;
 		setDot(false,0,0);
 		setDmg(5);

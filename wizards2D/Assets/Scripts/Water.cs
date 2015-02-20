@@ -12,6 +12,6 @@ public class Water : Element {
 		setKnock(5);
 		setMana(3);
 		setDotN("wet");
-		setName("water");
+		setName("Water");
 	}
 }

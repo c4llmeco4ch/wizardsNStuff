@@ -12,7 +12,7 @@ public class Fire : Element {
 		setKnock(1);
 		setMana(3);
 		setDotN("burn");
-		setName("fire");
+		setName("Fire");
 	}
 	
 }

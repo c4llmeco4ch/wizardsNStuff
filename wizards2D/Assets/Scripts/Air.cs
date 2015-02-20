@@ -12,7 +12,7 @@ public class Air : Element {
 		setKnock(3);
 		setMana(5);
 		setDotN("none");
-		setName("air");
+		setName("Air");
 	}
 	
 

@@ -240,6 +240,7 @@ public class Wall : Spell {
 	
 	//call every time after spell fades to reset base values
 	override public void resetSpell(){
+		setName("Wall");
 		element=null;
 		setDot(false,0,0);
 		setDmg(0);
