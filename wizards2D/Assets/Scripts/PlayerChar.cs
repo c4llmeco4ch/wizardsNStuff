@@ -23,8 +23,12 @@ public class PlayerChar : MonoBehaviour {
 	public GameObject[] spells; //list of spells player has access to; 0=slash, 1=missile, 2=wall
 	public Element[] elements; //list of elements player has access to
 	
-	public Text healthText;
-	public Text manaText;
+	public Image healthBar;
+	public Image manaBar;
+	private RectTransform healthBarTrans;
+	private RectTransform manaBarTrans;
+	const float healthSize = 240f / 100;
+	const float manaSize = 204f / 100; 
 
 	//instantiate new instance of player char. @param playerNum determines start location
 	public PlayerChar() {
@@ -49,6 +53,9 @@ public class PlayerChar : MonoBehaviour {
 		facingRight = true;
 		elements[0]=new Earth();
 		elements[1]=new Air();
+
+		healthBarTrans = healthBar.GetComponent<RectTransform> () as RectTransform;
+		manaBarTrans = manaBar.GetComponent<RectTransform>() as RectTransform;
 		//instantiate slash for player
 		
 		
@@ -70,8 +77,8 @@ public class PlayerChar : MonoBehaviour {
 		//Debug.Log (lt+" || "+rt);
 		regenMana();
 		if(mana>100) mana=100;
-		healthText.text = "Health: " + hp;
-		manaText.text = "Mana: " + (int)mana;
+		healthBarTrans.sizeDelta = new Vector2 (hp * healthSize, healthBarTrans.sizeDelta.y);
+		manaBarTrans.sizeDelta = new Vector2 (mana * manaSize, manaBarTrans.sizeDelta.y);
 
 		if(Input.GetButtonDown("Player"+playerNum+"_Spell_Slash_Mac")){
 //			Debug.Log ("Rito pls");
