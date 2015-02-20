@@ -43,7 +43,7 @@ public abstract class Spell : MonoBehaviour {
 	
 	private void picSwap(Element e){
 		MeshRenderer mr=this.gameObject.GetComponent<MeshRenderer>() as MeshRenderer;
-		Material ma=Resources.Load("Materials/"+e.getName+" "+name, typeof(Material));
+		Material ma=Resources.Load("Materials/"+e.getName()+" "+name, typeof(Material)) as Material;
 		mr.material=ma;
 	}
 	
