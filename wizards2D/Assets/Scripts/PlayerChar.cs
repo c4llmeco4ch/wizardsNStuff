@@ -77,6 +77,7 @@ public class PlayerChar : MonoBehaviour {
 		//Debug.Log (lt+" || "+rt);
 		regenMana();
 		if(mana>100) mana=100;
+
 		healthBarTrans.sizeDelta = new Vector2 (hp * healthSize, healthBarTrans.sizeDelta.y);
 		manaBarTrans.sizeDelta = new Vector2 (mana * manaSize, manaBarTrans.sizeDelta.y);
 
@@ -139,7 +140,7 @@ public class PlayerChar : MonoBehaviour {
 				return;
 			float rawHorizontal = Input.GetAxis ("Player"+playerNum+"_Move_Horizontal_Mac");
 			float rawVertical = Input.GetAxis ("Player" + playerNum + "_Move_Vertical_Mac");
-			rawHorizontal = rawHorizontal+ ( rawHorizontal * 0.65f);
+			rawHorizontal = ( rawHorizontal * 0.95f);
 			Vector3 direction = new Vector3(rawHorizontal, 0f, rawVertical);
 			float speed = (direction).magnitude;
 
