@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using UnityEngine.UI;
+using XboxCtrlrInput;
 
 public class PlayerChar : MonoBehaviour {
 	public int hp; //the player's current hp
@@ -72,8 +73,8 @@ public class PlayerChar : MonoBehaviour {
 	public void Update () {
 		if (anim.GetBool ("Slash"))
 			anim.SetBool ("Slash", false);
-		float lt=Input.GetAxis ("Player"+playerNum+"_Element_L_X_Mac"); //true if left trigger is pushed, else false
-		float rt=Input.GetAxis ("Player"+playerNum+"_Element_R_X_Mac"); //true if right trigger is pushed, else false
+		float lt = XCI.GetAxis (XboxAxis.LeftTrigger, playerNum); //true if left trigger is pushed, else false
+		float rt = XCI.GetAxis (XboxAxis.RightTrigger, playerNum); //true if right trigger is pushed, else false
 		//Debug.Log (lt+" || "+rt);
 		regenMana();
 		if(mana>100) mana=100;
@@ -81,7 +82,7 @@ public class PlayerChar : MonoBehaviour {
 		healthBarTrans.sizeDelta = new Vector2 (hp * healthSize, healthBarTrans.sizeDelta.y);
 		manaBarTrans.sizeDelta = new Vector2 (mana * manaSize, manaBarTrans.sizeDelta.y);
 
-		if(Input.GetButtonDown("Player"+playerNum+"_Spell_Slash_Mac")){
+		if( XCI.GetButtonDown(XboxButton.X, playerNum)) {
 //			Debug.Log ("Rito pls");
 			if(!(rt>0|| lt>0)){
 				//Actually, punch, but for now, nothing
@@ -138,9 +139,9 @@ public class PlayerChar : MonoBehaviour {
 //		if(!Input.GetButtonDown("Player1_Element_L_P_Mac" && !Input.GetButtonDown("Player1_Element_R_P_Mac") || Mathf.Abs(Input.GetAxis("Player1_Element_L_X_Mac")) > .05f && Mathf.Abs(Input.GetAxis("Player1_Element_R_X_Mac")) > .05f) {
 			if(casting)
 				return;
-			float rawHorizontal = Input.GetAxis ("Player"+playerNum+"_Move_Horizontal_Mac");
-			float rawVertical = Input.GetAxis ("Player" + playerNum + "_Move_Vertical_Mac");
-			rawHorizontal = ( rawHorizontal * 0.95f);
+			float rawHorizontal = XCI.GetAxis(XboxAxis.LeftStickX, playerNum);
+			float rawVertical = XCI.GetAxis(XboxAxis.LeftStickY, playerNum);
+			rawHorizontal = ( rawHorizontal * 0.45f);
 			Vector3 direction = new Vector3(rawHorizontal, 0f, rawVertical);
 			float speed = (direction).magnitude;
 
