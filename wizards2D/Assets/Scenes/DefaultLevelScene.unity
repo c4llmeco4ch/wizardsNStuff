@@ -273,8 +273,8 @@ MonoBehaviour:
   - {fileID: 0}
   healthBar: {fileID: 873066444}
   manaBar: {fileID: 603229519}
-  elementL: {fileID: 450015812}
-  elementR: {fileID: 113106869}
+  elementL: {fileID: 0}
+  elementR: {fileID: 0}
 --- !u!136 &476569749
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1066,14 +1066,6 @@ Prefab:
       propertyPath: manaBar
       value: 
       objectReference: {fileID: 1266456585}
-    - target: {fileID: 11476676, guid: 184711791fe1948bb92e8080d9004524, type: 2}
-      propertyPath: elementL
-      value: 
-      objectReference: {fileID: 1276837309}
-    - target: {fileID: 11476676, guid: 184711791fe1948bb92e8080d9004524, type: 2}
-      propertyPath: elementR
-      value: 
-      objectReference: {fileID: 1842652409}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 184711791fe1948bb92e8080d9004524, type: 2}
   m_RootGameObject: {fileID: 1693466610}
@@ -1454,14 +1446,6 @@ Prefab:
       propertyPath: manaBar
       value: 
       objectReference: {fileID: 603229519}
-    - target: {fileID: 11476676, guid: 184711791fe1948bb92e8080d9004524, type: 2}
-      propertyPath: elementL
-      value: 
-      objectReference: {fileID: 450015812}
-    - target: {fileID: 11476676, guid: 184711791fe1948bb92e8080d9004524, type: 2}
-      propertyPath: elementR
-      value: 
-      objectReference: {fileID: 113106869}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 184711791fe1948bb92e8080d9004524, type: 2}
   m_RootGameObject: {fileID: 476569746}
@@ -1538,8 +1522,8 @@ MonoBehaviour:
   - {fileID: 0}
   healthBar: {fileID: 2041321281}
   manaBar: {fileID: 1266456585}
-  elementL: {fileID: 1276837309}
-  elementR: {fileID: 1842652409}
+  elementL: {fileID: 0}
+  elementR: {fileID: 0}
 --- !u!136 &1693466613
 CapsuleCollider:
   m_ObjectHideFlags: 0
