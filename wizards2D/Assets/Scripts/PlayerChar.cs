@@ -84,7 +84,7 @@ public class PlayerChar : MonoBehaviour {
 
 		if( XCI.GetButtonDown(XboxButton.X, playerNum)) {
 //			Debug.Log ("Rito pls");
-			if(!(rt>0|| lt>0) || casting){
+			if(!(rt>.5|| lt>.5) || casting){
 				//Actually, punch, but for now, nothing
 				//Debug.Log ("I'm here");
 			}
@@ -98,9 +98,9 @@ public class PlayerChar : MonoBehaviour {
 				}
 	//			Debug.Log(spells[0].transform.position+" HI");
 				Slash slash=spells[0].GetComponent("Slash") as Slash;
-				if(lt>0)
+				if(lt>.5)
 					slash.infuse(elements[0]);
-				else if(rt>0)
+				else if(rt>.5)
 					slash.infuse(elements[1]);	
 				Debug.Log ("Slash's Element is "+slash.getElement().getName());
 				if(mana<slash.getMana())

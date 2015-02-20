@@ -36,7 +36,7 @@ public class Slash : Spell {
 	public void Start(){
 		g.transform.position=cast();
 		casting=true;
-		framesLeft=30;
+		framesLeft=(int)(getSpd()*10);
 	}
 	
 	//call this immediately after creating this object
@@ -54,8 +54,7 @@ public class Slash : Spell {
 	//initialize a given spell
 	public void Awake(){
 		casting=false;
-		setDmg(5);
-		setMana(5);
+		resetSpell();
 	}
 	
 	//defines how a given spell will fire

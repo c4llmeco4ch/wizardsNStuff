@@ -7,7 +7,7 @@ public abstract class Spell : MonoBehaviour {
 	int dotV; //damage per second on DoT
 	int dotT;   //duration of DoT
 	int dmg;    //base damage of spell
-	int spd;    //base speed of spell
+	float spd;    //base speed of spell
 	int knock;  //base knockback of spell
 	int manaC;  //mana cost to use spell
 	int range;  //range of the spell
@@ -65,11 +65,11 @@ public abstract class Spell : MonoBehaviour {
 	
 	public void modDmg(int d){dmg+=d;}
 	
-	public int getSpd(){return spd;}
+	public float getSpd(){return spd;}
 	
-	public void setSpd(int s){spd=s;}
+	public void setSpd(float s){spd=s;}
 	
-	public void modSpd(int s){spd+=s;}
+	public void modSpd(float s){spd+=s;}
 	
 	public int getKnock(){return knock;}
 	
