@@ -31,6 +31,9 @@ public class PlayerChar : MonoBehaviour {
 	const float healthSize = 240f / 100;
 	const float manaSize = 204f / 100; 
 
+	public Image elementL;
+	public Image elementR;
+
 	//instantiate new instance of player char. @param playerNum determines start location
 	public PlayerChar() {
 		casting = false;
@@ -57,6 +60,9 @@ public class PlayerChar : MonoBehaviour {
 
 		healthBarTrans = healthBar.GetComponent<RectTransform> () as RectTransform;
 		manaBarTrans = manaBar.GetComponent<RectTransform>() as RectTransform;
+
+		elementL.overrideSprite = Resources.Load ("UI Art Assets/"+elements[0].getName()+"-Element") as Sprite;
+		elementR.overrideSprite = Resources.Load ("UI Art Assets/"+elements[1].getName()+"-Element") as Sprite;
 		//instantiate slash for player
 		
 		
