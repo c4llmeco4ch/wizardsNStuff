@@ -61,8 +61,9 @@ public class PlayerChar : MonoBehaviour {
 		healthBarTrans = healthBar.GetComponent<RectTransform> () as RectTransform;
 		manaBarTrans = manaBar.GetComponent<RectTransform>() as RectTransform;
 
-		elementL.overrideSprite = Resources.Load ("UI Art Assets/"+elements[0].getName()+"-Element") as Sprite;
-		elementR.overrideSprite = Resources.Load ("UI Art Assets/"+elements[1].getName()+"-Element") as Sprite;
+//		elementL.s
+		elementL.sprite = Resources.Load ("UI Art Assets/"+elements[0].getName()+"-Element", typeof(Sprite)) as Sprite;
+		elementR.sprite = Resources.Load ("UI Art Assets/"+elements[1].getName()+"-Element", typeof(Sprite)) as Sprite;
 		//instantiate slash for player
 		
 		
