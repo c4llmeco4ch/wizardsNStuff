@@ -1,37 +1,46 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using XboxCtrlrInput;
 
-public class ElementSelector {//: MonoBehaviour {
+public class ElementSelector : MonoBehaviour {
 	public Button left;
 	public Button right;
-	public Image selectedElementText;
 	public int playerNum;
 	public int elementNum;
 
 	public GameInit struc;
+	
+	public Image selectedElementText;
+
 	private Element selectedElement;
 
+	private static Element[] elements = new Element[] { new Earth(), new Air(), new Fire(), new Water() };
+	private int cur;
 
 	// Use this for initialization
 	void Start () {
-		if(elementNum == 0)
-			selectedElement = new Earth();
-		else
-			selectedElement = new Air();
+		cur = elementNum;
+		selectedElement = elements [cur];
 		struc = new GameInit ();
-//		struc.;
+		struc.setPlayerElement (playerNum, elementNum, selectedElement);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	}
-
-	public void Left() {
+		float x = XCI.GetAxis (XboxAxis.LeftStickX, playerNum);
 
 	}
 
-	public void Right() {
-
+	public void update(bool inc) {
+		if (inc && cur < elements.Length-1) {
+						selectedElement = elements [++cur];
+				} else if (!inc && cur > 0) {
+						cur--;
+						selectedElement = elements [cur];
+				}
+		selectedElementText.sprite = Resources.Load ("UI Art Assets/Selection/Text" + selectedElement.getName (), typeof(Sprite)) as Sprite;
+		struc.setPlayerElement (playerNum, elementNum, selectedElement);
 	}
+
 }

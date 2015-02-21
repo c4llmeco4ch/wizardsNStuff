@@ -55,8 +55,9 @@ public class PlayerChar : MonoBehaviour {
 
 	public void Awake () {
 		facingRight = true;
-		elements[0]=new Earth();
-		elements[1]=new Air();
+		GameInit i = new GameInit ();
+		elements [0] = i.getPlayerElement (playerNum, 0); //new Earth();
+		elements [1] = i.getPlayerElement (playerNum, 1);//new Air();
 
 		healthBarTrans = healthBar.GetComponent<RectTransform> () as RectTransform;
 		manaBarTrans = manaBar.GetComponent<RectTransform>() as RectTransform;
