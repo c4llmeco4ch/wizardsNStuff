@@ -13,6 +13,7 @@ public abstract class Spell : MonoBehaviour {
 	int manaC;  //mana cost to use spell
 	int range;  //range of the spell
 	public Element element; //element the spell has been infused with
+	public AudioSource sound;
 	//defines how a given spell will fire
 	public abstract Vector3 cast();
 	
@@ -39,12 +40,18 @@ public abstract class Spell : MonoBehaviour {
 		modRange(e.getRange());
 		
 		picSwap(e);
+		setAudio();
 	}
 	
 	private void picSwap(Element e){
 		MeshRenderer mr=this.gameObject.GetComponent<MeshRenderer>() as MeshRenderer;
 		Material ma=Resources.Load("Materials/"+e.getName()+" "+name, typeof(Material)) as Material;
 		mr.material=ma;
+	}
+	
+	private void setAudio(){
+		AudioClip ac=Resources.Load("Audio/"+element.getName()+"_-_"+name+"_2", typeof(AudioClip)) as AudioClip;
+		sound.clip=ac;
 	}
 	
 	public abstract void resetSpell();

@@ -107,7 +107,8 @@ public class PlayerChar : MonoBehaviour {
 										if (lt > .5)
 												slash.infuse (elements [0]);
 										else if (rt > .5)
-												slash.infuse (elements [1]);	
+												slash.infuse (elements [1]);
+										slash.sound.Play();	
 										Debug.Log ("Slash's Element is " + slash.getElement ().getName ());
 										if (mana < slash.getMana ())
 												slash.kill ();
