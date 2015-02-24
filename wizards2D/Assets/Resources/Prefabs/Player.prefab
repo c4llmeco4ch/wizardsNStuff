@@ -118,7 +118,7 @@ MonoBehaviour:
   mana: 100
   es: 0
   moveForce: 58000
-  maxSpeed: 8
+  maxSpeed: 9
   jump: 0
   dotVal: 0
   dotT: 0
@@ -135,6 +135,8 @@ MonoBehaviour:
   - {fileID: 0}
   healthBar: {fileID: 0}
   manaBar: {fileID: 0}
+  elementL: {fileID: 0}
+  elementR: {fileID: 0}
 --- !u!136 &13656610
 CapsuleCollider:
   m_ObjectHideFlags: 1

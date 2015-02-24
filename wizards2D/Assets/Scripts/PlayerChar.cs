@@ -157,7 +157,7 @@ public class PlayerChar : MonoBehaviour {
 								return;
 						float rawHorizontal = XCI.GetAxis (XboxAxis.LeftStickX, playerNum);
 						float rawVertical = XCI.GetAxis (XboxAxis.LeftStickY, playerNum);
-						rawHorizontal = (rawHorizontal * 0.45f);
+						rawHorizontal = (rawHorizontal * 0.35f);
 						Vector3 direction = new Vector3 (rawHorizontal, 0f, rawVertical);
 						float speed = (direction).magnitude;
 
