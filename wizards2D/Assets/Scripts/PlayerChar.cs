@@ -123,6 +123,7 @@ public class PlayerChar : MonoBehaviour {
 														s.Start ();
 														spells [0].transform.position = s.cast ();
 														spells [0].SetActive (true);
+														
 												}
 												anim.SetBool ("Slash", true);
 												if (slash.facingRight && !facingRight)

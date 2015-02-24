@@ -38,6 +38,7 @@ public class Slash : Spell {
 		g.transform.position=cast();
 		casting=true;
 		framesLeft=(int)(getSpd()*10);
+		sound.Play();	
 	}
 	
 	//call this immediately after creating this object
