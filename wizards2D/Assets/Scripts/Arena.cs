@@ -1,17 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Arena : MonoBehaviour {
-	private static Arena _instance;
-	public static Arena instance {get {return _instance;}}	
+//	private static Arena _instance;
+//	public static Arena instance {get {return _instance;}}	
 	
-	int pNum; //number of players in game
-	PlayerChar[] pc; //States of each player
-	
+	static int pNum; //number of players in game
+    static PlayerChar[] pc; //States of each player
+
+	public Canvas canvas;
+	public Text win;
+
 	//Called upon instantiation
 	public void Awake(){
-		if(_instance!=null) Destroy(_instance.gameObject);
-		_instance=this;
+		pNum = GameInit.playerNum;
+		pc = GameInit.players;
+
+//		if(_instance!=null) Destroy(_instance.gameObject);
+//		_instance=this;
 	}
 	
 	// Update is called once per frame
@@ -21,12 +28,15 @@ public class Arena : MonoBehaviour {
 			if(p.isDead) 
 				allDead++;
 		}
-		if(allDead>1)
+		Debug.Log("all dead: "+allDead+" out of "+pNum);
+		if(allDead >= pNum-1)
 			gameOver();
 	}
-	
+
 	//Called when all but one player are dead
 	public void gameOver(){
-		//do stuff
+		Debug.Log ("GameOver");
+//		canvas
+		win.text = "Game Over!";
 	}
 }

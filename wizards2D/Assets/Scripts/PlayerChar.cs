@@ -54,10 +54,11 @@ public class PlayerChar : MonoBehaviour {
 	
 
 	public void Awake () {
+		GameInit.players [playerNum-1] = this;
 		facingRight = true;
-		GameInit i = new GameInit ();
-		elements [0] = i.getPlayerElement (playerNum, 0); //new Earth();
-		elements [1] = i.getPlayerElement (playerNum, 1);//new Air();
+//		GameInit i = new GameInit ();
+		elements [0] = GameInit.getPlayerElement (playerNum, 0); //new Earth();
+		elements [1] = GameInit.getPlayerElement (playerNum, 1);//new Air();
 
 		healthBarTrans = healthBar.GetComponent<RectTransform> () as RectTransform;
 		manaBarTrans = manaBar.GetComponent<RectTransform>() as RectTransform;
@@ -78,58 +79,61 @@ public class PlayerChar : MonoBehaviour {
 
 	// Update is called once per frame
 	public void Update () {
-		if (anim.GetBool ("Slash"))
-			anim.SetBool ("Slash", false);
-		float lt = XCI.GetAxis (XboxAxis.LeftTrigger, playerNum); //true if left trigger is pushed, else false
-		float rt = XCI.GetAxis (XboxAxis.RightTrigger, playerNum); //true if right trigger is pushed, else false
-		//Debug.Log (lt+" || "+rt);
-		regenMana();
-		if(mana>100) mana=100;
+		if (!isDead) {
+						if (anim.GetBool ("Slash"))
+								anim.SetBool ("Slash", false);
+						float lt = XCI.GetAxis (XboxAxis.LeftTrigger, playerNum); //true if left trigger is pushed, else false
+						float rt = XCI.GetAxis (XboxAxis.RightTrigger, playerNum); //true if right trigger is pushed, else false
+						//Debug.Log (lt+" || "+rt);
+						regenMana ();
+						if (mana > 100)
+								mana = 100;
 
+						if (XCI.GetButtonDown (XboxButton.X, playerNum)) {
+//			Debug.Log ("Rito pls");
+								if (!(rt > .5 || lt > .5) || casting) {
+										//Actually, punch, but for now, nothing
+										//Debug.Log ("I'm here");
+								} else {
+										bool justMade = false;
+										if (spells [0] == null) {
+												slashMaker ();
+												//Slash s=spells[0].GetComponent("Slash") as Slash;
+												justMade = true;
+												//s.prepSlash(this,spells[0]);
+										}
+										//			Debug.Log(spells[0].transform.position+" HI");
+										Slash slash = spells [0].GetComponent ("Slash") as Slash;
+										if (lt > .5)
+												slash.infuse (elements [0]);
+										else if (rt > .5)
+												slash.infuse (elements [1]);	
+										Debug.Log ("Slash's Element is " + slash.getElement ().getName ());
+										if (mana < slash.getMana ())
+												slash.kill ();
+										else {
+												reduceMana (slash);
+												casting = true;
+												if (slash.casting) {
+														return;
+												}
+												if (!justMade) {
+														Slash s = spells [0].GetComponent ("Slash") as Slash;
+														s.Start ();
+														spells [0].transform.position = s.cast ();
+														spells [0].SetActive (true);
+												}
+												anim.SetBool ("Slash", true);
+												if (slash.facingRight && !facingRight)
+														slash.Flip ();
+												else if (!slash.facingRight && facingRight)
+														slash.Flip ();
+										}
+								}
+						}
+				}
 		healthBarTrans.sizeDelta = new Vector2 (hp * healthSize, healthBarTrans.sizeDelta.y);
 		manaBarTrans.sizeDelta = new Vector2 (mana * manaSize, manaBarTrans.sizeDelta.y);
-
-		if( XCI.GetButtonDown(XboxButton.X, playerNum)) {
-//			Debug.Log ("Rito pls");
-			if(!(rt>.5|| lt>.5) || casting){
-				//Actually, punch, but for now, nothing
-				//Debug.Log ("I'm here");
-			}
-			else{
-				bool justMade=false;
-				if(spells[0]==null){
-					slashMaker();
-					//Slash s=spells[0].GetComponent("Slash") as Slash;
-					justMade=true;
-					//s.prepSlash(this,spells[0]);
-				}
-	//			Debug.Log(spells[0].transform.position+" HI");
-				Slash slash=spells[0].GetComponent("Slash") as Slash;
-				if(lt>.5)
-					slash.infuse(elements[0]);
-				else if(rt>.5)
-					slash.infuse(elements[1]);	
-				Debug.Log ("Slash's Element is "+slash.getElement().getName());
-				if(mana<slash.getMana())
-					slash.kill();
-				else{
-					reduceMana(slash);
-					casting=true;
-					if(slash.casting){return;}
-					if(!justMade){
-						Slash s = spells[0].GetComponent("Slash") as Slash;
-						s.Start();
-						spells[0].transform.position=s.cast();
-						spells[0].SetActive(true);
-					}
-					anim.SetBool("Slash", true);
-					if (slash.facingRight && !facingRight)
-						slash.Flip ();
-					else if (!slash.facingRight && facingRight)
-						slash.Flip ();
-				}
-			}
-		}
 	}
 	
 	public void slashMaker(){
@@ -146,32 +150,31 @@ public class PlayerChar : MonoBehaviour {
 
 	// FixedUpdate is called once per physics step 
 	public void FixedUpdate () {
-		// Cache the contoller input input.
-//		if(!Input.GetButtonDown("Player1_Element_L_P_Mac" && !Input.GetButtonDown("Player1_Element_R_P_Mac") || Mathf.Abs(Input.GetAxis("Player1_Element_L_X_Mac")) > .05f && Mathf.Abs(Input.GetAxis("Player1_Element_R_X_Mac")) > .05f) {
-			if(casting)
-				return;
-			float rawHorizontal = XCI.GetAxis(XboxAxis.LeftStickX, playerNum);
-			float rawVertical = XCI.GetAxis(XboxAxis.LeftStickY, playerNum);
-			rawHorizontal = ( rawHorizontal * 0.45f);
-			Vector3 direction = new Vector3(rawHorizontal, 0f, rawVertical);
-			float speed = (direction).magnitude;
+		if (!isDead) {
+						// Cache the contoller input input.
+						if (casting)
+								return;
+						float rawHorizontal = XCI.GetAxis (XboxAxis.LeftStickX, playerNum);
+						float rawVertical = XCI.GetAxis (XboxAxis.LeftStickY, playerNum);
+						rawHorizontal = (rawHorizontal * 0.45f);
+						Vector3 direction = new Vector3 (rawHorizontal, 0f, rawVertical);
+						float speed = (direction).magnitude;
 
 
-	//		Debug.Log ("Test speed: "+speed);
-	 		if((speed * rigidbody.velocity).magnitude < maxSpeed)
-				rigidbody.AddForce (direction * moveForce);
+						//		Debug.Log ("Test speed: "+speed);
+						if ((speed * rigidbody.velocity).magnitude < maxSpeed)
+								rigidbody.AddForce (direction * moveForce);
 
-	//		if (rigidbody.velocity.magnitude > maxSpeed)
-	//						rigidbody.velocity = direction * maxSpeed;
+						//		if (rigidbody.velocity.magnitude > maxSpeed)
+						//						rigidbody.velocity = direction * maxSpeed;
 
-			anim.SetFloat("Speed", speed*5);
+						anim.SetFloat ("Speed", speed * 5);
 
-			if (rawHorizontal < 0 && facingRight)
-				Flip ();
-			else if (rawHorizontal > 0 && !facingRight)
-				Flip ();
-//		}
-//		else {
+						if (rawHorizontal < 0 && facingRight)
+								Flip ();
+						else if (rawHorizontal > 0 && !facingRight)
+								Flip ();
+		}
 
 	}
 
@@ -221,6 +224,8 @@ public class PlayerChar : MonoBehaviour {
 	}
 	
 	public void kill(){
+		isDead = true;
+		anim.SetBool ("Dead", true);
 		transform.Rotate(0,0,90);
 		rigidbody.constraints = RigidbodyConstraints.FreezeAll;
 	}

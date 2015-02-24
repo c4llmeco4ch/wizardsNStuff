@@ -9,7 +9,7 @@ public class ElementSelector : MonoBehaviour {
 	public int playerNum;
 	public int elementNum;
 
-	public GameInit struc;
+//	public static GameInit struc;
 	
 	public Image selectedElementText;
 
@@ -22,8 +22,8 @@ public class ElementSelector : MonoBehaviour {
 	void Start () {
 		cur = elementNum;
 		selectedElement = elements [cur];
-		struc = new GameInit ();
-		struc.setPlayerElement (playerNum, elementNum, selectedElement);
+//		struc = new GameInit ();
+		GameInit.setPlayerElement (playerNum, elementNum, selectedElement);
 	}
 	
 	// Update is called once per frame
@@ -40,7 +40,7 @@ public class ElementSelector : MonoBehaviour {
 						selectedElement = elements [cur];
 				}
 		selectedElementText.sprite = Resources.Load ("UI Art Assets/Selection/Text" + selectedElement.getName (), typeof(Sprite)) as Sprite;
-		struc.setPlayerElement (playerNum, elementNum, selectedElement);
+		GameInit.setPlayerElement (playerNum, elementNum, selectedElement);
 	}
 
 }
