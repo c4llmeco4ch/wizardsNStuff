@@ -88,13 +88,13 @@ public class PlayerChar : MonoBehaviour {
 						regenMana ();
 						if (mana > 100)
 								mana = 100;
-
+						//Code for casting Slash
 						if (XCI.GetButtonDown (XboxButton.X, playerNum)) {
-//			Debug.Log ("Rito pls");
 								if (!(rt > .5 || lt > .5) || casting) {
 										//Actually, punch, but for now, nothing
 										//Debug.Log ("I'm here");
-								} else {
+								} 
+								else {
 										bool justMade = false;
 										if (spells [0] == null) {
 												slashMaker ();
@@ -133,6 +133,52 @@ public class PlayerChar : MonoBehaviour {
 										}
 								}
 						}
+						//Code for casting Missile
+						else if (XCI.GetButtonDown (XboxButton.B, playerNum)) {
+										Debug.Log ("FIRE DA MISSILES");
+							if (!(rt > .5 || lt > .5) || casting) {
+								//Actually, punch, but for now, nothing
+								//Debug.Log ("I'm here");
+							} 
+							else {
+								bool justMade = false;
+								if (spells [1] == null) {
+									missileMaker();
+									//Slash s=spells[0].GetComponent("Slash") as Slash;
+									justMade = true;
+									//s.prepSlash(this,spells[0]);
+								}
+								//			Debug.Log(spells[0].transform.position+" HI");
+								Missile missile = spells [1].GetComponent ("Missile") as Missile;
+								if (lt > .5)
+									missile.infuse (elements [0]);
+								else if (rt > .5)
+									missile.infuse (elements [1]);
+								missile.sound.Play();	
+								Debug.Log ("Missile's Element is " + missile.getElement ().getName ());
+								if (mana < missile.getMana ())
+									missile.kill ();
+								else {
+									reduceMana (missile);
+									casting = true;
+									if (missile.casting) {
+										return;
+									}
+									if (!justMade) {
+										Missile m = spells [1].GetComponent ("Missile") as Missile;
+										m.Start();
+										spells [1].transform.position = transform.position+Vector3.right;
+										spells [1].SetActive (true);
+										
+									}
+									anim.SetBool ("Missile", true);
+									if (missile.facingRight && !facingRight)
+										missile.Flip ();
+									else if (!missile.facingRight && facingRight)
+										missile.Flip ();
+								}
+							}
+						}
 				}
 		healthBarTrans.sizeDelta = new Vector2 (hp * healthSize, healthBarTrans.sizeDelta.y);
 		manaBarTrans.sizeDelta = new Vector2 (mana * manaSize, manaBarTrans.sizeDelta.y);
@@ -148,6 +194,18 @@ public class PlayerChar : MonoBehaviour {
 		//slash.transform.Translate(s.cast(),Space.World);
 		spells[0]=slash;
 //		Debug.Log("-.-");
+	}
+	
+	public void missileMaker(){
+		//		this.
+		//		UnityEngine.Object prefab = EditorMethods.getPrefab ("Assets/Prefabs/Slash.prefab");
+		//		UnityEngine.Object prefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Slash.prefab", typeof(GameObject));
+		GameObject missile = Instantiate(Resources.Load("Prefabs/Missile", typeof(GameObject)),transform.position,Quaternion.identity) as GameObject;
+		Missile m = missile.GetComponent("Missile") as Missile;
+		m.prepMissile(this,missile);
+		//slash.transform.Translate(s.cast(),Space.World);
+		spells[1]=missile;
+		//		Debug.Log("-.-");
 	}
 
 	// FixedUpdate is called once per physics step 

@@ -1,32 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Wall : Spell {
+public class Missile : Spell {
 	public PlayerChar p; //the player who is casting this slash
 	GameObject g;
 	public bool casting; //whether the slash is currently in effect
-	public int framesLeft; //how many frames till the spell ends
 	public bool facingRight; //true if sprite is facing right
 	
 	// Use this for initialization
-	void Start () {
-		g.transform.position=cast();
+	public void Start () {
+		cast();
 		casting=true;
-		framesLeft=(int)(getSpd()*50);
 	}
 	
 	//call this immediately after creating this object
-	public void prepWall(PlayerChar p,GameObject g){this.p=p; this.g=g; facingRight = true;}
+	public void prepMissile(PlayerChar p,GameObject g){this.p=p; this.g=g; facingRight = true;}
 	
 	// Update is called once per frame
 	public void FixedUpdate () {
 		if(!casting)
 			return;
-		else if(framesLeft==0){
-			kill();
-		}
-		else if(framesLeft>0)
-			framesLeft--;
+		cast();
 	}
 	
 	public void Awake(){
@@ -35,29 +29,37 @@ public class Wall : Spell {
 	}
 	
 	//defines how a given spell will fire
-	public Vector3 cast(){
-		float y=p.transform.position.y;
-		float x=p.transform.position.x;
-		float z=p.transform.position.z;
-		if(p.facingRight){
-			//			Debug.Log("X: "+x+"||Y: "+y+"||Z: "+x);
-			x=p.collider.bounds.size.x/2+x+(float).75;
-			return new Vector3((float)x+(getRange()/2),y,z);
+	public void cast(){
+		float y=g.transform.position.y;
+		float x=g.transform.position.x;
+		float z=g.transform.position.z;
+		if(facingRight){
+			g.transform.position=new Vector3((float)x+(getSpd()/2),y,z);
 		}
 		else{
 			//			Debug.Log("X: "+x+"||Y: "+y+"||Z: "+x);
-			x=x-(float)1-(p.collider.bounds.size.x/2);
-			return new Vector3((float)x-(getRange()/2),y,z);
+			g.transform.position=new Vector3((float)x-(getSpd()/2),y,z);
 		}
 	}
 	
 	//defines what happens when an object collides with a given spell
-	public void OnCollisionEnter(Collision c){}
+	public void OnCollisionEnter(Collision c){
+		Debug.Log ("Anything!!??!!"+c.gameObject.name);
+		if(c.gameObject.tag.Equals("Player")){
+			Debug.Log("Collision!!");
+			PlayerChar p=c.gameObject.GetComponent("PlayerChar") as PlayerChar;//issues grabbing the playerchar from the gameobject
+			p.takeDamage(this.getDmg(),this);
+		}
+		else if(c.gameObject.name.Contains("Spell")){ //same as above
+			Spell s=c.gameObject.GetComponent("Spell") as Spell;//issues grabbing the playerchar from the gameobject
+			s.versus(this);
+		}
+		
+	}
 	
 	//define what happens when a spell is finished
 	override public void kill(){
 		casting=false;
-		framesLeft=0;
 		g.SetActive(false);
 		resetSpell();
 	}
@@ -240,13 +242,24 @@ public class Wall : Spell {
 	
 	//call every time after spell fades to reset base values
 	override public void resetSpell(){
-		setName("Wall");
+		setName("Missile");
 		element=null;
 		setDot(false,0,0);
-		setDmg(0);
+		setDmg(10);
 		setKnock(1);
-		setMana(10);
-		setRange(2);
-		setSpd((float).5);
+		setMana(5);
+		setRange(0);
+		setSpd((float).7);
+	}
+	
+	public void Flip (){
+		// Switch the way the player is labelled as facing.
+		facingRight = !facingRight;
+		
+		// Multiply the player's x local scale by -1.
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
 	}
 }
+

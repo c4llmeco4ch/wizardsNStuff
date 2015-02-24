@@ -28,7 +28,7 @@ public class Arena : MonoBehaviour {
 			if(p.isDead) 
 				allDead++;
 		}
-		Debug.Log("all dead: "+allDead+" out of "+pNum);
+		//Debug.Log("all dead: "+allDead+" out of "+pNum);
 		if(allDead >= pNum-1)
 			gameOver();
 	}

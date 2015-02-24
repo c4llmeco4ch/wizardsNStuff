@@ -60,7 +60,7 @@ public class Slash : Spell {
 	}
 	
 	//defines how a given spell will fire
-	override public Vector3 cast(){
+	public Vector3 cast(){
 		float y=p.transform.position.y;
 		float x=p.transform.position.x;
 		float z=p.transform.position.z;
