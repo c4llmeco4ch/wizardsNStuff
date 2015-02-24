@@ -65,7 +65,6 @@ public class PlayerChar : MonoBehaviour {
 //		elementL.s
 		elementL.sprite = Resources.Load ("UI Art Assets/"+elements[0].getName()+"-Element", typeof(Sprite)) as Sprite;
 		elementR.sprite = Resources.Load ("UI Art Assets/"+elements[1].getName()+"-Element", typeof(Sprite)) as Sprite;
-		//instantiate slash for player
 		
 		
 		/*
@@ -191,6 +190,7 @@ public class PlayerChar : MonoBehaviour {
 	public void takeDamage(int dmg, Spell s){
 		Debug.Log ("Taking "+ dmg+" Damage as "+playerNum);
 		int bd;
+		if(hp==0){return;}
 		if(!block)
 			bd=dmg;
 		else if(s is Slash && block)
@@ -200,6 +200,7 @@ public class PlayerChar : MonoBehaviour {
 		if (bd>=hp){
 			isDead=true;
 			hp=0;
+			kill();
 		}
 		else{
 			hp-=bd;
@@ -217,6 +218,11 @@ public class PlayerChar : MonoBehaviour {
 	
 	public void reduceMana(Spell s){
 		mana-=s.getMana();
+	}
+	
+	public void kill(){
+		transform.Rotate(0,0,90);
+		rigidbody.constraints = RigidbodyConstraints.FreezeAll;
 	}
 	
 	public void regenMana(){
