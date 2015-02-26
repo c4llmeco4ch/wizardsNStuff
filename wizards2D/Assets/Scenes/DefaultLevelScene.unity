@@ -276,6 +276,8 @@ MonoBehaviour:
   manaBar: {fileID: 603229519}
   elementL: {fileID: 450015812}
   elementR: {fileID: 113106869}
+  charging: 0
+  chargeLeft: 0
 --- !u!136 &476569749
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1782,6 +1784,8 @@ MonoBehaviour:
   manaBar: {fileID: 1266456585}
   elementL: {fileID: 1276837309}
   elementR: {fileID: 1842652409}
+  charging: 0
+  chargeLeft: 0
 --- !u!136 &1693466613
 CapsuleCollider:
   m_ObjectHideFlags: 0
