@@ -126,7 +126,6 @@ public class PlayerChar : MonoBehaviour {
                             s.charge();
 													
                         }
-                        anim.SetBool("Slash", true);
                         if (slash.facingRight && !facingRight)
                             slash.Flip();
                         else if (!slash.facingRight && facingRight)

@@ -48,6 +48,8 @@ public class Slash : Spell {
 	public void Start(){
 		g.transform.position=cast();
 		casting=true;
+		p.anim.SetBool("isCharging",false);
+		p.anim.SetBool("Slash",true);
 		g.SetActive(true);
 		framesLeft=(int)(getSpd()*10);
 		sound.Play();	
@@ -56,6 +58,7 @@ public class Slash : Spell {
 	public void charge(){//muh lazer
 		charging=true;
 		chargeLeft=(int)(getCast()*20);
+		p.anim.SetBool("isCharging",true);
 	}
 	
 	//call this immediately after creating this object
