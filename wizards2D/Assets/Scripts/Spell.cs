@@ -4,14 +4,15 @@ using System.Collections;
 public abstract class Spell : MonoBehaviour {
 	string name;//spell's type
 	bool hasDot;//does the spell have a DoT effect on hit.
-	string dotName; //name of on-hit effect
+	string dotName;//name of on-hit effect
 	int dotV; //damage per second on DoT
-	int dotT;   //duration of DoT
-	int dmg;    //base damage of spell
-	float spd;    //base speed of spell
-	int knock;  //base knockback of spell
-	int manaC;  //mana cost to use spell
-	int range;  //range of the spell
+	int dotT; //duration of DoT
+	int dmg;  //base damage of spell
+	int cast; //cast time modifier
+	float spd;//base speed of spell
+	int knock;//base knockback of spell
+	int manaC;//mana cost to use spell
+	int range;//range of the spell
 	public Element element; //element the spell has been infused with
 	public AudioSource sound;
 	
@@ -32,6 +33,7 @@ public abstract class Spell : MonoBehaviour {
 		dotV=e.getDotV();
 		dotT=e.getDotT();
 		modDmg(e.getDmg());
+		modCast(e.getCast());
 		modSpd(e.getSpd());
 		setKnock(e.getKnock());
 		modMana(e.getMana());
@@ -82,6 +84,12 @@ public abstract class Spell : MonoBehaviour {
 	public void setDmg(int d){dmg=d;}
 	
 	public void modDmg(int d){dmg+=d;}
+	
+	public int getCast(){return cast;}
+	
+	public void setCast(int c){cast=c;}
+	
+	public void modCast(int c){cast+=c;}
 	
 	public float getSpd(){return spd;}
 	

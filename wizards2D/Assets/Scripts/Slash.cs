@@ -8,16 +8,26 @@ public class Slash : Spell {
 	public bool casting; //whether the slash is currently in effect
 	public int framesLeft; //how many frames till the spell ends
 	public bool facingRight; //true if sprite is facing right
+	public bool charging; //true if player should be charging spell
+	public int chargeLeft; //how many frames till the charge ends
 	
 	//called once per engine step
 	public void FixedUpdate(){
-		if(!casting)
+		if(!casting && !charging)
 			return;
-		else if(framesLeft==0){
-			kill();
+		else if (charging) {
+			if(chargeLeft==0)
+				Start();
+			else if(chargeLeft>0)
+				chargeLeft--;
 		}
-		else if(framesLeft>0)
-			framesLeft--;	
+		else if(casting){	
+			if(framesLeft==0){
+				kill();
+			}
+			else if(framesLeft>0)
+				framesLeft--;	
+		}
 		//Debug.Log(p.facingRight);
 	}
 	
@@ -27,6 +37,7 @@ public class Slash : Spell {
 		element=null;
 		setDot(false,0,0);
 		setDmg(5);
+		setCast(2);
 		setKnock(0);
 		setMana(5);
 		setRange(0);
@@ -37,8 +48,14 @@ public class Slash : Spell {
 	public void Start(){
 		g.transform.position=cast();
 		casting=true;
+		g.SetActive(true);
 		framesLeft=(int)(getSpd()*10);
 		sound.Play();	
+	}
+	
+	public void charge(){//muh lazer
+		charging=true;
+		chargeLeft=(int)(getCast()*20);
 	}
 	
 	//call this immediately after creating this object

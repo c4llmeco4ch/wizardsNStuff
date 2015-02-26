@@ -123,9 +123,7 @@ public class PlayerChar : MonoBehaviour {
                         }
                         if (!justMade) {
                             Slash s = spells [0].GetComponent("Slash") as Slash;
-                            s.Start();
-                            spells [0].transform.position = s.cast();
-                            spells [0].SetActive(true);
+                            s.charge();
 													
                         }
                         anim.SetBool("Slash", true);
