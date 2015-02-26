@@ -15,9 +15,11 @@ public class Slash : Spell {
 	public void FixedUpdate(){
 		if(!casting && !charging)
 			return;
-		else if (charging) {
-			if(chargeLeft==0)
-				Start();
+		else if(charging){
+			if(chargeLeft==0){
+				charging=false;
+				start();
+			}
 			else if(chargeLeft>0)
 				chargeLeft--;
 		}
@@ -45,19 +47,23 @@ public class Slash : Spell {
 	}
 	
 	//call this method when you wish to cast the slash
-	public void Start(){
+	public void start(){
 		g.transform.position=cast();
 		casting=true;
 		p.anim.SetBool("isCharging",false);
 		p.anim.SetBool("Slash",true);
-		g.SetActive(true);
+		this.GetComponent<MeshRenderer>().enabled=true;
+		this.GetComponent<BoxCollider>().enabled=true;
 		framesLeft=(int)(getSpd()*10);
 		sound.Play();	
 	}
 	
 	public void charge(){//muh lazer
+		Debug.Log("Chargin muh lazer");
 		charging=true;
-		chargeLeft=(int)(getCast()*20);
+		chargeLeft=(int)(getCast()*10);
+		this.GetComponent<MeshRenderer>().enabled=false;
+		this.GetComponent<BoxCollider>().enabled=false;
 		p.anim.SetBool("isCharging",true);
 	}
 	
@@ -68,7 +74,8 @@ public class Slash : Spell {
 	override public void kill(){
 		casting=false;
 		framesLeft=0;
-		g.SetActive(false);
+		this.GetComponent<MeshRenderer>().enabled=false;
+		this.GetComponent<BoxCollider>().enabled=false;
 		p.casting=false;
 		resetSpell();
 	}

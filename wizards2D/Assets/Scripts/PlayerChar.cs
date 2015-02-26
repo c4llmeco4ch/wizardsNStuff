@@ -121,11 +121,8 @@ public class PlayerChar : MonoBehaviour {
                         if (slash.casting) {
                             return;
                         }
-                        if (!justMade) {
-                            Slash s = spells [0].GetComponent("Slash") as Slash;
-                            s.charge();
-													
-                        }
+						slash.charge();
+				
                         if (slash.facingRight && !facingRight)
                             slash.Flip();
                         else if (!slash.facingRight && facingRight)
@@ -163,13 +160,9 @@ public class PlayerChar : MonoBehaviour {
                         if (missile.casting) {
                             return;
                         }
-                        if (!justMade) {
-                            Missile m = spells [1].GetComponent("Missile") as Missile;
-                            m.Start();
-                            spells [1].transform.position = transform.position + Vector3.right;
-                            spells [1].SetActive(true);
-										
-                        }
+                      
+						missile.charge();
+
                         anim.SetBool("Missile", true);
                         if (missile.facingRight && !facingRight)
                             missile.Flip();

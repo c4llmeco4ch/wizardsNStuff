@@ -6,6 +6,8 @@ public class Missile : Spell {
 	GameObject g;
 	public bool casting; //whether the slash is currently in effect
 	public bool facingRight; //true if sprite is facing right
+	public bool charging; //true if player should be charging spell
+	public int chargeLeft; //how many frames till the charge ends
 	
 	// Use this for initialization
 	public void Start () {
@@ -21,6 +23,15 @@ public class Missile : Spell {
 		if(!casting)
 			return;
 		cast();
+	}
+	
+	public void charge(){//muh lazer
+		Debug.Log("Chargin muh lazer");
+		charging=true;
+		chargeLeft=(int)(getCast()*10);
+		this.GetComponent<MeshRenderer>().enabled=false;
+		this.GetComponent<BoxCollider>().enabled=false;
+		p.anim.SetBool("isCharging",true);
 	}
 	
 	public void Awake(){
