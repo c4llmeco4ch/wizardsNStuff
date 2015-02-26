@@ -81,6 +81,8 @@ public class PlayerChar : MonoBehaviour {
         if (!isDead) {
             if (anim.GetBool("Slash"))
                 anim.SetBool("Slash", false);
+            if (anim.GetBool("Missile"))
+                anim.SetBool("Missile", false);
             float lt = XCI.GetAxis(XboxAxis.LeftTrigger, playerNum); //true if left trigger is pushed, else false
             float rt = XCI.GetAxis(XboxAxis.RightTrigger, playerNum); //true if right trigger is pushed, else false
 						
