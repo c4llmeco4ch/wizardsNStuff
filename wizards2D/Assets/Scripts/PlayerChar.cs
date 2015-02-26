@@ -163,7 +163,6 @@ public class PlayerChar : MonoBehaviour {
                       
 						missile.charge();
 
-                        anim.SetBool("Missile", true);
                         if (missile.facingRight && !facingRight)
                             missile.Flip();
                         else if (!missile.facingRight && facingRight)

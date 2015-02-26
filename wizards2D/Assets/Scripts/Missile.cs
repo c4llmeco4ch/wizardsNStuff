@@ -10,9 +10,14 @@ public class Missile : Spell {
 	public int chargeLeft; //how many frames till the charge ends
 	
 	// Use this for initialization
-	public void Start () {
-		cast();
+	public void start () {
 		casting=true;
+		p.casting=false;
+		p.anim.SetBool("isCharging",false);
+		p.anim.SetBool("Slash",true);
+		cast();
+		this.GetComponent<MeshRenderer>().enabled=true;
+		this.GetComponent<BoxCollider>().enabled=true;
 	}
 	
 	//call this immediately after creating this object
@@ -20,9 +25,19 @@ public class Missile : Spell {
 	
 	// Update is called once per frame
 	public void FixedUpdate () {
-		if(!casting)
+		if(!casting && !charging)
 			return;
-		cast();
+		else if(charging){
+			if(chargeLeft==0){
+				charging=false;
+				start();
+			}
+			else if(chargeLeft>0)
+				chargeLeft--;
+		}
+		if(casting){
+			cast();
+		}
 	}
 	
 	public void charge(){//muh lazer
@@ -71,7 +86,8 @@ public class Missile : Spell {
 	//define what happens when a spell is finished
 	override public void kill(){
 		casting=false;
-		g.SetActive(false);
+		this.GetComponent<MeshRenderer>().enabled=false;
+		this.GetComponent<BoxCollider>().enabled=false;
 		resetSpell();
 	}
 	
