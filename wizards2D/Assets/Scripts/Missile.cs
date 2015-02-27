@@ -11,7 +11,8 @@ public class Missile : Spell {
 	// Use this for initialization
 	public void start () {
 		casting=true;
-		p.casting=false;
+        p.casting=false;
+        p.elementLoaded.SetActive(false);
 		p.anim.SetBool("isCharging",false);
 		p.anim.SetBool("Slash",true);
 		this.transform.position=p.transform.position;
@@ -46,7 +47,9 @@ public class Missile : Spell {
 		chargeLeft=(int)(getCast()*7);
 		this.GetComponent<MeshRenderer>().enabled=false;
 		this.GetComponent<BoxCollider>().enabled=false;
-		p.anim.SetBool("isCharging",true);
+        p.anim.SetBool("isCharging",true);
+        p.elementLoaded.SetActive(true);
+        p.elementLoaded.GetComponent<Animator>().SetBool("Fire", true);
 	}
 	
 	public void Awake(){
