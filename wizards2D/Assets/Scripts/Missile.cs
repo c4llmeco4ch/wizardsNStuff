@@ -15,6 +15,7 @@ public class Missile : Spell {
 		p.casting=false;
 		p.anim.SetBool("isCharging",false);
 		p.anim.SetBool("Slash",true);
+		g.transform.position=p.transform.position;
 		cast();
 		this.GetComponent<MeshRenderer>().enabled=true;
 		this.GetComponent<BoxCollider>().enabled=true;
@@ -79,6 +80,9 @@ public class Missile : Spell {
 		else if(c.gameObject.name.Contains("Spell")){ //same as above
 			Spell s=c.gameObject.GetComponent("Spell") as Spell;//issues grabbing the playerchar from the gameobject
 			s.versus(this);
+		}
+		else{
+			kill();
 		}
 		
 	}
