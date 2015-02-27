@@ -44,7 +44,7 @@ public class Missile : Spell {
 	public void charge(){//muh lazer
 		Debug.Log("Chargin muh lazer");
 		charging=true;
-		chargeLeft=(int)(getCast()*10);
+		chargeLeft=(int)(getCast()*7);
 		this.GetComponent<MeshRenderer>().enabled=false;
 		this.GetComponent<BoxCollider>().enabled=false;
 		p.anim.SetBool("isCharging",true);
@@ -61,11 +61,11 @@ public class Missile : Spell {
 		float x=g.transform.position.x;
 		float z=g.transform.position.z;
 		if(facingRight){
-			g.transform.position=new Vector3((float)x+(getSpd()/2),y,z);
+			g.transform.position=new Vector3((float)x+(getSpd()/4),y,z);
 		}
 		else{
 			//			Debug.Log("X: "+x+"||Y: "+y+"||Z: "+x);
-			g.transform.position=new Vector3((float)x-(getSpd()/2),y,z);
+			g.transform.position=new Vector3((float)x-(getSpd()/4),y,z);
 		}
 	}
 	
@@ -278,9 +278,10 @@ public class Missile : Spell {
 		setDot(false,0,0);
 		setDmg(10);
 		setKnock(1);
+		setCast(0);
 		setMana(5);
 		setRange(0);
-		setSpd((float).7);
+		setSpd((float).5);
 	}
 	
 	public void Flip (){
