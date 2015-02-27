@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Missile : Spell {
 	public PlayerChar p; //the player who is casting this slash
-	GameObject g;
 	public bool casting; //whether the slash is currently in effect
 	public bool facingRight; //true if sprite is facing right
 	public bool charging; //true if player should be charging spell
@@ -15,14 +14,14 @@ public class Missile : Spell {
 		p.casting=false;
 		p.anim.SetBool("isCharging",false);
 		p.anim.SetBool("Slash",true);
-		g.transform.position=p.transform.position;
+		this.transform.position=p.transform.position;
 		cast();
 		this.GetComponent<MeshRenderer>().enabled=true;
 		this.GetComponent<BoxCollider>().enabled=true;
 	}
 	
 	//call this immediately after creating this object
-	public void prepMissile(PlayerChar p,GameObject g){this.p=p; this.g=g; facingRight = true;}
+	public void prepMissile(PlayerChar p){this.p=p; facingRight = true;}
 	
 	// Update is called once per frame
 	public void FixedUpdate () {
@@ -57,15 +56,15 @@ public class Missile : Spell {
 	
 	//defines how a given spell will fire
 	public void cast(){
-		float y=g.transform.position.y;
-		float x=g.transform.position.x;
-		float z=g.transform.position.z;
+		float y=this.transform.position.y;
+		float x=this.transform.position.x;
+		float z=this.transform.position.z;
 		if(facingRight){
-			g.transform.position=new Vector3((float)x+(getSpd()/4),y,z);
+			this.transform.position=new Vector3((float)x+(getSpd()/4),y,z);
 		}
 		else{
 			//			Debug.Log("X: "+x+"||Y: "+y+"||Z: "+x);
-			g.transform.position=new Vector3((float)x-(getSpd()/4),y,z);
+			this.transform.position=new Vector3((float)x-(getSpd()/4),y,z);
 		}
 	}
 	
@@ -89,10 +88,7 @@ public class Missile : Spell {
 	
 	//define what happens when a spell is finished
 	override public void kill(){
-		casting=false;
-		this.GetComponent<MeshRenderer>().enabled=false;
-		this.GetComponent<BoxCollider>().enabled=false;
-		resetSpell();
+		Destroy(this.gameObject);
 	}
 	
 	//defines what happens when a spell collides with a different spell

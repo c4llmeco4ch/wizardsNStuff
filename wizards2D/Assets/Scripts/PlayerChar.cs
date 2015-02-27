@@ -141,11 +141,11 @@ public class PlayerChar : MonoBehaviour {
                     if (spells [1] == null) {
                         missileMaker();
                         //Slash s=spells[0].GetComponent("Slash") as Slash;
-                        justMade = true;
+                        //justMade = true;
                         //s.prepSlash(this,spells[0]);
                     }
                     //			Debug.Log(spells[0].transform.position+" HI");
-                    Missile missile = spells [1].GetComponent("Missile") as Missile;
+                    Missile missile = Instantiate(spells [1].GetComponent("Missile")) as Missile;
                     if (lt > .5)
                         missile.infuse(elements [0]);
                     else if (rt > .5)
@@ -196,7 +196,9 @@ public class PlayerChar : MonoBehaviour {
     public void missileMaker() {
         GameObject missile = Instantiate(Resources.Load("Prefabs/Missile", typeof(GameObject)), transform.position, Quaternion.identity) as GameObject;
         Missile m = missile.GetComponent("Missile") as Missile;
-        m.prepMissile(this, missile);
+        m.prepMissile(this);
+		m.GetComponent<MeshRenderer>().enabled=false;
+		m.GetComponent<BoxCollider>().enabled=false;
         //slash.transform.Translate(s.cast(),Space.World);
         spells [1] = missile;
         //		Debug.Log("-.-");
