@@ -93,7 +93,7 @@ public class PlayerChar : MonoBehaviour {
                 mana = 100;
             //Code for casting Slash
             if (XCI.GetButtonDown(XboxButton.X, playerNum)) {
-                elementLoaded.SetActive(false);
+//                elementLoaded.SetActive(false);
                 if (!(rt > .5 || lt > .5) || casting) {
                     //Actually, punch, but for now, nothing
                     //Debug.Log ("I'm here");
@@ -170,14 +170,14 @@ public class PlayerChar : MonoBehaviour {
                     }
                 }
             } //else {
-            if (!(rt > .5 && lt > .5) && !casting) {
-										
-                if (lt > .5 || rt > .5) 
-                    elementLoaded.SetActive(true);
-                else
-                    elementLoaded.SetActive(false);
-            } else
-                elementLoaded.SetActive(false);
+//            if (!(rt > .5 && lt > .5) && !casting) {
+//										
+//                if (lt > .5 || rt > .5) 
+//                    elementLoaded.SetActive(true);
+//                else
+//                    elementLoaded.SetActive(false);
+//            } else
+//                elementLoaded.SetActive(false);
             //}
         }
         healthBarTrans.sizeDelta = new Vector2(hp * healthSize, healthBarTrans.sizeDelta.y);

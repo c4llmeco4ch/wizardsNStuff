@@ -51,6 +51,7 @@ public class Slash : Spell {
 		g.transform.position=cast();
 		casting=true;
 		p.anim.SetBool("isCharging",false);
+        p.elementLoaded.SetActive(false);
 		p.anim.SetBool("Slash",true);
 		this.GetComponent<MeshRenderer>().enabled=true;
 		this.GetComponent<BoxCollider>().enabled=true;
@@ -65,6 +66,8 @@ public class Slash : Spell {
 		this.GetComponent<MeshRenderer>().enabled=false;
 		this.GetComponent<BoxCollider>().enabled=false;
 		p.anim.SetBool("isCharging",true);
+        p.elementLoaded.SetActive(true);
+        p.elementLoaded.GetComponent<Animator>().SetBool("Fire", true);
 	}
 	
 	//call this immediately after creating this object
