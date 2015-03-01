@@ -15,6 +15,6 @@ public class Play : MonoBehaviour {
 
 	public void play() {
 		GameInit.setNumPlayers (2);
-		Application.LoadLevel ("DefaultLevelScene");
+        Application.LoadLevel ("Tutorial 1");//("DefaultLevelScene");
 	}
 }
