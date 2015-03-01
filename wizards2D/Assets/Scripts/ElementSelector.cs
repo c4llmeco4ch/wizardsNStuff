@@ -24,7 +24,11 @@ public class ElementSelector : MonoBehaviour {
     const int time = 15;
 
 	// Use this for initialization
-	void Start () {
+    void Start () {
+        if(playerNum > 2 && XCI.GetNumPluggedCtrlrs() <= 2) {
+            this.gameObject.SetActive(false);
+            return;
+        }
 		cur = elementNum;
 		selectedElement = elements [cur];
         saveElement();

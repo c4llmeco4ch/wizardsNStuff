@@ -16,7 +16,10 @@ public class Play : MonoBehaviour {
 	}
 
 	public void play() {
-		GameInit.setNumPlayers (XCI.GetNumPluggedCtrlrs());
+		int temp = XCI.GetNumPluggedCtrlrs();
+        if(temp <= 1)
+            temp = 2;
+        GameInit.setNumPlayers(temp);
         Application.LoadLevel ("Tutorial 1");//("DefaultLevelScene");
 	}
 }

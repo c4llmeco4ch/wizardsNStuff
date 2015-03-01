@@ -159,11 +159,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11439194, guid: d3e5e0c8bb01e4eb1abf16284b414244, type: 2}
       propertyPath: playerNum
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11403936, guid: d3e5e0c8bb01e4eb1abf16284b414244, type: 2}
       propertyPath: playerNum
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d3e5e0c8bb01e4eb1abf16284b414244, type: 2}
@@ -4922,7 +4922,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   left: {fileID: 1441878509}
   right: {fileID: 1724230917}
-  playerNum: 3
+  playerNum: 2
   elementNum: 1
   selected: 0
   selectedElementText: {fileID: 2120375753}
@@ -5511,7 +5511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   left: {fileID: 890171525}
   right: {fileID: 1308069958}
-  playerNum: 3
+  playerNum: 2
   elementNum: 0
   selected: 0
   selectedElementText: {fileID: 1248586739}

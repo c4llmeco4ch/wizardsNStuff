@@ -14,12 +14,15 @@ public class CharSelector : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        if(playerNum > 2 && XCI.GetNumPluggedCtrlrs() <= 2)
+        if(playerNum > 2 && XCI.GetNumPluggedCtrlrs() <= 2) {
             this.gameObject.SetActive(false);
+            return;
+        }
 	    left.selected = true;
         left.saveElement();
         right.selected = false;
         right.saveElement();
+        Debug.Log(GameInit.getPlayerElement(playerNum, 0).getName());
 	}
 	
 	// Update is called once per frame

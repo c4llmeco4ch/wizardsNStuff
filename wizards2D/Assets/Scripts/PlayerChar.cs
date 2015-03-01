@@ -57,6 +57,7 @@ public class PlayerChar : MonoBehaviour {
             this.gameObject.SetActive(false);
             return;
         }
+        Debug.Log("Player Num: "+playerNum);
         GameInit.players [playerNum - 1] = this;
         facingRight = true;
 //		GameInit i = new GameInit ();

@@ -24,8 +24,8 @@ public class Arena : MonoBehaviour {
 	// Update is called once per frame
 	public void Update () {
 		int allDead=0;
-		foreach(PlayerChar p in pc){
-			if(p.isDead) 
+		for(int i = 0; i < pNum; i++){
+			if(pc[i].isDead) 
 				allDead++;
 		}
 		//Debug.Log("all dead: "+allDead+" out of "+pNum);
