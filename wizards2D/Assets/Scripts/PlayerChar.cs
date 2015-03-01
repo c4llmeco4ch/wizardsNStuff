@@ -53,6 +53,10 @@ public class PlayerChar : MonoBehaviour {
     }
 
     public void Awake() {
+        if(playerNum > 2 && GameInit.playerNum <= 2) {
+            this.gameObject.SetActive(false);
+            return;
+        }
         GameInit.players [playerNum - 1] = this;
         facingRight = true;
 //		GameInit i = new GameInit ();

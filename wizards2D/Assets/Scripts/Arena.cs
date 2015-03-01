@@ -36,7 +36,12 @@ public class Arena : MonoBehaviour {
 	//Called when all but one player are dead
 	public void gameOver(){
 		Debug.Log ("GameOver");
+        canvas.gameObject.SetActive(true);
 //		canvas
 		win.text = "Game Over!";
 	}
+    
+    public void revenge(){
+        Application.LoadLevel("ChooseElementScene");
+    }
 }
