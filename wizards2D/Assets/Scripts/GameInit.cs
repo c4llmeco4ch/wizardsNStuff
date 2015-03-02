@@ -5,6 +5,8 @@ public static class GameInit {
 	public static int playerNum = 2;
 	public static Element[,] elementChoices = new Element[4,2];
 	public static PlayerChar[] players;
+    
+    public static Arena arena;
 
 	public static void setPlayerElement(int player, int p, Element e) {
 		Debug.Log (player + ":" + p+ ":"+e.getName());

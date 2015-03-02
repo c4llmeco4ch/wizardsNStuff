@@ -11,15 +11,47 @@ public class Arena : MonoBehaviour {
 
 	public Canvas canvas;
 	public Text win;
+    
+    public RectTransform uiLL;
+    public RectTransform uiLR;
+    public RectTransform uiM;
+    public RectTransform uiRL;
+    public RectTransform uiRR;
+    
+    public RectTransform[] ui;
+    
 
 	//Called upon instantiation
-	public void Awake(){
+	public void Start(){
 		pNum = GameInit.playerNum;
 		pc = GameInit.players;
 
-//		if(_instance!=null) Destroy(_instance.gameObject);
-//		_instance=this;
+        ui = new RectTransform[pNum];
+        ui[0] = uiLL;
+        switch(pNum){
+            case 2: ui[1] = uiRR;
+                break;
+            case 3: ui[1] = uiRR;
+                ui[2] = uiM;
+                break;
+            case 4: ui[1] = uiLR;
+                ui[2] = uiRL;
+                ui[3] = uiRR;
+                break;
+        }
+        foreach(RectTransform r in ui)
+            r.gameObject.SetActive(true);
+        
+        GameInit.arena = this;
 	}
+    
+    public void setUI(int player) {
+        player--;
+        pc[player].elementL = ui[player].FindChild("Element L").GetComponent<Image>();
+        pc[player].elementR = ui[player].FindChild("Element R").GetComponent<Image>();
+        pc[player].healthBarTrans = ui[player].FindChild("Health Bar").GetComponent<RectTransform>();
+        pc[player].manaBarTrans = ui[player].FindChild("Mana Bar").GetComponent<RectTransform>();
+    }
 	
 	// Update is called once per frame
 	public void Update () {

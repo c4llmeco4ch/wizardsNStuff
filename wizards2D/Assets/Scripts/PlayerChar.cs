@@ -24,16 +24,18 @@ public class PlayerChar : MonoBehaviour {
     public GameObject[] spells; //list of spells player has access to; 0=slash, 1=missile, 2=wall
     public Element[] elements; //list of elements player has access to
     public GameObject elementLoaded; 
-    public Image healthBar;
-    public Image manaBar;
-    private RectTransform healthBarTrans;
-    private RectTransform manaBarTrans;
+//    public Image healthBar;
+//    public Image manaBar;
+    public RectTransform healthBarTrans;
+    public RectTransform manaBarTrans;
     const float healthSize = 240f / 100; //size of 1 health unit in terms of health bar
     const float manaSize = 204f / 100; //size of 1 mana unit in terms of mana bar
     public Image elementL; 
     public Image elementR;
     public bool charging; //whether the player is currently charging a spell
     public int chargeLeft; //how many frames till the charge ends
+    private bool uiSet = false;
+    
 
     //instantiate new instance of player char. @param playerNum determines start location
     public PlayerChar() {
@@ -51,6 +53,7 @@ public class PlayerChar : MonoBehaviour {
         spells = new GameObject[4];
         elements = new Element[2];
     }
+    
 
     public void Awake() {
         if(playerNum > 2 && GameInit.playerNum <= 2) {
@@ -64,13 +67,11 @@ public class PlayerChar : MonoBehaviour {
         elements [0] = GameInit.getPlayerElement(playerNum, 0); //new Earth();
         elements [1] = GameInit.getPlayerElement(playerNum, 1);//new Air();
 
-        healthBarTrans = healthBar.GetComponent<RectTransform>() as RectTransform;
-        manaBarTrans = manaBar.GetComponent<RectTransform>() as RectTransform;
+//        healthBarTrans = healthBar.GetComponent<RectTransform>() as RectTransform;
+//        manaBarTrans = manaBar.GetComponent<RectTransform>() as RectTransform;
 
 //		elementL.s
-        elementL.sprite = Resources.Load("UI Art Assets/" + elements [0].getName() + "-Element", typeof(Sprite)) as Sprite;
-        elementR.sprite = Resources.Load("UI Art Assets/" + elements [1].getName() + "-Element", typeof(Sprite)) as Sprite;
-		
+        
 		
         /*
 		* instantiate missile for player
@@ -83,6 +84,12 @@ public class PlayerChar : MonoBehaviour {
 
     // Update is called once per frame
     public void Update() {
+        if(!uiSet && GameInit.arena != null) {
+            uiSet = false;
+            GameInit.arena.setUI(playerNum);
+            elementL.sprite = Resources.Load("UI Art Assets/" + elements [0].getName() + "-Element", typeof(Sprite)) as Sprite;
+            elementR.sprite = Resources.Load("UI Art Assets/" + elements [1].getName() + "-Element", typeof(Sprite)) as Sprite;
+        }
         if (!isDead) {
             if(anim.GetCurrentAnimationClipState(0)!= null) {
                 if(anim.GetCurrentAnimationClipState(0)[0].clip.name == "Cast Slash")
