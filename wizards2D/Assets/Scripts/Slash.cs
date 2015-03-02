@@ -67,7 +67,7 @@ public class Slash : Spell {
 		this.GetComponent<BoxCollider>().enabled=false;
 		p.anim.SetBool("isCharging",true);
         p.elementLoaded.SetActive(true);
-        p.elementLoaded.GetComponent<Animator>().SetBool("Fire", true);
+        p.elementLoaded.GetComponent<Animator>().SetBool(getElement().getName(), true);
 	}
 	
 	//call this immediately after creating this object
