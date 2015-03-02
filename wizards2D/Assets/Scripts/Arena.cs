@@ -8,6 +8,7 @@ public class Arena : MonoBehaviour {
 	
 	static int pNum; //number of players in game
     static PlayerChar[] pc; //States of each player
+    public PlayerStats[] ps = new PlayerStats[4];
 
 	public Canvas canvas;
 	public Text win;
@@ -69,8 +70,12 @@ public class Arena : MonoBehaviour {
 	public void gameOver(){
 		Debug.Log ("GameOver");
         canvas.gameObject.SetActive(true);
-//		canvas
-		win.text = "Game Over!";
+		int winner = 0;
+        for(int i = 1; i<pNum; i++)
+            if(!pc[i].isDead)
+                winner = i;
+        ps[winner].win.gameObject.SetActive(true);
+//		win.text = "Player "+i+" Won!";
 	}
     
     public void revenge(){
