@@ -13,11 +13,14 @@ public class ElementSelector : MonoBehaviour {
 //	public static GameInit struc;
 	
 	public Image selectedElementText;
+    public Image background;
 
 	private Element selectedElement;
 
 	private static Element[] elements = new Element[] { new Earth(), new Air(), new Fire(), new Water() };
 	private int cur;
+    
+    const float modifier = 0.2f;
     
     
     int counter = 0;
@@ -29,6 +32,9 @@ public class ElementSelector : MonoBehaviour {
             this.gameObject.SetActive(false);
             return;
         }
+//        background = GetComponent<Image>();
+        if(selected)
+            background.color = new Color(background.color.r + modifier, background.color.g + modifier, background.color.b + modifier);
 		cur = elementNum;
 		selectedElement = elements [cur];
         saveElement();
@@ -53,9 +59,11 @@ public class ElementSelector : MonoBehaviour {
 	}
 
 	public void update(bool inc) {
-		if (inc && cur < elements.Length-1) {
+        if (inc && cur < elements.Length-1) {
+            GetComponent<AudioSource>().Play();
 			selectedElement = elements [++cur];
-		} else if (!inc && cur > 0) {
+        } else if (!inc && cur > 0) {
+            GetComponent<AudioSource>().Play();
 			cur--;
 			selectedElement = elements [cur];
 		}
