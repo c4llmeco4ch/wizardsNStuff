@@ -120,8 +120,10 @@ public class PlayerChar : MonoBehaviour {
                         slash.infuse(elements [1]);
                     slash.sound.Play();	
                     Debug.Log("Slash's Element is " + slash.getElement().getName());
-                    if (mana < slash.getMana())
+                    if (mana < slash.getMana()) {
+                        playNoMana();
                         slash.kill();
+                    }
                     else {
                         reduceMana(slash);
                         casting = true;
@@ -159,8 +161,10 @@ public class PlayerChar : MonoBehaviour {
                         missile.infuse(elements [1]);
                     missile.sound.Play();	
                     Debug.Log("Missile's Element is " + missile.getElement().getName());
-                    if (mana < missile.getMana())
+                    if (mana < missile.getMana()){
+                        playNoMana();
                         missile.kill();
+                    }
                     else {
                         reduceMana(missile);
                         casting = true;
@@ -309,5 +313,8 @@ public class PlayerChar : MonoBehaviour {
         else {
             stunT = d;
         }
+    }
+    public void playNoMana() {
+        GetComponent<AudioSource>().Play();
     }
 }
