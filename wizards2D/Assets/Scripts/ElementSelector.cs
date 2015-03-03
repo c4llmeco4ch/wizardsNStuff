@@ -28,7 +28,7 @@ public class ElementSelector : MonoBehaviour {
 
 	// Use this for initialization
     void Start () {
-        if(playerNum > 2 && XCI.GetNumPluggedCtrlrs() <= 2) {
+        if(playerNum > 2 && XCI.GetNumPluggedCtrlrs() <= 2  && playerNum > XCI.GetNumPluggedCtrlrs()) {
             this.gameObject.SetActive(false);
             return;
         }

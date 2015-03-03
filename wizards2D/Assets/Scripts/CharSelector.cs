@@ -16,7 +16,7 @@ public class CharSelector : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        if(playerNum > 2 && XCI.GetNumPluggedCtrlrs() <= 2) {
+        if(playerNum > 2 && XCI.GetNumPluggedCtrlrs() <= 2 && playerNum > XCI.GetNumPluggedCtrlrs()) {
             this.gameObject.SetActive(false);
             return;
         }
@@ -41,9 +41,9 @@ public class CharSelector : MonoBehaviour {
             if(y < -0.4 && selected != CurElement.R) {
                 selected = CurElement.R;
                 left.selected = false;
-            left.background.color = new Color(left.background.color.r - modifier, left.background.color.g - modifier, left.background.color.b - modifier);
+                left.background.color = new Color(left.background.color.r - modifier, left.background.color.g - modifier, left.background.color.b - modifier);
                 right.selected = true;
-            right.background.color = new Color(right.background.color.r + modifier, right.background.color.g + modifier, right.background.color.b + modifier);
+                right.background.color = new Color(right.background.color.r + modifier, right.background.color.g + modifier, right.background.color.b + modifier);
 //                right.background.color.r = right.background.color.r + 10;
                 counter = time;
             }

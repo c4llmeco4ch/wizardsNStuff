@@ -35,7 +35,6 @@ public class PlayerChar : MonoBehaviour {
     public bool charging; //whether the player is currently charging a spell
     public int chargeLeft; //how many frames till the charge ends
     private bool uiSet = false;
-    public int spellsCast; //number of spells a character has casted in this game
     
 
     //instantiate new instance of player char. @param playerNum determines start location
@@ -53,12 +52,11 @@ public class PlayerChar : MonoBehaviour {
         playerNum = 1;
         spells = new GameObject[4];
         elements = new Element[2];
-        spellsCast=0;
     }
     
 
     public void Awake() {
-        if(playerNum > 2 && GameInit.playerNum <= 2) {
+        if(playerNum > 2 && GameInit.playerNum <= 2 && playerNum > GameInit.playerNum) {
             this.gameObject.SetActive(false);
             return;
         }
