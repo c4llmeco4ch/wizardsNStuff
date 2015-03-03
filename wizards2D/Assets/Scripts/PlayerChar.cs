@@ -37,6 +37,7 @@ public class PlayerChar : MonoBehaviour {
     private bool uiSet = false;
     public int spellsCast; //number of spells a character has casted in this game
     public int timeAlive; //Counts the number of frames during which a player is alive
+    private Spell currentSpell; //Spell the user is currently charging
     
 
     //instantiate new instance of player char. @param playerNum determines start location
@@ -104,105 +105,108 @@ public class PlayerChar : MonoBehaviour {
             }
             float lt = XCI.GetAxis(XboxAxis.LeftTrigger, playerNum); //true if left trigger is pushed, else false
             float rt = XCI.GetAxis(XboxAxis.RightTrigger, playerNum); //true if right trigger is pushed, else false
-						
-
-            //Debug.Log (lt+" || "+rt);
-            regenMana();
-            if (mana > 100)
-                mana = 100;
-            //Code for casting Slash
-            if (XCI.GetButtonDown(XboxButton.X, playerNum)) {
-//                elementLoaded.SetActive(false);
-                if ((rt>.5 && lt>.5) || !(rt > .5 || lt > .5) || casting) {
-                    //Actually, punch, but for now, nothing
-                    //Debug.Log ("I'm here");
-                } else {
-                    bool justMade = false;
-                    if (spells [0] == null) {
-                        slashMaker();
-                        //Slash s=spells[0].GetComponent("Slash") as Slash;
-                        justMade = true;
-                        //s.prepSlash(this,spells[0]);
-                    }
-                    //			Debug.Log(spells[0].transform.position+" HI");
-                    Slash slash = spells [0].GetComponent("Slash") as Slash;
-                    if (lt > .5)
-                        slash.infuse(elements [0]);
-                    else if (rt > .5)
-                        slash.infuse(elements [1]);
-                    slash.sound.Play();	
-                    Debug.Log("Slash's Element is " + slash.getElement().getName());
-                    if (mana < slash.getMana()) {
-                        playNoMana();
-                        slash.kill();
-                    }
-                    else {
-                        reduceMana(slash);
-                        casting = true;
-                        if (slash.casting) {
-                            return;
-                        }
-						slash.charge();
-				
-                        if (slash.facingRight && !facingRight)
-                            slash.Flip();
-                        else if (!slash.facingRight && facingRight)
-                            slash.Flip();
-                    }
-                }
-            }
-			//Code for casting Missile
-			else if (XCI.GetButtonDown(XboxButton.B, playerNum)) {
-                Debug.Log("FIRE DA MISSILES");
-				if ((rt>.5 && lt>.5) || !(rt > .5 || lt > .5) || casting) {
-                    //Actually, punch, but for now, nothing
-                    //Debug.Log ("I'm here");
-                } 
-                else {
-                    bool justMade = false;
-                    if (spells [1] == null) {
-                        missileMaker();
-                        //Slash s=spells[0].GetComponent("Slash") as Slash;
-                        //justMade = true;
-                        //s.prepSlash(this,spells[0]);
-                    }
-                    //			Debug.Log(spells[0].transform.position+" HI");
-                    Missile missile = Instantiate(spells [1].GetComponent("Missile")) as Missile;
-                    if (lt > .5)
-                        missile.infuse(elements [0]);
-                    else if (rt > .5)
-                        missile.infuse(elements [1]);
-                    missile.sound.Play();	
-                    Debug.Log("Missile's Element is " + missile.getElement().getName());
-                    if (mana < missile.getMana()){
-                        playNoMana();
-                        missile.kill();
-                    }
-                    else {
-                        reduceMana(missile);
-                        casting = true;
-                        if (missile.casting) {
-                            return;
-                        }
-                      
-						missile.charge();
-
-                        if (missile.facingRight && !facingRight)
-                            missile.Flip();
-                        else if (!missile.facingRight && facingRight)
-                            missile.Flip();
-                    }
-                }
-            } //else {
-//            if (!(rt > .5 && lt > .5) && !casting) {
-//										
-//                if (lt > .5 || rt > .5) 
-//                    elementLoaded.SetActive(true);
-//                else
-//                    elementLoaded.SetActive(false);
-//            } else
-//                elementLoaded.SetActive(false);
-            //}
+			regenMana();
+			if (mana > 100)
+				mana = 100;
+			if(stunT>0){stunT--;}			
+			else{
+	            //Debug.Log (lt+" || "+rt);
+	            //Code for casting Slash
+	            if (XCI.GetButtonDown(XboxButton.X, playerNum)) {
+	//                elementLoaded.SetActive(false);
+	                if ((rt>.5 && lt>.5) || !(rt > .5 || lt > .5) || casting) {
+	                    //Actually, punch, but for now, nothing
+	                    //Debug.Log ("I'm here");
+	                } else {
+	                    bool justMade = false;
+	                    if (spells [0] == null) {
+	                        slashMaker();
+	                        //Slash s=spells[0].GetComponent("Slash") as Slash;
+	                        justMade = true;
+	                        //s.prepSlash(this,spells[0]);
+	                    }
+	                    //			Debug.Log(spells[0].transform.position+" HI");
+	                    Slash slash = spells [0].GetComponent("Slash") as Slash;
+	                    if (lt > .5)
+	                        slash.infuse(elements [0]);
+	                    else if (rt > .5)
+	                        slash.infuse(elements [1]);
+	                    slash.sound.Play();	
+	                    Debug.Log("Slash's Element is " + slash.getElement().getName());
+	                    if (mana < slash.getMana()) {
+	                        playNoMana();
+	                        slash.kill();
+	                    }
+	                    else {
+	                        reduceMana(slash);
+	                        currentSpell=slash;
+	                        casting = true;
+	                        if (slash.casting) {
+	                            return;
+	                        }
+							slash.charge();
+					
+	                        if (slash.facingRight && !facingRight)
+	                            slash.Flip();
+	                        else if (!slash.facingRight && facingRight)
+	                            slash.Flip();
+	                    }
+	                }
+	            }
+				//Code for casting Missile
+				else if (XCI.GetButtonDown(XboxButton.B, playerNum)) {
+	                Debug.Log("FIRE DA MISSILES");
+					if ((rt>.5 && lt>.5) || !(rt > .5 || lt > .5) || casting) {
+	                    //Actually, punch, but for now, nothing
+	                    //Debug.Log ("I'm here");
+	                } 
+	                else {
+	                    bool justMade = false;
+	                    if (spells [1] == null) {
+	                        missileMaker();
+	                        //Slash s=spells[0].GetComponent("Slash") as Slash;
+	                        //justMade = true;
+	                        //s.prepSlash(this,spells[0]);
+	                    }
+	                    //			Debug.Log(spells[0].transform.position+" HI");
+	                    Missile missile = Instantiate(spells [1].GetComponent("Missile")) as Missile;
+	                    if (lt > .5)
+	                        missile.infuse(elements [0]);
+	                    else if (rt > .5)
+	                        missile.infuse(elements [1]);
+	                    missile.sound.Play();	
+	                    Debug.Log("Missile's Element is " + missile.getElement().getName());
+	                    if (mana < missile.getMana()){
+	                        playNoMana();
+	                        missile.kill();
+	                    }
+	                    else {
+	                        reduceMana(missile);
+	                        currentSpell=missile;
+	                        casting = true;
+	                        if (missile.casting) {
+	                            return;
+	                        }
+	                      
+							missile.charge();
+	
+	                        if (missile.facingRight && !facingRight)
+	                            missile.Flip();
+	                        else if (!missile.facingRight && facingRight)
+	                            missile.Flip();
+	                    }
+	                }
+	            } //else {
+	//            if (!(rt > .5 && lt > .5) && !casting) {
+	//										
+	//                if (lt > .5 || rt > .5) 
+	//                    elementLoaded.SetActive(true);
+	//                else
+	//                    elementLoaded.SetActive(false);
+	//            } else
+	//                elementLoaded.SetActive(false);
+				//}
+			}
         }
         healthBarTrans.sizeDelta = new Vector2(hp * healthSize, healthBarTrans.sizeDelta.y);
         manaBarTrans.sizeDelta = new Vector2(mana * manaSize, manaBarTrans.sizeDelta.y);
@@ -230,7 +234,7 @@ public class PlayerChar : MonoBehaviour {
 
     // FixedUpdate is called once per physics step 
     public void FixedUpdate() {
-        if (!isDead) {
+        if (!isDead && stunT==0) {
             // Cache the contoller input input.
             if (casting)
                 return;
@@ -293,6 +297,15 @@ public class PlayerChar : MonoBehaviour {
         if (s.getDotB()) {
             dotVal = s.getDotV();
             dotT = s.getDotT();
+        }
+        if(s.getKnock()==0){
+			stunned(30);
+			if(this.charging){
+				Destroy(currentSpell);
+			}
+        }
+        else{
+			stunned(s.getKnock());
         }
     }
 	

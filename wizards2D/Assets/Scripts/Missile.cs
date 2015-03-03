@@ -278,10 +278,10 @@ public class Missile : Spell {
 		setDot(false,0,0);
 		setDmg(7);
 		setKnock(1);
-		setCast(0);
+		setCast(5);
 		setMana(15);
 		setRange(0);
-		setSpd((float).5);
+		setSpd((float)2.5);
 	}
 	
 	public void Flip (){
