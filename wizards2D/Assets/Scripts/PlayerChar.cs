@@ -108,7 +108,7 @@ public class PlayerChar : MonoBehaviour {
             //Code for casting Slash
             if (XCI.GetButtonDown(XboxButton.X, playerNum)) {
 //                elementLoaded.SetActive(false);
-                if (!(rt > .5 || lt > .5) || casting) {
+                if ((rt>.5 && lt>.5) || !(rt > .5 || lt > .5) || casting) {
                     //Actually, punch, but for now, nothing
                     //Debug.Log ("I'm here");
                 } else {
@@ -149,10 +149,11 @@ public class PlayerChar : MonoBehaviour {
 			//Code for casting Missile
 			else if (XCI.GetButtonDown(XboxButton.B, playerNum)) {
                 Debug.Log("FIRE DA MISSILES");
-                if (!(rt > .5 || lt > .5) || casting) {
+				if ((rt>.5 && lt>.5) || !(rt > .5 || lt > .5) || casting) {
                     //Actually, punch, but for now, nothing
                     //Debug.Log ("I'm here");
-                } else {
+                } 
+                else {
                     bool justMade = false;
                     if (spells [1] == null) {
                         missileMaker();
