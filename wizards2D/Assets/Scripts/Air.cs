@@ -4,13 +4,13 @@ using System.Collections;
 public class Air : Element {
 
 	public Air() {
-		setDmg(1);
-		setCast(5);
-		setSpd(5);
+		setDmg(-2);
+		setCast(2);
+		setSpd(2);
 		setDot(false,0,0);
-		setRange(5);
-		setKnock(3);
-		setMana(5);
+		setRange(2);
+		setKnock(0);
+		setMana(2);
 		setDotN("none");
 		setName("Air");
 	}

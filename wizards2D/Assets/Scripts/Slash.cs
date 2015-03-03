@@ -38,10 +38,10 @@ public class Slash : Spell {
 		setName("Slash");
 		element=null;
 		setDot(false,0,0);
-		setDmg(5);
+		setDmg(15);
 		setCast(2);
 		setKnock(0);
-		setMana(5);
+		setMana(20);
 		setRange(0);
 		setSpd(0);
 	}
@@ -56,6 +56,7 @@ public class Slash : Spell {
 		this.GetComponent<MeshRenderer>().enabled=true;
 		this.GetComponent<BoxCollider>().enabled=true;
 		framesLeft=(int)(getSpd()*10);
+		p.spellsCast++;
 		sound.Play();	
 	}
 	
