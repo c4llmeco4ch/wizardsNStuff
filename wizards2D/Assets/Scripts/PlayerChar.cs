@@ -36,6 +36,7 @@ public class PlayerChar : MonoBehaviour {
     public int chargeLeft; //how many frames till the charge ends
     private bool uiSet = false;
     public int spellsCast; //number of spells a character has casted in this game
+    public int timeAlive; //Counts the number of frames during which a player is alive
     
 
     //instantiate new instance of player char. @param playerNum determines start location
@@ -54,6 +55,7 @@ public class PlayerChar : MonoBehaviour {
         spells = new GameObject[4];
         elements = new Element[2];
         spellsCast=0;
+        timeAlive=0;
     }
     
 
@@ -93,6 +95,7 @@ public class PlayerChar : MonoBehaviour {
             elementR.sprite = Resources.Load("UI Art Assets/" + elements [1].getName() + "-Element", typeof(Sprite)) as Sprite;
         }
         if (!isDead) {
+			timeAlive++;
             if(anim.GetCurrentAnimationClipState(0)!= null) {
                 if(anim.GetCurrentAnimationClipState(0)[0].clip.name == "Cast Slash")
                     anim.SetBool("Slash", false);
