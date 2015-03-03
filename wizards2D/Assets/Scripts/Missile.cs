@@ -19,6 +19,7 @@ public class Missile : Spell {
 		cast();
 		this.GetComponent<MeshRenderer>().enabled=true;
 		this.GetComponent<BoxCollider>().enabled=true;
+		p.spellsCast++;
 	}
 	
 	//call this immediately after creating this object
@@ -275,10 +276,10 @@ public class Missile : Spell {
 		setName("Missile");
 		element=null;
 		setDot(false,0,0);
-		setDmg(10);
+		setDmg(7);
 		setKnock(1);
 		setCast(0);
-		setMana(5);
+		setMana(15);
 		setRange(0);
 		setSpd((float).5);
 	}
@@ -293,4 +294,3 @@ public class Missile : Spell {
 		transform.localScale = theScale;
 	}
 }
-

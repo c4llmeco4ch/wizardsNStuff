@@ -4,13 +4,13 @@ using System.Collections;
 public class Water : Element {
 	
 	public Water(){
-		setDmg(3);
-		setCast(3);
-		setSpd(3);
+		setDmg(0);
+		setCast(0);
+		setSpd(0);
 		setDot(true,0,5);
-		setRange(3);
-		setKnock(5);
-		setMana(3);
+		setRange(0);
+		setKnock(2);
+		setMana(0);
 		setDotN("wet");
 		setName("Water");
 	}

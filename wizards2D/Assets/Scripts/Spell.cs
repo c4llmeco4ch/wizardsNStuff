@@ -83,7 +83,7 @@ public abstract class Spell : MonoBehaviour {
 	
 	public void setDmg(int d){dmg=d;}
 	
-	public void modDmg(int d){dmg+=d;}
+	public void modDmg(int d){dmg+=(d*2);}
 	
 	public int getCast(){return cast;}
 	
@@ -105,7 +105,7 @@ public abstract class Spell : MonoBehaviour {
 	
 	public void setMana(int m){manaC=m;}
 	
-	public void modMana(int m){manaC+=m;}
+	public void modMana(int m){manaC-=(m*2);}
 	
 	public int getRange(){return range;}
 	
