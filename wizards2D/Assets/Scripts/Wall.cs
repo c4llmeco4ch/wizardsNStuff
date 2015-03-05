@@ -3,30 +3,61 @@ using System.Collections;
 
 public class Wall : Spell {
 	public PlayerChar p; //the player who is casting this slash
-	GameObject g;
 	public bool casting; //whether the slash is currently in effect
 	public int framesLeft; //how many frames till the spell ends
 	public bool facingRight; //true if sprite is facing right
+	public bool charging; //true if player should be charging spell
+	public int chargeLeft; //how many frames till the charge ends
 	
 	// Use this for initialization
-	void Start () {
-		g.transform.position=cast();
+	void start () {
+		Debug.Log("...cuz I think he's walling.");
 		casting=true;
-		framesLeft=(int)(getSpd()*50);
+		p.casting=false;
+		p.elementLoaded.SetActive(false);
+		p.anim.SetBool("isCharging",false);
+		p.anim.SetBool("Wall",true);
+		
+		this.transform.position=p.transform.position;
+		cast();
+		this.GetComponent<MeshRenderer>().enabled=true;
+		this.GetComponent<BoxCollider>().enabled=true;
+		p.spellsCast++;
 	}
 	
 	//call this immediately after creating this object
-	public void prepWall(PlayerChar p,GameObject g){this.p=p; this.g=g; facingRight = true;}
+	public void prepWall(PlayerChar p){this.p=p; facingRight = true;}
 	
 	// Update is called once per frame
 	public void FixedUpdate () {
-		if(!casting)
+		if(!casting && !charging)
 			return;
-		else if(framesLeft==0){
-			kill();
+		else if(charging){
+			if(chargeLeft==0){
+				charging=false;
+				start();
+			}
+			else if(chargeLeft>0)
+				chargeLeft--;
 		}
-		else if(framesLeft>0)
-			framesLeft--;
+		else if(casting){	
+			if(framesLeft==0){
+				kill();
+			}
+			else if(framesLeft>0)
+				framesLeft--;	
+		}
+	}
+	
+	public void charge(){
+		Debug.Log("Check for hax...");
+		charging=true;
+		chargeLeft=(int)(getCast()*6);
+		this.GetComponent<MeshRenderer>().enabled=false;
+		this.GetComponent<BoxCollider>().enabled=false;
+		p.anim.SetBool("isCharging",true);
+		p.elementLoaded.SetActive(true);
+		p.elementLoaded.GetComponent<Animator>().SetBool(getElement().getName(), true);
 	}
 	
 	public void Awake(){
@@ -42,24 +73,35 @@ public class Wall : Spell {
 		if(p.facingRight){
 			//			Debug.Log("X: "+x+"||Y: "+y+"||Z: "+x);
 			x=p.collider.bounds.size.x/2+x+(float).75;
-			return new Vector3((float)x+(getRange()/2),y,z);
+			return new Vector3((float)x+(getRange()),y,z);
 		}
 		else{
 			//			Debug.Log("X: "+x+"||Y: "+y+"||Z: "+x);
 			x=x-(float)1-(p.collider.bounds.size.x/2);
-			return new Vector3((float)x-(getRange()/2),y,z);
+			return new Vector3((float)x-(getRange()),y,z);
 		}
 	}
 	
 	//defines what happens when an object collides with a given spell
-	public void OnCollisionEnter(Collision c){}
+	public void OnCollisionEnter(Collision c){
+		Debug.Log ("Anything!!??!!"+c.gameObject.name);
+		if(c.gameObject.tag.Equals("Player")){
+			Debug.Log("Collision!!");
+			PlayerChar p=c.gameObject.GetComponent("PlayerChar") as PlayerChar;//issues grabbing the playerchar from the gameobject
+			p.transform.position=this.gameObject.collider.bounds.extents+new Vector3((float).2,(float)0,(float)0);
+		}
+		else if(c.gameObject.name.Contains("Spell")){ //same as above
+			Spell s=c.gameObject.GetComponent("Spell") as Spell;//issues grabbing the playerchar from the gameobject
+			s.versus(this);
+		}
+		else{
+			kill();
+		}
+	}
 	
 	//define what happens when a spell is finished
 	override public void kill(){
-		casting=false;
-		framesLeft=0;
-		g.SetActive(false);
-		resetSpell();
+		Destroy(this.gameObject);
 	}
 	
 	//defines what happens when a spell collides with a different spell
@@ -248,5 +290,15 @@ public class Wall : Spell {
 		setMana(10);
 		setRange(2);
 		setSpd((float).5);
+	}
+	
+	public void Flip (){
+		// Switch the way the player is labelled as facing.
+		facingRight = !facingRight;
+		
+		// Multiply the player's x local scale by -1.
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
 	}
 }

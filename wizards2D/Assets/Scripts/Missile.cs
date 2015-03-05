@@ -14,7 +14,7 @@ public class Missile : Spell {
         p.casting=false;
         p.elementLoaded.SetActive(false);
 		p.anim.SetBool("isCharging",false);
-		p.anim.SetBool("Slash",true);
+		p.anim.SetBool("Missile",true);
 		this.transform.position=p.transform.position;
 		if(facingRight)
 			this.transform.position+=new Vector3((float).4,(float)0,(float)0);
@@ -83,6 +83,7 @@ public class Missile : Spell {
 			Debug.Log("Collision!!");
 			PlayerChar p=c.gameObject.GetComponent("PlayerChar") as PlayerChar;//issues grabbing the playerchar from the gameobject
 			p.takeDamage(this.getDmg(),this);
+			kill();
 		}
 		else if(c.gameObject.name.Contains("Spell")){ //same as above
 			Spell s=c.gameObject.GetComponent("Spell") as Spell;//issues grabbing the playerchar from the gameobject
