@@ -28,10 +28,10 @@ public class ElementSelector : MonoBehaviour {
 
 	// Use this for initialization
     void Start () {
-        if(playerNum > 2 && XCI.GetNumPluggedCtrlrs() <= 2  && playerNum > XCI.GetNumPluggedCtrlrs()) {
-            this.gameObject.SetActive(false);
-            return;
-        }
+//        if(playerNum > 2 && XCI.GetNumPluggedCtrlrs() <= 2  && playerNum > XCI.GetNumPluggedCtrlrs()) {
+//            this.gameObject.SetActive(false);
+//            return;
+//        }
 //        background = GetComponent<Image>();
         if(selected)
             background.color = new Color(background.color.r + modifier, background.color.g + modifier, background.color.b + modifier);

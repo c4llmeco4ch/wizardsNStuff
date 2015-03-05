@@ -228,6 +228,7 @@ public class PlayerChar : MonoBehaviour {
         mat.shader = Shader.Find("Decal");
         mat.SetColor("_Color", Color.blue);
         Debug.Log(rend.material.name);
+        //try creating new material and then change that. then set material to that. 
     }
 	
     public void slashMaker() {
@@ -368,7 +369,7 @@ public class PlayerChar : MonoBehaviour {
     }
     
     public void playHit() {
-        playSound("hit2");
+        playSound("Hit");
     }
     
     private void playSound(string soundName) {

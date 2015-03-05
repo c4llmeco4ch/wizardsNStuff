@@ -2,7 +2,7 @@
 using System.Collections;
 
 public static class GameInit {
-	public static int playerNum = 2;
+	public static int playerNum = 4;
 	public static Element[,] elementChoices = new Element[4,2];
 	public static PlayerChar[] players;
     

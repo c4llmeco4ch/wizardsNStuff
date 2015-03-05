@@ -16,10 +16,11 @@ public class CharSelector : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        if(playerNum > 2 && XCI.GetNumPluggedCtrlrs() <= 2 && playerNum > XCI.GetNumPluggedCtrlrs()) {
-            this.gameObject.SetActive(false);
-            return;
-        }
+        Debug.Log(XCI.GetNumPluggedCtrlrs());
+//        if(playerNum > 2 && XCI.GetNumPluggedCtrlrs() <= 2 && playerNum > XCI.GetNumPluggedCtrlrs()) {
+//            this.gameObject.SetActive(false);
+//            return;
+//        }
 //        left.modifier = modifier;
 	    left.selected = true;
         left.saveElement();
@@ -35,7 +36,8 @@ public class CharSelector : MonoBehaviour {
 //    }
 	
 	// Update is called once per frame
-	void OnGUI () {
+    void OnGUI () {
+//        Debug.Log(XCI.GetNumPluggedCtrlrs());
 //        if(counter == 0){
     	    float y = XCI.GetAxis(XboxAxis.LeftStickY, playerNum);
             if(y < -0.4 && selected != CurElement.R) {
