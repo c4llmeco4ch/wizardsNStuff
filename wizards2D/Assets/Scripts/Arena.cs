@@ -71,9 +71,11 @@ public class Arena : MonoBehaviour {
 		Debug.Log ("GameOver");
         canvas.gameObject.SetActive(true);
 		int winner = 0;
-        for(int i = 1; i<pNum; i++)
+        for(int i = 1; i<pNum; i++){
+            ps[i].setSpellsCast(pc[i].spellsCast);
             if(!pc[i].isDead)
                 winner = i;
+        }
         ps[winner].win.gameObject.SetActive(true);
 //		win.text = "Player "+i+" Won!";
 	}
