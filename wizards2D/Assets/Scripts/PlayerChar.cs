@@ -168,7 +168,7 @@ public class PlayerChar : MonoBehaviour {
 				else if (XCI.GetButtonDown(XboxButton.B, playerNum)) {
 	                Debug.Log("FIRE DA MISSILES");
 					if ((rt>.5 && lt>.5) || !(rt > .5 || lt > .5) || casting) {
-	                    //Actually, punch, but for now, nothing
+	                    //Actually, dodgeroll, but for now, nothing
 	                    //Debug.Log ("I'm here");
 	                } 
 	                else {
@@ -207,23 +207,66 @@ public class PlayerChar : MonoBehaviour {
 	                            missile.Flip();
 	                    }
 	                }
-	            } //else {
-	//            if (!(rt > .5 && lt > .5) && !casting) {
-	//										
-	//                if (lt > .5 || rt > .5) 
-	//                    elementLoaded.SetActive(true);
-	//                else
-	//                    elementLoaded.SetActive(false);
-	//            } else
-	//                elementLoaded.SetActive(false);
+	            } 
+				else if (XCI.GetButtonDown(XboxButton.Y, playerNum)) {
+					Debug.Log("FIRE DA MISSILES");
+					if ((rt>.5 && lt>.5) || !(rt > .5 || lt > .5) || casting) {
+						//Actually, block, but for now, nothing
+						//Debug.Log ("I'm here");
+					} 
+					else {
+						bool justMade = false;
+						if (spells [2] == null) {
+							wallMaker();
+							//Slash s=spells[0].GetComponent("Slash") as Slash;
+							//justMade = true;
+							//s.prepSlash(this,spells[0]);
+						}
+						//			Debug.Log(spells[0].transform.position+" HI");
+						Wall wall = Instantiate(spells [2].GetComponent("Wall")) as Wall;
+						if (lt > .5)
+							wall.infuse(elements [0]);
+						else if (rt > .5)
+							wall.infuse(elements [1]);
+						Debug.Log("Missile's Element is " + wall.getElement().getName());
+						if (mana < wall.getMana()){
+							playNoMana();
+							wall.kill();
+						}
+						else {
+							wall.sound.Play();
+							reduceMana(wall);
+							currentSpell=wall;
+							casting = true;
+							if (wall.casting) {
+								return;
+							}
+							
+							wall.charge();
+							
+							if (wall.facingRight && !facingRight)
+								wall.Flip();
+							else if (!wall.facingRight && facingRight)
+								wall.Flip();
+						}
+					}
+				}//else {
+				//            if (!(rt > .5 && lt > .5) && !casting) {
+				//										
+				//                if (lt > .5 || rt > .5) 
+				//                    elementLoaded.SetActive(true);
+				//                else
+				//                    elementLoaded.SetActive(false);
+				//            } else
+				//                elementLoaded.SetActive(false);
 				//}
 			}
-        }
-        healthBarTrans.sizeDelta = new Vector2(hp * healthSize, healthBarTrans.sizeDelta.y);
-        manaBarTrans.sizeDelta = new Vector2(mana * manaSize, manaBarTrans.sizeDelta.y);
-        
-        Renderer rend = GetComponent<Renderer>();
-//        rend.material.color = Color.green; 
+		}
+		healthBarTrans.sizeDelta = new Vector2(hp * healthSize, healthBarTrans.sizeDelta.y);
+		manaBarTrans.sizeDelta = new Vector2(mana * manaSize, manaBarTrans.sizeDelta.y);
+		
+		Renderer rend = GetComponent<Renderer>();
+		//        rend.material.color = Color.green; 
         Material mat = rend.materials.GetValue(0) as Material;
         mat.shader = Shader.Find("Decal");
         mat.SetColor("_Color", Color.blue);
@@ -249,8 +292,19 @@ public class PlayerChar : MonoBehaviour {
         spells [1] = missile;
         //		Debug.Log("-.-");
     }
-
-    // FixedUpdate is called once per physics step 
+    
+	public void wallMaker() {
+		GameObject wall = Instantiate(Resources.Load("Prefabs/Wall", typeof(GameObject)), transform.position, Quaternion.identity) as GameObject;
+		Wall w = wall.GetComponent("Wall") as Wall;
+		w.prepWall(this);
+		w.GetComponent<MeshRenderer>().enabled=false;
+		w.GetComponent<BoxCollider>().enabled=false;
+		//slash.transform.Translate(s.cast(),Space.World);
+		spells [2] = wall;
+		//		Debug.Log("-.-");
+	}
+	
+	// FixedUpdate is called once per physics step 
     public void FixedUpdate() {
         if (!isDead && stunT==0) {
             // Cache the contoller input input.

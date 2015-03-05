@@ -89,7 +89,7 @@ public abstract class Spell : MonoBehaviour {
 	
 	public void setCast(int c){cast=c;}
 	
-	public void modCast(int c){cast+=c;}
+	public void modCast(int c){cast-=c;}
 	
 	public float getSpd(){return spd;}
 	
