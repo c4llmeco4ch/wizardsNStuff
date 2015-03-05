@@ -250,7 +250,8 @@ public class PlayerChar : MonoBehaviour {
 								wall.Flip();
 						}
 					}
-				}//else {
+				}
+				//else {
 				//            if (!(rt > .5 && lt > .5) && !casting) {
 				//										
 				//                if (lt > .5 || rt > .5) 

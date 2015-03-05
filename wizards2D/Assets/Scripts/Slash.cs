@@ -202,8 +202,8 @@ public class Slash : Spell {
 		Debug.Log ("Anything!!??!!"+c.gameObject.name);
 		if(c.gameObject.tag.Equals("Player")){
 			Debug.Log("Collision!!");
-			PlayerChar p=c.gameObject.GetComponent("PlayerChar") as PlayerChar;//issues grabbing the playerchar from the gameobject
-			p.takeDamage(this.getDmg(),this);
+			PlayerChar pc=c.gameObject.GetComponent("PlayerChar") as PlayerChar;//issues grabbing the playerchar from the gameobject
+			pc.takeDamage(this.getDmg(),this);
 		}
 		else if(c.gameObject.name.Contains("Spell")){ //same as above
 			Spell s=c.gameObject.GetComponent("Spell") as Spell;//issues grabbing the playerchar from the gameobject
