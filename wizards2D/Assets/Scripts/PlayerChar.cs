@@ -71,6 +71,8 @@ public class PlayerChar : MonoBehaviour {
 //		GameInit i = new GameInit ();
         elements [0] = GameInit.getPlayerElement(playerNum, 0); //new Earth();
         elements [1] = GameInit.getPlayerElement(playerNum, 1);//new Air();
+        
+        
 
 //        healthBarTrans = healthBar.GetComponent<RectTransform>() as RectTransform;
 //        manaBarTrans = manaBar.GetComponent<RectTransform>() as RectTransform;
@@ -88,7 +90,14 @@ public class PlayerChar : MonoBehaviour {
     }
 
     // Update is called once per frame
-    public void Update() {
+    public void Update() { 
+        
+//        switch(playerNum){
+//            case 1: rend.material.color = Color.blue;
+//                break;
+//            case 2: rend.material.color = Color.red;
+//                break;
+//        }
         if(!uiSet && GameInit.arena != null) {
             uiSet = false;
             GameInit.arena.setUI(playerNum);
@@ -110,6 +119,8 @@ public class PlayerChar : MonoBehaviour {
 				mana = 100;
 			if(stunT>0){stunT--;}			
 			else{
+                if(anim.GetBool("isHit"))
+                    anim.SetBool("isHit", false);
 	            //Debug.Log (lt+" || "+rt);
 	            //Code for casting Slash
 	            if (XCI.GetButtonDown(XboxButton.X, playerNum)) {
@@ -210,6 +221,13 @@ public class PlayerChar : MonoBehaviour {
         }
         healthBarTrans.sizeDelta = new Vector2(hp * healthSize, healthBarTrans.sizeDelta.y);
         manaBarTrans.sizeDelta = new Vector2(mana * manaSize, manaBarTrans.sizeDelta.y);
+        
+        Renderer rend = GetComponent<Renderer>();
+//        rend.material.color = Color.green; 
+        Material mat = rend.materials.GetValue(0) as Material;
+        mat.shader = Shader.Find("Decal");
+        mat.SetColor("_Color", Color.blue);
+        Debug.Log(rend.material.name);
     }
 	
     public void slashMaker() {
@@ -276,6 +294,7 @@ public class PlayerChar : MonoBehaviour {
     //else, subtract player's hp by damage
     public void takeDamage(int dmg, Spell s) {
         Debug.Log("Taking " + dmg + " Damage as " + playerNum);
+        playHit();
         int bd;
         if (hp == 0) {
             return;
@@ -307,6 +326,10 @@ public class PlayerChar : MonoBehaviour {
         else{
 			stunned(s.getKnock());
         }
+        if(block)
+            anim.SetBool("isBlockAndHit", true);
+        else
+            anim.SetBool("isHit", true);
     }
 	
     public void setBlock(bool b) {
@@ -341,6 +364,17 @@ public class PlayerChar : MonoBehaviour {
         }
     }
     public void playNoMana() {
-        GetComponent<AudioSource>().Play();
+        playSound("OutOfMana");
+    }
+    
+    public void playHit() {
+        playSound("hit2");
+    }
+    
+    private void playSound(string soundName) {
+        AudioClip c = Resources.Load("Audio/"+soundName, typeof(AudioClip)) as AudioClip;
+        AudioSource s = GetComponent<AudioSource>();
+        s.clip = c;
+        s.Play();
     }
 }
