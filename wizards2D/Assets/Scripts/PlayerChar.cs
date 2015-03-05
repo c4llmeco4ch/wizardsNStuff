@@ -185,7 +185,6 @@ public class PlayerChar : MonoBehaviour {
 	                        missile.infuse(elements [0]);
 	                    else if (rt > .5)
 	                        missile.infuse(elements [1]);
-	
 	                    Debug.Log("Missile's Element is " + missile.getElement().getName());
 	                    if (mana < missile.getMana()){
 	                        playNoMana();
