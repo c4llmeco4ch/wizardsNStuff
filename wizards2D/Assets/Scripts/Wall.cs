@@ -17,7 +17,7 @@ public class Wall : Spell {
 		p.elementLoaded.SetActive(false);
 		p.anim.SetBool("isCharging",false);
 		p.anim.SetBool("Wall",true);
-		
+		framesLeft=(int)getSpd()*20;
 		//this.transform.position=p.transform.position;
 		this.transform.position=cast();
 		this.GetComponent<MeshRenderer>().enabled=true;
@@ -72,14 +72,14 @@ public class Wall : Spell {
 		float z=p.transform.position.z;
 		if(p.facingRight){
 			Debug.Log("X: "+x);
-			x+=p.collider.bounds.size.x+(float)5;
+			x+=p.collider.bounds.size.x/2+(float)1;
 			Debug.Log("X is now: "+x);
-			return new Vector3((float)(x+(getRange()*5)),y,z);
+			return new Vector3((float)(x+(getRange()/3)),y,z);
 		}
 		else{
 			//Debug.Log("X: "+x+"||Y: "+y+"||Z: "+x);
-			x-=(float)5-(p.collider.bounds.size.x);
-			return new Vector3((float)(x-(getRange()*5)),y,z);
+			x-=(float)2-(p.collider.bounds.size.x/2);
+			return new Vector3((float)(x-(getRange()/2)),y,z);
 		}
 	}
 	
@@ -90,7 +90,9 @@ public class Wall : Spell {
 			Debug.Log("Collision!!");
 			PlayerChar pc=c.gameObject.GetComponent("PlayerChar") as PlayerChar;//issues grabbing the playerchar from the gameobject
 			if(pc.facingRight)
-			pc.transform.position=this.gameObject.collider.bounds.extents+new Vector3((float).2,(float)0,(float)0);
+				pc.transform.position=pc.transform.position+new Vector3(this.gameObject.collider.bounds.size.x+(float).2,0,0);
+			else
+				pc.transform.position=pc.transform.position-new Vector3(this.gameObject.collider.bounds.size.x-(float).2,0,0);
 		}
 		else if(c.gameObject.name.Contains("Spell")){ //same as above
 			Spell s=c.gameObject.GetComponent("Spell") as Spell;//issues grabbing the playerchar from the gameobject
@@ -289,6 +291,7 @@ public class Wall : Spell {
 		setDot(false,0,0);
 		setDmg(0);
 		setKnock(1);
+		setCast(5);
 		setMana(10);
 		setRange(2);
 		setSpd((float).5);

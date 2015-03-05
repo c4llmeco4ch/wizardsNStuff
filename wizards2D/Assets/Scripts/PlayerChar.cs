@@ -169,7 +169,7 @@ public class PlayerChar : MonoBehaviour {
 	            }
 				//Code for casting Missile
 				else if (XCI.GetButtonDown(XboxButton.B, playerNum)) {
-	                Debug.Log("FIRE DA MISSILES");
+	                //Debug.Log("FIRE DA MISSILES");
 					if ((rt>.5 && lt>.5) || !(rt > .5 || lt > .5) || casting) {
 	                    //Actually, dodgeroll, but for now, nothing
 	                    //Debug.Log ("I'm here");
@@ -212,7 +212,6 @@ public class PlayerChar : MonoBehaviour {
 	                }
 	            } 
 				else if (XCI.GetButtonDown(XboxButton.Y, playerNum)) {
-					Debug.Log("FIRE DA MISSILES");
 					if ((rt>.5 && lt>.5) || !(rt > .5 || lt > .5) || casting) {
 						//Actually, block, but for now, nothing
 						//Debug.Log ("I'm here");
@@ -274,7 +273,7 @@ public class PlayerChar : MonoBehaviour {
         Material mat = rend.materials.GetValue(0) as Material;
         mat.shader = Shader.Find("Decal");
         mat.SetColor("_Color", Color.blue);
-        Debug.Log(rend.material.name);
+        //Debug.Log(rend.material.name);
         //try creating new material and then change that. then set material to that. 
     }
 	
