@@ -55,7 +55,7 @@ public class Slash : Spell {
 		p.anim.SetBool("Slash",true);
 		this.GetComponent<MeshRenderer>().enabled=true;
 		this.GetComponent<BoxCollider>().enabled=true;
-		framesLeft=(int)(getSpd()*10);
+		framesLeft=(int)((getSpd()+3)*10);
 		p.spellsCast++;
 		sound.Play();	
 	}

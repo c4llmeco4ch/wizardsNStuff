@@ -141,15 +141,15 @@ public class PlayerChar : MonoBehaviour {
 	                    if (lt > .5)
 	                        slash.infuse(elements [0]);
 	                    else if (rt > .5)
-	                        slash.infuse(elements [1]);
-	                    slash.sound.Play();	
+	                        slash.infuse(elements [1]);	
 	                    Debug.Log("Slash's Element is " + slash.getElement().getName());
 	                    if (mana < slash.getMana()) {
 	                        playNoMana();
 	                        slash.kill();
 	                    }
 	                    else {
-	                        reduceMana(slash);
+							slash.sound.Play();
+							reduceMana(slash);
 	                        currentSpell=slash;
 	                        casting = true;
 	                        if (slash.casting) {
@@ -185,13 +185,13 @@ public class PlayerChar : MonoBehaviour {
 	                        missile.infuse(elements [0]);
 	                    else if (rt > .5)
 	                        missile.infuse(elements [1]);
-	                    missile.sound.Play();	
 	                    Debug.Log("Missile's Element is " + missile.getElement().getName());
 	                    if (mana < missile.getMana()){
 	                        playNoMana();
 	                        missile.kill();
 	                    }
 	                    else {
+							missile.sound.Play();
 	                        reduceMana(missile);
 	                        currentSpell=missile;
 	                        casting = true;

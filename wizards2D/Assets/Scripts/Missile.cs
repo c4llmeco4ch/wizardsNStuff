@@ -16,6 +16,10 @@ public class Missile : Spell {
 		p.anim.SetBool("isCharging",false);
 		p.anim.SetBool("Slash",true);
 		this.transform.position=p.transform.position;
+		if(facingRight)
+			this.transform.position+=new Vector3((float).4,(float)0,(float)0);
+		else 
+			this.transform.position-=new Vector3((float).4,(float)0,(float)0);
 		cast();
 		this.GetComponent<MeshRenderer>().enabled=true;
 		this.GetComponent<BoxCollider>().enabled=true;
