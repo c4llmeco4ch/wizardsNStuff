@@ -38,6 +38,7 @@ public class PlayerChar : MonoBehaviour {
     public int spellsCast; //number of spells a character has casted in this game
     public int timeAlive; //Counts the number of frames during which a player is alive
     private Spell currentSpell; //Spell the user is currently charging
+    public SpriteRenderer aura;
     
 
     //instantiate new instance of player char. @param playerNum determines start location
@@ -121,6 +122,8 @@ public class PlayerChar : MonoBehaviour {
 			else{
                 if(anim.GetBool("isHit"))
                     anim.SetBool("isHit", false);
+                    
+//                if(!casting)
 	            //Debug.Log (lt+" || "+rt);
 	            //Code for casting Slash
 	            if (XCI.GetButtonDown(XboxButton.X, playerNum)) {
