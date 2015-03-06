@@ -16,7 +16,7 @@ public class CharSelector : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Debug.Log(XCI.GetNumPluggedCtrlrs());
+//        Debug.Log(XCI.GetNumPluggedCtrlrs());
 //        if(playerNum > 2 && XCI.GetNumPluggedCtrlrs() <= 2 && playerNum > XCI.GetNumPluggedCtrlrs()) {
 //            this.gameObject.SetActive(false);
 //            return;
@@ -24,6 +24,8 @@ public class CharSelector : MonoBehaviour {
         //        left.modifier = modifier;
         left.playerNum = playerNum;
         right.playerNum = playerNum;
+        left.other = right;
+        right.other = left;
 	    left.selected = true;
 //        left.playerNum = playerNum;
 //        right.playerNum = playerNum;

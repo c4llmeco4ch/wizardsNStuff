@@ -22,6 +22,9 @@ public class ElementSelector : MonoBehaviour {
     
     const float modifier = 0.3f;
     
+    public ElementSelector other;
+    public Element skip;
+    
     
     int counter = 0;
     const int time = 15;
@@ -73,13 +76,17 @@ public class ElementSelector : MonoBehaviour {
 	}
 
     public void update(bool inc) {
-        GetComponent<AudioSource>().Play();
         if (inc) {
             cur = cur.Next ?? cur.List.First;//if next is null, then use first
         } else if (!inc) {
 			cur = cur.Previous ?? cur.List.Last;//if prev is null, then use last
         }
         GameInit.ElementSprite es = cur.Value as GameInit.ElementSprite;
+        if(es.element.getName() == skip.getName()) {
+            update(inc);
+            return;
+        }
+        GetComponent<AudioSource>().Play();
         selectedElement = es.element;
 		selectedElementText.sprite = es.elementText;
         background.sprite = es.box;
@@ -90,6 +97,7 @@ public class ElementSelector : MonoBehaviour {
     
     public void saveElement() {
         GameInit.setPlayerElement (playerNum, elementNum, selectedElement);
+        other.skip = selectedElement;
     }
 
 }
