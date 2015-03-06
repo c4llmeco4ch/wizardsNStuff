@@ -20,6 +20,6 @@ public class Play : MonoBehaviour {
         if(temp <= 1)
             temp = 2;
         GameInit.setNumPlayers(4);
-        Application.LoadLevel ("Tutorial 1");//("DefaultLevelScene");
+        Application.LoadLevel ("DefaultLevelScene");//("DefaultLevelScene");
 	}
 }
