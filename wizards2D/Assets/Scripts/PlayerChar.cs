@@ -104,11 +104,11 @@ public class PlayerChar : MonoBehaviour {
 			timeAlive++;
             //turns off animator bools so cast animations do not repeat forever. 
             if(anim.GetCurrentAnimationClipState(0)!= null) {
-                if(anim.GetCurrentAnimationClipState(0)[0].clip.name == "Cast Slash")
+                if(anim.GetCurrentAnimationClipState(0)[0].clip.name.EndsWith("Cast Slash"))
                     anim.SetBool("Slash", false);
-                if (anim.GetCurrentAnimationClipState(0)[0].clip.name == "Cast Missile 1")
+                if (anim.GetCurrentAnimationClipState(0)[0].clip.name.EndsWith("Cast Missile 1"))
                     anim.SetBool("Missile", false);
-                if (anim.GetCurrentAnimationClipState(0)[0].clip.name == "Cast Wall")
+                if (anim.GetCurrentAnimationClipState(0)[0].clip.name.EndsWith("Cast Wall"))
                     anim.SetBool("Wall", false);
             }
             

@@ -304,7 +304,7 @@ Animator:
   m_GameObject: {fileID: 71921574}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4573429c1e6fb42709385bdb73ece5e1, type: 2}
+  m_Controller: {fileID: 9100000, guid: f803c64df1e324781af0f2158b384120, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5063,6 +5063,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9576676, guid: 184711791fe1948bb92e8080d9004524, type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 683280b46ad784ad6ae1c6cdd231b4e0, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 184711791fe1948bb92e8080d9004524, type: 2}
   m_RootGameObject: {fileID: 1693466610}
@@ -6008,7 +6012,7 @@ Animator:
   m_GameObject: {fileID: 1693466610}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4573429c1e6fb42709385bdb73ece5e1, type: 2}
+  m_Controller: {fileID: 9100000, guid: 683280b46ad784ad6ae1c6cdd231b4e0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6954,6 +6958,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9576676, guid: 184711791fe1948bb92e8080d9004524, type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 36fd49bd5aaa744aa8a7b50c33a331aa, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 184711791fe1948bb92e8080d9004524, type: 2}
   m_RootGameObject: {fileID: 1969980883}
@@ -7019,7 +7027,7 @@ Animator:
   m_GameObject: {fileID: 1969980883}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4573429c1e6fb42709385bdb73ece5e1, type: 2}
+  m_Controller: {fileID: 9100000, guid: 36fd49bd5aaa744aa8a7b50c33a331aa, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -7305,6 +7313,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9576676, guid: 184711791fe1948bb92e8080d9004524, type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f803c64df1e324781af0f2158b384120, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 184711791fe1948bb92e8080d9004524, type: 2}
   m_RootGameObject: {fileID: 71921574}
