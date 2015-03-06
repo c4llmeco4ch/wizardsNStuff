@@ -16,10 +16,10 @@ public class Play : MonoBehaviour {
 	}
 
 	public void play() {
-		int temp = XCI.GetNumPluggedCtrlrs();
-        if(temp <= 1)
-            temp = 2;
+//		int temp = XCI.GetNumPluggedCtrlrs();
+//        if(temp <= 1)
+//            temp = 2;
         GameInit.setNumPlayers(4);
-        Application.LoadLevel ("DefaultLevelScene");//("DefaultLevelScene");
+        Application.LoadLevel ("DefaultLevelScene");
 	}
 }

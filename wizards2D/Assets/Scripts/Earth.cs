@@ -12,6 +12,7 @@ public class Earth : Element {
 		setRange(0);
 		setMana(-1);
 		setDotN("stun");
-		setName("Earth");
+        setName("Earth");
+        setColor(new Color(0.8117647059f, 0.6470588235f, 0.137254902f));
 	}
 }

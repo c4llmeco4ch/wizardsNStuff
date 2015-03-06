@@ -3110,7 +3110,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1149642972}
-        m_MethodName: revenge
+        m_MethodName: mainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

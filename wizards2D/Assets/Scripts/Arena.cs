@@ -3,8 +3,6 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class Arena : MonoBehaviour {
-//	private static Arena _instance;
-//	public static Arena instance {get {return _instance;}}	
 	
 	static int pNum; //number of players in game
     static PlayerChar[] pc; //States of each player

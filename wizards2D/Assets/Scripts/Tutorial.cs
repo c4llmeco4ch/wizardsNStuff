@@ -4,8 +4,6 @@ using System.Collections;
 using XboxCtrlrInput;
 
 public class Tutorial : MonoBehaviour {
-//    public string nextScene;
-//    public string previousScene;
     public GameObject[] players = new GameObject[4];
     public Sprite[] sprites = new Sprite[3];
     public Image panel; 

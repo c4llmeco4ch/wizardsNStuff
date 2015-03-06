@@ -27,8 +27,6 @@ public class CharSelector : MonoBehaviour {
         left.other = right;
         right.other = left;
 	    left.selected = true;
-//        left.playerNum = playerNum;
-//        right.playerNum = playerNum;
         left.saveElement();
 //        right.modifier = modifier;
         right.selected = false;
@@ -36,11 +34,6 @@ public class CharSelector : MonoBehaviour {
         right.saveElement();
         Debug.Log(GameInit.getPlayerElement(playerNum, 0).getName());
 	}
-    
-//    public void Awake () {
-//        left.background.color = new Color(left.background.color.r + 5, left.background.color.g, left.background.color.b);
-//        
-//    }
 	
 	// Update is called once per frame
     void OnGUI () {

@@ -13,6 +13,7 @@ public class Element{//: MonoBehaviour {
 	int range;   //range mod for element
 	int manaC;   //mana cost mod for element
 	string eName; //name of element
+    Color auraColor; //color of aura
 	
 	//accessors and modifiers
 	//*
@@ -61,6 +62,10 @@ public class Element{//: MonoBehaviour {
 	public string getName(){return eName;}
 	
 	public void setName(string s){eName=s;}
+    
+    public Color getColor(){return auraColor;}
+    
+    public void setColor(Color c){auraColor = c;}
 	//*
 	//end of accessors and modifiers
 	

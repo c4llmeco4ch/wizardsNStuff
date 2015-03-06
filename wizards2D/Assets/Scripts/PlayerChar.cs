@@ -252,16 +252,22 @@ public class PlayerChar : MonoBehaviour {
 						}
 					}
 				}
-				//else {
-				//            if (!(rt > .5 && lt > .5) && !casting) {
-				//										
-				//                if (lt > .5 || rt > .5) 
-				//                    elementLoaded.SetActive(true);
-				//                else
-				//                    elementLoaded.SetActive(false);
-				//            } else
-				//                elementLoaded.SetActive(false);
-				//}
+				else {
+				            if (!(rt > .5 && lt > .5) && !casting && !charging) {
+														
+				                if (lt > .5) {
+                                    aura.gameObject.SetActive(true);
+                                    aura.color = elements[0].getColor();
+                                }
+                                else if (rt > .5) {
+				                    aura.gameObject.SetActive(true);
+                                    aura.color = elements[1].getColor();
+                                }
+				                else
+                                    aura.gameObject.SetActive(false);
+				            } else
+                                aura.gameObject.SetActive(false);
+				}
 			}
 		}
         //update health and mana bars
