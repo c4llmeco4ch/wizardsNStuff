@@ -605,6 +605,7 @@ MonoBehaviour:
   selected: 0
   selectedElementText: {fileID: 1014362728}
   background: {fileID: 192997419}
+  other: {fileID: 0}
 --- !u!82 &192997422
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2051,6 +2052,7 @@ MonoBehaviour:
   selected: 0
   selectedElementText: {fileID: 1100560289}
   background: {fileID: 774337611}
+  other: {fileID: 0}
 --- !u!82 &774337614
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2412,6 +2414,7 @@ MonoBehaviour:
   selected: 0
   selectedElementText: {fileID: 1958408936}
   background: {fileID: 1014260164}
+  other: {fileID: 0}
 --- !u!82 &1014260167
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3026,6 +3029,7 @@ MonoBehaviour:
   selected: 0
   selectedElementText: {fileID: 458848124}
   background: {fileID: 1236848828}
+  other: {fileID: 0}
 --- !u!82 &1236848831
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4475,6 +4479,7 @@ MonoBehaviour:
   selected: 0
   selectedElementText: {fileID: 1495189018}
   background: {fileID: 1714447943}
+  other: {fileID: 0}
 --- !u!82 &1714447946
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4975,6 +4980,7 @@ MonoBehaviour:
   selected: 0
   selectedElementText: {fileID: 1050066402}
   background: {fileID: 1916466977}
+  other: {fileID: 0}
 --- !u!82 &1916466980
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5122,6 +5128,7 @@ MonoBehaviour:
   selected: 0
   selectedElementText: {fileID: 2120375753}
   background: {fileID: 1927231356}
+  other: {fileID: 0}
 --- !u!82 &1927231360
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5772,6 +5779,7 @@ MonoBehaviour:
   selected: 0
   selectedElementText: {fileID: 1248586739}
   background: {fileID: 2128766951}
+  other: {fileID: 0}
 --- !u!82 &2128766954
 AudioSource:
   m_ObjectHideFlags: 0

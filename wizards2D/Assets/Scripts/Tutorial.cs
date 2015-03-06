@@ -12,6 +12,8 @@ public class Tutorial : MonoBehaviour {
     public int cur;
 	// Use this for initialization
 	void Start () {
+        if(!GameInit.tutorial)
+            startGame();
         sprites[0] = Resources.Load("UI Art Assets/Tutorials/tutorial1", typeof(Sprite)) as Sprite;
         sprites[1] = Resources.Load("UI Art Assets/Tutorials/tutorial2", typeof(Sprite)) as Sprite;
         sprites[2] = Resources.Load("UI Art Assets/Tutorials/tutorial3", typeof(Sprite)) as Sprite;

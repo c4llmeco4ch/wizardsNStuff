@@ -50,6 +50,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: Wall
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 3
     m_Name: Base Layer
@@ -222,6 +228,26 @@ Transition:
   m_Solo: 0
   m_Mute: 0
   m_CanTransitionToSelf: 0
+--- !u!1101 &110168602
+Transition:
+  serializedVersion: 2
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110289916}
+  m_DstState: {fileID: 110257136}
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 5
+    m_ConditionEvent: Wall
+    m_EventTreshold: 0
+    m_ExitTime: 1
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+  m_CanTransitionToSelf: 0
 --- !u!1101 &110174814
 Transition:
   serializedVersion: 2
@@ -256,6 +282,26 @@ Transition:
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: isCharging
+    m_EventTreshold: 0
+    m_ExitTime: 1
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+  m_CanTransitionToSelf: 0
+--- !u!1101 &110182510
+Transition:
+  serializedVersion: 2
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110257136}
+  m_DstState: {fileID: 110289916}
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: Wall
     m_EventTreshold: 0
     m_ExitTime: 1
   m_Atomic: 1
@@ -508,7 +554,7 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: 55844519658854fae8f5fa6ecd1a4586, type: 2}
   m_ParentStateMachine: {fileID: 110700118}
-  m_Position: {x: 368, y: 188, z: 0}
+  m_Position: {x: -504, y: 0, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -566,6 +612,7 @@ StateMachine:
       - {fileID: 110192786}
       - {fileID: 110174814}
       - {fileID: 110144564}
+      - {fileID: 110182510}
     data:
       first: {fileID: 110267800}
       second:
@@ -582,7 +629,8 @@ StateMachine:
       - {fileID: 110145774}
     data:
       first: {fileID: 110289916}
-      second: []
+      second:
+      - {fileID: 110168602}
     data:
       first: {fileID: 110233806}
       second:

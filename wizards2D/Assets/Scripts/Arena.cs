@@ -20,7 +20,6 @@ public class Arena : MonoBehaviour {
     public RectTransform uiRR;
     
     public RectTransform[] ui;
-    
 
 	//Called upon instantiation
 	public void Start(){

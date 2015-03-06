@@ -6,7 +6,9 @@ public static class GameInit {
 	public static int playerNum = 4;
 	public static Element[,] elementChoices = new Element[4,2];
 	public static PlayerChar[] players;
-    public static LinkedList<ElementSprite> elementList;// = new LinkedList<ElementSprite>();
+    public static LinkedList<ElementSprite> elementList;
+    
+    public static bool tutorial = true;
     
     public static Arena arena;
 
