@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
+using System.Collections;
 using XboxCtrlrInput;
+
 
 public class ElementSelector : MonoBehaviour {
 	public Button left;
@@ -9,18 +12,15 @@ public class ElementSelector : MonoBehaviour {
 	public int playerNum;
 	public int elementNum;
     public bool selected;
-
-//	public static GameInit struc;
 	
 	public Image selectedElementText;
     public Image background;
 
 	private Element selectedElement;
-
-	private static Element[] elements = new Element[] { new Earth(), new Air(), new Fire(), new Water() };
-	private int cur;
     
-    const float modifier = 0.2f;
+    private LinkedListNode<GameInit.ElementSprite> cur;
+    
+    const float modifier = 0.3f;
     
     
     int counter = 0;
@@ -28,15 +28,29 @@ public class ElementSelector : MonoBehaviour {
 
 	// Use this for initialization
     void Start () {
+        if(GameInit.elementList == null){
+            Debug.Log("Create List");
+            GameInit.elementList = new LinkedList<GameInit.ElementSprite>();
+            new GameInit.ElementSprite(new Earth(), Resources.Load("UI Art Assets/Selection/EarthText", typeof(Sprite)) as Sprite, 
+                                       Resources.Load("UI Art Assets/Selection/EarthElementBox", typeof(Sprite)) as Sprite);
+            new GameInit.ElementSprite(new Air(), Resources.Load("UI Art Assets/Selection/AirText", typeof(Sprite)) as Sprite, 
+                                       Resources.Load("UI Art Assets/Selection/AirElementBox", typeof(Sprite)) as Sprite);
+            new GameInit.ElementSprite(new Fire(), Resources.Load("UI Art Assets/Selection/FireText", typeof(Sprite)) as Sprite, 
+                                       Resources.Load("UI Art Assets/Selection/FireElementBox", typeof(Sprite)) as Sprite);
+            new GameInit.ElementSprite(new Water(), Resources.Load("UI Art Assets/Selection/WaterText", typeof(Sprite)) as Sprite, 
+                                       Resources.Load("UI Art Assets/Selection/WaterElementBox", typeof(Sprite)) as Sprite);
+        }
 //        if(playerNum > 2 && XCI.GetNumPluggedCtrlrs() <= 2  && playerNum > XCI.GetNumPluggedCtrlrs()) {
 //            this.gameObject.SetActive(false);
 //            return;
 //        }
-//        background = GetComponent<Image>();
-        if(selected)
-            background.color = new Color(background.color.r + modifier, background.color.g + modifier, background.color.b + modifier);
-		cur = elementNum;
-		selectedElement = elements [cur];
+        if(!selected)
+            background.color = new Color(background.color.r - modifier, background.color.g - modifier, background.color.b - modifier);
+		if(elementNum == 0)
+            cur = GameInit.elementList.First;
+        else if(elementNum ==1)
+            cur = GameInit.elementList.First.Next;
+		selectedElement = (cur.Value as GameInit.ElementSprite).element;
         saveElement();
 	}
 	
@@ -58,16 +72,17 @@ public class ElementSelector : MonoBehaviour {
         }
 	}
 
-	public void update(bool inc) {
-        if (inc && cur < elements.Length-1) {
-            GetComponent<AudioSource>().Play();
-			selectedElement = elements [++cur];
-        } else if (!inc && cur > 0) {
-            GetComponent<AudioSource>().Play();
-			cur--;
-			selectedElement = elements [cur];
-		}
-		selectedElementText.sprite = Resources.Load ("UI Art Assets/Selection/Text" + selectedElement.getName (), typeof(Sprite)) as Sprite;
+    public void update(bool inc) {
+        GetComponent<AudioSource>().Play();
+        if (inc) {
+            cur = cur.Next ?? cur.List.First;//if next is null, then use first
+        } else if (!inc) {
+			cur = cur.Previous ?? cur.List.Last;//if prev is null, then use last
+        }
+        GameInit.ElementSprite es = cur.Value as GameInit.ElementSprite;
+        selectedElement = es.element;
+		selectedElementText.sprite = es.elementText;
+        background.sprite = es.box;
         saveElement();
         
         counter = time;
