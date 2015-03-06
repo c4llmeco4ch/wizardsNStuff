@@ -82,4 +82,8 @@ public class Arena : MonoBehaviour {
     public void revenge(){
         Application.LoadLevel("ChooseElementScene");
     }
+    
+    public void mainMenu(){
+        Application.LoadLevel("MainMenu");
+    }
 }
