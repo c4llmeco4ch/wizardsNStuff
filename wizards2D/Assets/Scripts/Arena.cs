@@ -13,12 +13,14 @@ public class Arena : MonoBehaviour {
 	public Canvas canvas;
 	public Text win;
     
+    //all the different positons for player ui depending on the number of players
     public RectTransform uiLL;
     public RectTransform uiLR;
     public RectTransform uiM;
     public RectTransform uiRL;
     public RectTransform uiRR;
     
+    //the player ui that will be used for the current number of players
     public RectTransform[] ui;
 
 	//Called upon instantiation
@@ -45,6 +47,7 @@ public class Arena : MonoBehaviour {
         GameInit.arena = this;
 	}
     
+    //sets up the ui for each player
     public void setUI(int player) {
         player--;
         pc[player].elementL = ui[player].FindChild("Element L").GetComponent<Image>();
@@ -79,10 +82,12 @@ public class Arena : MonoBehaviour {
 //		win.text = "Player "+i+" Won!";
 	}
     
+    //onClick to restart game
     public void revenge(){
         Application.LoadLevel("ChooseElementScene");
     }
     
+    //onClick to load main menu
     public void mainMenu(){
         Application.LoadLevel("MainMenu");
     }

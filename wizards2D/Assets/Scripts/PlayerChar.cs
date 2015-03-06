@@ -92,21 +92,17 @@ public class PlayerChar : MonoBehaviour {
 
     // Update is called once per frame
     public void Update() { 
-        
-//        switch(playerNum){
-//            case 1: rend.material.color = Color.blue;
-//                break;
-//            case 2: rend.material.color = Color.red;
-//                break;
-//        }
+        //Loads player UI at beginning of game
         if(!uiSet && GameInit.arena != null) {
             uiSet = false;
             GameInit.arena.setUI(playerNum);
             elementL.sprite = Resources.Load("UI Art Assets/" + elements [0].getName() + "-Element", typeof(Sprite)) as Sprite;
             elementR.sprite = Resources.Load("UI Art Assets/" + elements [1].getName() + "-Element", typeof(Sprite)) as Sprite;
         }
+        
         if (!isDead) {
 			timeAlive++;
+            //turns off animator bools so cast animations do not repeat forever. 
             if(anim.GetCurrentAnimationClipState(0)!= null) {
                 if(anim.GetCurrentAnimationClipState(0)[0].clip.name == "Cast Slash")
                     anim.SetBool("Slash", false);
@@ -115,6 +111,7 @@ public class PlayerChar : MonoBehaviour {
                 if (anim.GetCurrentAnimationClipState(0)[0].clip.name == "Cast Wall")
                     anim.SetBool("Wall", false);
             }
+            
             float lt = XCI.GetAxis(XboxAxis.LeftTrigger, playerNum); //true if left trigger is pushed, else false
             float rt = XCI.GetAxis(XboxAxis.RightTrigger, playerNum); //true if right trigger is pushed, else false
 			regenMana();
@@ -267,16 +264,9 @@ public class PlayerChar : MonoBehaviour {
 				//}
 			}
 		}
+        //update health and mana bars
 		healthBarTrans.sizeDelta = new Vector2(hp * healthSize, healthBarTrans.sizeDelta.y);
 		manaBarTrans.sizeDelta = new Vector2(mana * manaSize, manaBarTrans.sizeDelta.y);
-		
-		Renderer rend = GetComponent<Renderer>();
-		//        rend.material.color = Color.green; 
-        Material mat = rend.materials.GetValue(0) as Material;
-        mat.shader = Shader.Find("Decal");
-        mat.SetColor("_Color", Color.blue);
-        //Debug.Log(rend.material.name);
-        //try creating new material and then change that. then set material to that. 
     }
 	
     public void slashMaker() {
@@ -340,6 +330,7 @@ public class PlayerChar : MonoBehaviour {
 
     }
 
+    //Flips the direction the player is facing
     public void Flip() {
         // Switch the way the player is labelled as facing.
         facingRight = !facingRight;
@@ -423,14 +414,18 @@ public class PlayerChar : MonoBehaviour {
             stunT = d;
         }
     }
+    
+    //plays the out of mana sound effect
     public void playNoMana() {
         playSound("OutOfMana");
     }
     
+    //plays the hit sound effect
     public void playHit() {
         playSound("Hit");
     }
     
+    //plays a sound effect using the player's audio source
     private void playSound(string soundName) {
         AudioClip c = Resources.Load("Audio/"+soundName, typeof(AudioClip)) as AudioClip;
         AudioSource s = GetComponent<AudioSource>();

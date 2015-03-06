@@ -75,6 +75,7 @@ public class ElementSelector : MonoBehaviour {
         }
 	}
 
+    //Sets the element selector to either the next element to the right or left depending on inc
     public void update(bool inc) {
         if (inc) {
             cur = cur.Next ?? cur.List.First;//if next is null, then use first
@@ -95,6 +96,7 @@ public class ElementSelector : MonoBehaviour {
         counter = time;
 	}
     
+    //saves the selected element to GameInit
     public void saveElement() {
         GameInit.setPlayerElement (playerNum, elementNum, selectedElement);
         other.skip = selectedElement;

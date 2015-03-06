@@ -448,6 +448,10 @@ Prefab:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11439194, guid: d3e5e0c8bb01e4eb1abf16284b414244, type: 2}
+      propertyPath: selected
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d3e5e0c8bb01e4eb1abf16284b414244, type: 2}
   m_RootGameObject: {fileID: 2044597482}
@@ -4476,7 +4480,7 @@ MonoBehaviour:
   right: {fileID: 369701184}
   playerNum: 2
   elementNum: 0
-  selected: 0
+  selected: 1
   selectedElementText: {fileID: 1495189018}
   background: {fileID: 1714447943}
   other: {fileID: 0}
