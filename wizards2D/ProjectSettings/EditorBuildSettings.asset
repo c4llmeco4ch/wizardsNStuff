@@ -11,3 +11,5 @@ EditorBuildSettings:
     path: Assets/Scenes/ChooseElementScene.unity
   - enabled: 1
     path: Assets/Scenes/DefaultLevelScene.unity
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity

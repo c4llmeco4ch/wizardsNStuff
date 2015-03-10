@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using XboxCtrlrInput;
 
 public class MainMenu : MonoBehaviour {
 
@@ -16,5 +17,9 @@ public class MainMenu : MonoBehaviour {
     public void play(bool tutorial) {
         GameInit.tutorial = tutorial;
         Application.LoadLevel("ChooseElementScene");
+    }
+    
+    public void credits() {
+    	Application.LoadLevel("Credits");
     }
 }
