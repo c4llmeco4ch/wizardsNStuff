@@ -155,7 +155,7 @@ Animator:
   m_GameObject: {fileID: 133974}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 26d7a4851ad594d5e89f00975cda8569, type: 2}
+  m_Controller: {fileID: 9100000, guid: d1bcaf9ed3b3e4e2694bd1b9deb709ab, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound: {fileID: 8233974}
+  anim: {fileID: 9533974}
   p: {fileID: 0}
   casting: 0
   facingRight: 0
