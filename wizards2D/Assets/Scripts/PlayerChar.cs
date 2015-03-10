@@ -211,7 +211,10 @@ public class PlayerChar : MonoBehaviour {
 	                }
 	            } 
 				else if (XCI.GetButtonDown(XboxButton.Y, playerNum)) {
-					if ((rt>.5 && lt>.5) || !(rt > .5 || lt > .5) || casting) {
+					if(!(rt > .5 || lt > .5)){
+						setBlock(true);
+					}
+					else if ((rt>.5 && lt>.5) || casting) {
 						//Actually, block, but for now, nothing
 						//Debug.Log ("I'm here");
 					} 
