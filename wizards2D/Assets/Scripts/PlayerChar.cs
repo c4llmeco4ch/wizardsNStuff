@@ -211,7 +211,11 @@ public class PlayerChar : MonoBehaviour {
 	                }
 	            } 
 				else if (XCI.GetButtonDown(XboxButton.Y, playerNum)) {
-					if ((rt>.5 && lt>.5) || !(rt > .5 || lt > .5) || casting) {
+					if(!(rt > .5 || lt > .5)){
+						setBlock(true);
+						anim.SetBool("isBlocking",true); //?
+					}
+					else if ((rt>.5 && lt>.5) || casting) {
 						//Actually, block, but for now, nothing
 						//Debug.Log ("I'm here");
 					} 
@@ -251,6 +255,10 @@ public class PlayerChar : MonoBehaviour {
 								wall.Flip();
 						}
 					}
+				}
+				else if(XCI.GetButtonUp(XboxButton.Y, playerNum) && block){
+					block=false;
+					anim.SetBool("isBlocking",false);
 				}
 				else {
 				            if (!(rt > .5 && lt > .5) && !casting && !charging) {
@@ -308,7 +316,7 @@ public class PlayerChar : MonoBehaviour {
 	
 	// FixedUpdate is called once per physics step 
     public void FixedUpdate() {
-        if (!isDead && stunT==0) {
+        if (!isDead && stunT==0 && !block) {
             // Cache the contoller input input.
             if (casting)
                 return;
