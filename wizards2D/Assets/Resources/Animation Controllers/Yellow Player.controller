@@ -56,6 +56,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: isBlocking
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 3
     m_Name: Base Layer
@@ -607,27 +613,6 @@ StateMachine:
       - {fileID: 110142980}
       - {fileID: 110186250}
     data:
-      first: {fileID: 110203920}
-      second: []
-    data:
-      first: {fileID: 110216778}
-      second:
-      - {fileID: 110145774}
-    data:
-      first: {fileID: 110232854}
-      second:
-      - {fileID: 110175670}
-    data:
-      first: {fileID: 110233806}
-      second:
-      - {fileID: 110166526}
-    data:
-      first: {fileID: 110247162}
-      second: []
-    data:
-      first: {fileID: 110249250}
-      second: []
-    data:
       first: {fileID: 110257136}
       second:
       - {fileID: 110192786}
@@ -639,27 +624,48 @@ StateMachine:
       second:
       - {fileID: 110119028}
     data:
-      first: {fileID: 110272070}
+      first: {fileID: 110278882}
       second: []
     data:
+      first: {fileID: 110298158}
+      second: []
+    data:
+      first: {fileID: 110216778}
+      second:
+      - {fileID: 110145774}
+    data:
+      first: {fileID: 110289916}
+      second:
+      - {fileID: 110168602}
+    data:
+      first: {fileID: 110233806}
+      second:
+      - {fileID: 110166526}
+    data:
+      first: {fileID: 110249250}
+      second: []
+    data:
+      first: {fileID: 110232854}
+      second:
+      - {fileID: 110175670}
+    data:
       first: {fileID: 110276386}
+      second: []
+    data:
+      first: {fileID: 110272070}
       second: []
     data:
       first: {fileID: 110278636}
       second:
       - {fileID: 110117726}
     data:
-      first: {fileID: 110278882}
+      first: {fileID: 110203920}
       second: []
     data:
       first: {fileID: 110285032}
       second: []
     data:
-      first: {fileID: 110289916}
-      second:
-      - {fileID: 110168602}
-    data:
-      first: {fileID: 110298158}
+      first: {fileID: 110247162}
       second: []
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: 108, y: 216, z: 0}
