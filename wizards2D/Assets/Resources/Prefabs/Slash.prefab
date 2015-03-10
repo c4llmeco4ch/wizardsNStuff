@@ -158,7 +158,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 26d7a4851ad594d5e89f00975cda8569, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11402028
@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound: {fileID: 8202948}
+  anim: {fileID: 9558210}
   p: {fileID: 0}
   casting: 0
   framesLeft: 0

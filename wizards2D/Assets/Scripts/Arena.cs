@@ -71,6 +71,7 @@ public class Arena : MonoBehaviour {
 		Debug.Log ("GameOver");
         canvas.gameObject.SetActive(true);
 		int winner = 0;
+        ps[0].setSpellsCast(pc[0].spellsCast);
         for(int i = 1; i<pNum; i++){
             ps[i].setSpellsCast(pc[i].spellsCast);
             if(!pc[i].isDead)

@@ -80,7 +80,8 @@ public class Slash : Spell {
 		framesLeft=0;
 		this.GetComponent<MeshRenderer>().enabled=false;
 		this.GetComponent<BoxCollider>().enabled=false;
-		p.casting=false;
+        p.casting=false;
+        anim.SetBool(element.getName(), false);
 		resetSpell();
 	}
 	

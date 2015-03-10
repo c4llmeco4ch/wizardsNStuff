@@ -14,7 +14,8 @@ public abstract class Spell : MonoBehaviour {
 	int manaC;//mana cost to use spell
 	int range;//range of the spell
 	public Element element; //element the spell has been infused with
-	public AudioSource sound;
+    public AudioSource sound;
+    public Animator anim;
 	
 	//defines what happens when an object collides with a given spell
 	public void OnCollisionEnter(Collision c){}
@@ -40,7 +41,8 @@ public abstract class Spell : MonoBehaviour {
 		modRange(e.getRange());
 		
 		picSwap(e);
-		setAudio();
+        setAudio();
+        anim.SetBool(element.getName(), true);
 	}
 	
 	private void picSwap(Element e){
