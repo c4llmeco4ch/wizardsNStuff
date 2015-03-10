@@ -414,6 +414,7 @@ public class PlayerChar : MonoBehaviour {
         anim.SetBool("Dead", true);
         transform.Rotate(0, 0, 90);
         rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+        this.GetComponent<BoxCollider>().enabled=false;
     }
 	
     public void regenMana() {
