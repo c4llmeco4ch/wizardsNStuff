@@ -28,8 +28,8 @@ public class PlayerChar : MonoBehaviour {
 //    public Image manaBar;
     public RectTransform healthBarTrans;
     public RectTransform manaBarTrans;
-    const float healthSize = 240f / 100; //size of 1 health unit in terms of health bar
-    const float manaSize = 204f / 100; //size of 1 mana unit in terms of mana bar
+	const float healthSize = 630f / 100; //size of 1 health unit in terms of health bar
+	const float manaSize = 607f / 100; //size of 1 mana unit in terms of mana bar
     public Image elementL; 
     public Image elementR;
     public bool charging; //whether the player is currently charging a spell
@@ -96,8 +96,8 @@ public class PlayerChar : MonoBehaviour {
         if(!uiSet && GameInit.arena != null) {
             uiSet = false;
             GameInit.arena.setUI(playerNum);
-            elementL.sprite = Resources.Load("UI Art Assets/" + elements [0].getName() + "-Element", typeof(Sprite)) as Sprite;
-            elementR.sprite = Resources.Load("UI Art Assets/" + elements [1].getName() + "-Element", typeof(Sprite)) as Sprite;
+            elementL.sprite = Resources.Load("UI Art Assets/mana/" + elements [0].getName() + "_element", typeof(Sprite)) as Sprite;
+            elementR.sprite = Resources.Load("UI Art Assets/mana/" + elements [1].getName() + "_element", typeof(Sprite)) as Sprite;
         }
         
         if (!isDead) {
