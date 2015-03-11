@@ -26,7 +26,9 @@ AnimationClip:
     - time: .25
       value: {fileID: 2100000, guid: a4b40a290c59947e3b3d2592d91ef2cd, type: 2}
     - time: .333333343
-      value: {fileID: 2100000, guid: a4b40a290c59947e3b3d2592d91ef2cd, type: 2}
+      value: {fileID: 2100000, guid: 7f23ffb544e2c4c1eac26362736b7ddd, type: 2}
+    - time: .416666657
+      value: {fileID: 2100000, guid: 7f23ffb544e2c4c1eac26362736b7ddd, type: 2}
     attribute: m_Materials.Array.data[0]
     path: 
     classID: 23
@@ -49,11 +51,12 @@ AnimationClip:
     - {fileID: 2100000, guid: 9f8b2d2692294449fbd2968cc3425fd4, type: 2}
     - {fileID: 2100000, guid: 35b500f8cee5b42258fe1c927339e2e4, type: 2}
     - {fileID: 2100000, guid: a4b40a290c59947e3b3d2592d91ef2cd, type: 2}
-    - {fileID: 2100000, guid: a4b40a290c59947e3b3d2592d91ef2cd, type: 2}
+    - {fileID: 2100000, guid: 7f23ffb544e2c4c1eac26362736b7ddd, type: 2}
+    - {fileID: 2100000, guid: 7f23ffb544e2c4c1eac26362736b7ddd, type: 2}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: .350000024
+    m_StopTime: .433333337
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
