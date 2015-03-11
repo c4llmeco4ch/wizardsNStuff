@@ -3,6 +3,14 @@ using System.Collections;
 using XboxCtrlrInput;
 
 public class Play : MonoBehaviour {
+	public bool select1 = false;
+	public bool select2 = false;
+	public bool select3 = false;
+	public bool select4 = false;
+
+	public Play() {
+		GameInit.playButton = this;
+	}
 
 	// Use this for initialization
 	void Start () {

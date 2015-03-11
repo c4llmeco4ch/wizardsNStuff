@@ -349,6 +349,7 @@ MonoBehaviour:
   selected: 0
   selectedElementText: {fileID: 11473852}
   background: {fileID: 11464204}
+  other: {fileID: 0}
 --- !u!114 &11439194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -367,6 +368,7 @@ MonoBehaviour:
   selected: 0
   selectedElementText: {fileID: 11473850}
   background: {fileID: 11464202}
+  other: {fileID: 0}
 --- !u!114 &11448802
 MonoBehaviour:
   m_ObjectHideFlags: 1

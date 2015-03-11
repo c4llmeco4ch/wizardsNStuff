@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using XboxCtrlrInput;
 
@@ -37,10 +38,11 @@ public class CharSelector : MonoBehaviour {
 	
 	// Update is called once per frame
     void OnGUI () {
+    	Play play = GameInit.playButton;
 //        Debug.Log(XCI.GetNumPluggedCtrlrs());
 //        if(counter == 0){
     	    float y = XCI.GetAxis(XboxAxis.LeftStickY, playerNum);
-            if(y < -0.4 && selected != CurElement.R) {
+            if(y < -0.4 && selected == CurElement.L) {
                 selected = CurElement.R;
                 left.selected = false;
                 right.selected = true;
@@ -49,7 +51,7 @@ public class CharSelector : MonoBehaviour {
             //                right.background.color.r = right.background.color.r + 10;
                 counter = time;
             }
-            else if(y > 0.4 && selected != CurElement.L) {
+            else if(y > 0.4 && selected == CurElement.R) {
                 selected = CurElement.L;
                 right.selected = false;
                 left.selected = true;
