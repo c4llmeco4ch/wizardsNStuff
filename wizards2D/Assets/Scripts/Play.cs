@@ -21,8 +21,10 @@ public class Play : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-//		if(select1 || select2 || select3 || select4)
-//			this.
+		if(select1 || select2 || select3 || select4)
+			playButton.OnSelect(null);
+		else
+			playButton.OnDeselect(null);
 	    if(XCI.GetButtonDown(XboxButton.Start))
             play();
 	}
