@@ -93,9 +93,9 @@ public class Wall : Spell {
 			Debug.Log("Collision!!");
 			PlayerChar pc=c.gameObject.GetComponent("PlayerChar") as PlayerChar;//issues grabbing the playerchar from the gameobject
 			if(pc.facingRight)
-				pc.transform.position=pc.transform.position+new Vector3(this.gameObject.collider.bounds.size.x+(float).2,0,0);
+				pc.transform.position=pc.transform.position-new Vector3(this.gameObject.collider.bounds.size.x+(float).2,0,0);
 			else
-				pc.transform.position=pc.transform.position-new Vector3(this.gameObject.collider.bounds.size.x-(float).2,0,0);
+				pc.transform.position=pc.transform.position+new Vector3(this.gameObject.collider.bounds.size.x-(float).2,0,0);
 		}
 		else if(c.gameObject.tag=="Spell"){ //same as above
 			Debug.Log ("Hi");
