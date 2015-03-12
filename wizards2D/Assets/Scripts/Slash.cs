@@ -210,6 +210,9 @@ public class Slash : Spell {
 			Spell s=c.gameObject.GetComponent("Spell") as Spell;//issues grabbing the playerchar from the gameobject
 			s.versus(this);
 		}
+		else if(c.gameObject.tag=="SideWall"){
+			kill ();
+		}
 			
 	}
 
