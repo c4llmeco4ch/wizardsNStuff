@@ -22,15 +22,21 @@ public class Play : MonoBehaviour {
 			playButton.OnSelect(null);
 		else
 			playButton.OnDeselect(null);
-	    if(XCI.GetButtonDown(XboxButton.Start))
-            play();
+//	    if(XCI.GetButtonDown(XboxButton.Start))
+//            play();
 	}
 
 	public void play() {
 //		int temp = XCI.GetNumPluggedCtrlrs();
 //        if(temp <= 1)
 //            temp = 2;
-        GameInit.setNumPlayers(2);
+		Debug.Log("Players: "+GameInit.playerNum);
+		if(GameInit.playerNum<2)
+			return;
+		
+		GameInit.consolidate();
+		GameInit.setNumPlayers(GameInit.playerNum);
+		
         Application.LoadLevel ("DefaultLevelScene");
 	}
 }

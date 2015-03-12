@@ -297,7 +297,7 @@ public class Wall : Spell {
 		setCast(5);
 		setMana(10);
 		setRange(2);
-		setSpd((float)2.5);
+		setSpd((float)4.5);
 	}
 	
 	public void Flip (){

@@ -344,12 +344,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   left: {fileID: 11448804}
   right: {fileID: 11448806}
-  playerNum: 2
+  playerNum: 0
   elementNum: 1
   selected: 0
   selectedElementText: {fileID: 11473852}
   background: {fileID: 11464204}
   other: {fileID: 0}
+  isActive: 0
 --- !u!114 &11439194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -363,12 +364,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   left: {fileID: 11478056}
   right: {fileID: 11478054}
-  playerNum: 2
+  playerNum: 0
   elementNum: 0
   selected: 0
   selectedElementText: {fileID: 11473850}
   background: {fileID: 11464202}
   other: {fileID: 0}
+  isActive: 0
 --- !u!114 &11448802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -887,6 +889,21 @@ MonoBehaviour:
   playerNum: 1
   left: {fileID: 11439194}
   right: {fileID: 11403936}
+  color: 0
+  images:
+  - {fileID: 11491796}
+  - {fileID: 11496054}
+  - {fileID: 11477828}
+  - {fileID: 11477822}
+  - {fileID: 11464202}
+  - {fileID: 11473850}
+  - {fileID: 11478052}
+  - {fileID: 11478058}
+  - {fileID: 11464204}
+  - {fileID: 11473852}
+  - {fileID: 11448802}
+  - {fileID: 11448808}
+  isActive: 0
 --- !u!114 &11491796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -920,7 +937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: .34493944, g: .424919456, b: .808823526, a: 1}
   m_Sprite: {fileID: 21300000, guid: 8bde3c9c4892a46efacaca1b134bd0c9, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
