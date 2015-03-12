@@ -4,11 +4,12 @@ using System.Collections;
 using XboxCtrlrInput;
 
 public class CharSelector : MonoBehaviour {
-    public int playerNum = 1;
+    public int playerNum;
     enum CurElement{L, R, P};
     CurElement selected = CurElement.L;
     public ElementSelector left;
     public ElementSelector right;
+    public PlayerColor color;
     
     int counter = 0;
     const int time = 20;
@@ -23,7 +24,19 @@ public class CharSelector : MonoBehaviour {
 //            return;
 //        }
         //        left.modifier = modifier;
-        left.playerNum = playerNum;
+        switch(playerNum){
+        	case 1: color = PlayerColor.Blue;
+        	break;
+        	case 2: color = PlayerColor.Red;
+        	break;
+        	case 3: color = PlayerColor.Green;
+        	break;
+        	case 4: color = PlayerColor.Yellow;
+        	break;
+		}
+		saveColor();
+		
+		left.playerNum = playerNum;
         right.playerNum = playerNum;
         left.other = right;
         right.other = left;
@@ -37,6 +50,7 @@ public class CharSelector : MonoBehaviour {
 	}
 	
 	void Update () {
+		saveColor();
 		if(XCI.GetButtonDown(XboxButton.B))
 			Application.LoadLevel("MainMenu");
 		else if(selected == CurElement.P && XCI.GetButtonDown(XboxButton.A))
@@ -86,5 +100,9 @@ public class CharSelector : MonoBehaviour {
 		}
 		else
 			counter--;
+	}
+	
+	void saveColor() {
+		GameInit.setPlayerColor(playerNum, color);
 	}
 }

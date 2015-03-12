@@ -275,6 +275,22 @@ Prefab:
       propertyPath: play
       value: 
       objectReference: {fileID: 1861116796}
+    - target: {fileID: 11478054, guid: d3e5e0c8bb01e4eb1abf16284b414244, type: 2}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11478054, guid: d3e5e0c8bb01e4eb1abf16284b414244, type: 2}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11478054, guid: d3e5e0c8bb01e4eb1abf16284b414244, type: 2}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11478054, guid: d3e5e0c8bb01e4eb1abf16284b414244, type: 2}
+      propertyPath: m_Colors.m_NormalColor.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d3e5e0c8bb01e4eb1abf16284b414244, type: 2}
   m_RootGameObject: {fileID: 248273149}
@@ -766,6 +782,7 @@ MonoBehaviour:
   playerNum: 1
   left: {fileID: 1236848830}
   right: {fileID: 1014260166}
+  color: 0
 --- !u!1 &369701182
 GameObject:
   m_ObjectHideFlags: 0
@@ -3722,6 +3739,7 @@ MonoBehaviour:
   playerNum: 2
   left: {fileID: 2128766953}
   right: {fileID: 1927231359}
+  color: 0
 --- !u!1 &1364834505
 GameObject:
   m_ObjectHideFlags: 0
@@ -4411,6 +4429,7 @@ MonoBehaviour:
   playerNum: 3
   left: {fileID: 1916466979}
   right: {fileID: 774337613}
+  color: 0
 --- !u!1 &1714447941
 GameObject:
   m_ObjectHideFlags: 0
@@ -5542,6 +5561,7 @@ MonoBehaviour:
   playerNum: 4
   left: {fileID: 1714447945}
   right: {fileID: 192997421}
+  color: 0
 --- !u!1 &2086668124
 GameObject:
   m_ObjectHideFlags: 0

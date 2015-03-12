@@ -41,6 +41,8 @@ public class PlayerChar : MonoBehaviour {
     public SpriteRenderer aura;
     public Image playerPic;
     public SpriteRenderer damage;
+    public PlayerColor color;
+    
     
 
     //instantiate new instance of player char. @param playerNum determines start location
@@ -70,7 +72,8 @@ public class PlayerChar : MonoBehaviour {
         }
         Debug.Log("Player Num: "+playerNum);
         GameInit.players [playerNum - 1] = this;
-        facingRight = true;
+		facingRight = true;
+		color = GameInit.getPlayerColor(playerNum);
 //		GameInit i = new GameInit ();
         elements [0] = GameInit.getPlayerElement(playerNum, 0); //new Earth();
         elements [1] = GameInit.getPlayerElement(playerNum, 1);//new Air();
@@ -96,11 +99,13 @@ public class PlayerChar : MonoBehaviour {
     public void Update() { 
         //Loads player UI at beginning of game
         if(!uiSet && GameInit.arena != null) {
-            uiSet = false;
+            uiSet = true;
             GameInit.arena.setUI(playerNum);
             elementL.sprite = Resources.Load("UI Art Assets/mana/" + elements [0].getName() + "_element", typeof(Sprite)) as Sprite;
             elementR.sprite = Resources.Load("UI Art Assets/mana/" + elements [1].getName() + "_element", typeof(Sprite)) as Sprite;
-			playerPic.sprite = Resources.Load("UI Art Assets/mana/figure"+playerNum, typeof(Sprite)) as Sprite;
+            Debug.Log("color: "+color.ToString());
+			playerPic.sprite = Resources.Load("UI Art Assets/mana/"+color.ToString()+"_figure", typeof(Sprite)) as Sprite;
+			anim.runtimeAnimatorController = Resources.Load("Animation Controllers/"+color.ToString()+" Player", typeof(RuntimeAnimatorController)) as RuntimeAnimatorController;
         }
         
         if (!isDead) {

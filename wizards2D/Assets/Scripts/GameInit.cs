@@ -6,6 +6,7 @@ public static class GameInit {
 	public static int playerNum = 4;
 	public static Element[,] elementChoices = new Element[4,2];
 	public static PlayerChar[] players;
+	public static PlayerColor[] colors = new PlayerColor[4];
     public static LinkedList<ElementSprite> elementList;
     public static Play playButton;
     
@@ -28,6 +29,14 @@ public static class GameInit {
 	public static void setNumPlayers(int i){
 		playerNum = i;
 		players = new PlayerChar[i];
+	}
+	
+	public static void setPlayerColor(int player, PlayerColor color) {
+		colors[player-1] = color;
+	}
+	
+	public static PlayerColor getPlayerColor(int player) {
+		return colors[player-1];
 	}
     
     //class to store assets and elements for element slection screen

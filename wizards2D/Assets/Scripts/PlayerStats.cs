@@ -7,6 +7,7 @@ public class PlayerStats : MonoBehaviour {
     public GameObject win; 
     public Text spells;
     public Text time;
+    public Image player;
 	// Use this for initialization
 	void Start () {
         if(playerNum > 2 && GameInit.playerNum <= 2 && playerNum > GameInit.playerNum) {
@@ -18,6 +19,10 @@ public class PlayerStats : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+	
+	public void setColor(PlayerColor color) {
+		player.sprite = Resources.Load("UI Art Assets/Summary/player_"+color.ToString(), typeof(Sprite)) as Sprite;
 	}
     
     public void setSpellsCast(int numCast) {

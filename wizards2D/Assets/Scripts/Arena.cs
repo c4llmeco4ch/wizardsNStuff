@@ -74,6 +74,7 @@ public class Arena : MonoBehaviour {
 		int winner = 0;
         ps[0].setSpellsCast(pc[0].spellsCast);
         for(int i = 1; i<pNum; i++){
+        	ps[i].setColor(pc[i].color);
             ps[i].setSpellsCast(pc[i].spellsCast);
             ps[i].setTime(pc[i].timeAlive);
             if(!pc[i].isDead)
