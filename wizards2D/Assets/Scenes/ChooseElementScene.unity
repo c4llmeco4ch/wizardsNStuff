@@ -4840,8 +4840,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: .654411793, g: .664035499, b: .664035499, a: 1}
+    m_NormalColor: {r: .654901981, g: .662745118, b: .662745118, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
     m_ColorMultiplier: 1
@@ -4912,10 +4912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ef3664e64314344a88b8df39c3bed0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  select1: 0
-  select2: 0
-  select3: 0
-  select4: 0
+  select: 00000000
   playButton: {fileID: 1861116795}
 --- !u!1 &1916466975
 GameObject:

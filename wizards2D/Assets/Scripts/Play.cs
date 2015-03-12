@@ -4,10 +4,7 @@ using System.Collections;
 using XboxCtrlrInput;
 
 public class Play : MonoBehaviour {
-	public bool select1 = false;
-	public bool select2 = false;
-	public bool select3 = false;
-	public bool select4 = false;
+	public bool[] select = {false, false, false, false};
 	public Button playButton;
 
 	public Play() {
@@ -21,7 +18,7 @@ public class Play : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(select1 || select2 || select3 || select4)
+		if(select[0] || select[1] || select[2] || select[3])
 			playButton.OnSelect(null);
 		else
 			playButton.OnDeselect(null);
