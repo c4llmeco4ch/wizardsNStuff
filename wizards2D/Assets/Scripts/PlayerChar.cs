@@ -42,6 +42,7 @@ public class PlayerChar : MonoBehaviour {
     public Image playerPic;
     public SpriteRenderer damage;
     public PlayerColor color;
+    public int controllerNum;
     
     
 
@@ -74,6 +75,7 @@ public class PlayerChar : MonoBehaviour {
         GameInit.players [playerNum - 1] = this;
 		facingRight = true;
 		color = GameInit.getPlayerColor(playerNum);
+		controllerNum = GameInit.getControllerNum(playerNum);
 //		GameInit i = new GameInit ();
         elements [0] = GameInit.getPlayerElement(playerNum, 0); //new Earth();
         elements [1] = GameInit.getPlayerElement(playerNum, 1);//new Air();
@@ -120,8 +122,8 @@ public class PlayerChar : MonoBehaviour {
                     anim.SetBool("Wall", false);
             }
             
-            float lt = XCI.GetAxis(XboxAxis.LeftTrigger, playerNum); //true if left trigger is pushed, else false
-            float rt = XCI.GetAxis(XboxAxis.RightTrigger, playerNum); //true if right trigger is pushed, else false
+			float lt = XCI.GetAxis(XboxAxis.LeftTrigger, controllerNum); //true if left trigger is pushed, else false
+			float rt = XCI.GetAxis(XboxAxis.RightTrigger, controllerNum); //true if right trigger is pushed, else false
 			regenMana();
 			if (mana > 100)
 				mana = 100;
@@ -135,7 +137,7 @@ public class PlayerChar : MonoBehaviour {
 //                if(!casting)
 	            //Debug.Log (lt+" || "+rt);
 	            //Code for casting Slash
-	            if (XCI.GetButtonDown(XboxButton.X, playerNum)) {
+				if (XCI.GetButtonDown(XboxButton.X, controllerNum)) {
 	//                elementLoaded.SetActive(false);
 	                if ((rt>.5 && lt>.5) || !(rt > .5 || lt > .5) || casting) {
 	                    //Actually, punch, but for now, nothing
@@ -177,7 +179,7 @@ public class PlayerChar : MonoBehaviour {
 	                }
 	            }
 				//Code for casting Missile
-				else if (XCI.GetButtonDown(XboxButton.B, playerNum)) {
+				else if (XCI.GetButtonDown(XboxButton.B, controllerNum)) {
 	                //Debug.Log("FIRE DA MISSILES");
 					if ((rt>.5 && lt>.5) || !(rt > .5 || lt > .5) || casting) {
 	                    //Actually, dodgeroll, but for now, nothing
@@ -221,7 +223,7 @@ public class PlayerChar : MonoBehaviour {
 	                }
 	            } 
 	            //code for wall
-				else if (XCI.GetButtonDown(XboxButton.Y, playerNum)) {
+				else if (XCI.GetButtonDown(XboxButton.Y, controllerNum)) {
 					if(!(rt > .5 || lt > .5)){
 						setBlock(true);
 						anim.SetFloat("Speed", 0f);
@@ -268,7 +270,7 @@ public class PlayerChar : MonoBehaviour {
 						}
 					}
 				}
-				else if(XCI.GetButtonUp(XboxButton.Y, playerNum) && block){
+				else if(XCI.GetButtonUp(XboxButton.Y, controllerNum) && block){
 					block=false;
 					anim.SetBool("isBlocking",false);
 				}
@@ -333,8 +335,8 @@ public class PlayerChar : MonoBehaviour {
             // Cache the contoller input input.
             if (casting)
                 return;
-            float rawHorizontal = XCI.GetAxis(XboxAxis.LeftStickX, playerNum);
-            float rawVertical = XCI.GetAxis(XboxAxis.LeftStickY, playerNum);
+			float rawHorizontal = XCI.GetAxis(XboxAxis.LeftStickX, controllerNum);
+			float rawVertical = XCI.GetAxis(XboxAxis.LeftStickY, controllerNum);
             rawHorizontal = (rawHorizontal * 0.35f);
             Vector3 direction = new Vector3(rawHorizontal, 0f, rawVertical);
             float speed = (direction).magnitude;

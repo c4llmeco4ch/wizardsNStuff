@@ -427,6 +427,7 @@ MonoBehaviour:
   playerPic: {fileID: 0}
   damage: {fileID: 324522756}
   color: 0
+  controllerNum: 0
 --- !u!54 &71921579
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2203,6 +2204,7 @@ MonoBehaviour:
   playerPic: {fileID: 0}
   damage: {fileID: 458984502}
   color: 0
+  controllerNum: 0
 --- !u!136 &476569749
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3904,8 +3906,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: .720588207, g: .725886643, b: .725886643, a: 1}
+    m_NormalColor: {r: .721568644, g: .721568644, b: .721568644, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
     m_ColorMultiplier: 1
@@ -5943,6 +5945,7 @@ MonoBehaviour:
   playerPic: {fileID: 0}
   damage: {fileID: 1236292597}
   color: 0
+  controllerNum: 0
 --- !u!54 &1318238143
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7495,6 +7498,7 @@ MonoBehaviour:
   playerPic: {fileID: 0}
   damage: {fileID: 1683117574}
   color: 0
+  controllerNum: 0
 --- !u!136 &1693466613
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7878,6 +7882,7 @@ MonoBehaviour:
   playerPic: {fileID: 0}
   damage: {fileID: 309829023}
   color: 0
+  controllerNum: 0
 --- !u!54 &1711348967
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8980,6 +8985,7 @@ MonoBehaviour:
   playerPic: {fileID: 0}
   damage: {fileID: 1420484474}
   color: 0
+  controllerNum: 0
 --- !u!54 &1969980888
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9352,8 +9358,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 827481861}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: .720588207, g: .720588207, b: .720588207, a: 1}
+    m_NormalColor: {r: .721568644, g: .721568644, b: .721568644, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
     m_ColorMultiplier: 1

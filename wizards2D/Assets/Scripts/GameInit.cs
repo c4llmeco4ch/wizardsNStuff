@@ -12,6 +12,7 @@ public static class GameInit {
 	public static List<PlayerColor> colorList = new List<PlayerColor>(4);
     public static LinkedList<ElementSprite> elementList;
     public static Play playButton;
+    public static List<int> controllerNums= new List<int>(4);
     
     public static bool tutorial = true;
     
@@ -46,6 +47,10 @@ public static class GameInit {
 		return colors[player-1];
 	}
 	
+	public static int getControllerNum(int player) {
+		return controllerNums[player-1];
+	}
+	
 	public static void consolidate() {
 		if(playerNum<4) {
 			for(int i = playing.Length-1; i > 0; i--) {
@@ -53,6 +58,7 @@ public static class GameInit {
 					Debug.Log("delete "+i+"  "+colorList.Count);
 					colorList.RemoveAt(i);
 					elementChoices.RemoveAt(i);
+					controllerNums.RemoveAt(i);
 				}
 			}
 		}

@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour {
 		for(int i = 0; i < 4; i++) {
 			GameInit.elementChoices.Add(new Element[2]);
 			GameInit.colorList.Add(PlayerColor.Blue);
+			GameInit.controllerNums.Add(i+1);
 		}
 		
 		GameInit.elementList = new LinkedList<GameInit.ElementSprite>();
