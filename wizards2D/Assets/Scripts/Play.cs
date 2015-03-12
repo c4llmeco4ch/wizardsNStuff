@@ -6,6 +6,7 @@ using XboxCtrlrInput;
 public class Play : MonoBehaviour {
 	public bool[] select = {false, false, false, false};
 	public Button playButton;
+	public GameObject no;
 
 	public Play() {
 		GameInit.playButton = this;
@@ -31,8 +32,11 @@ public class Play : MonoBehaviour {
 //        if(temp <= 1)
 //            temp = 2;
 		Debug.Log("Players: "+GameInit.playerNum);
-		if(GameInit.playerNum<2)
+		if(GameInit.playerNum<2){
+			no.SetActive(true);
+			no.GetComponent<NotEnoughPlayers>().Start();
 			return;
+		}
 		
 		GameInit.consolidate();
 		GameInit.setNumPlayers(GameInit.playerNum);

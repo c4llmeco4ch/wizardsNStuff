@@ -35,18 +35,18 @@ public class ElementSelector : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if(GameInit.elementList == null){
-			GameInit.elementList = new LinkedList<GameInit.ElementSprite>();
-			new GameInit.ElementSprite(new Earth(), Resources.Load("UI Art Assets/Selection/EarthText", typeof(Sprite)) as Sprite, 
-			                           Resources.Load("UI Art Assets/Selection/EarthElementBox", typeof(Sprite)) as Sprite);
-			new GameInit.ElementSprite(new Air(), Resources.Load("UI Art Assets/Selection/AirText", typeof(Sprite)) as Sprite, 
-			                           Resources.Load("UI Art Assets/Selection/AirElementBox", typeof(Sprite)) as Sprite);
-			new GameInit.ElementSprite(new Fire(), Resources.Load("UI Art Assets/Selection/FireText", typeof(Sprite)) as Sprite, 
-			                           Resources.Load("UI Art Assets/Selection/FireElementBox", typeof(Sprite)) as Sprite);
-			new GameInit.ElementSprite(new Water(), Resources.Load("UI Art Assets/Selection/WaterText", typeof(Sprite)) as Sprite, 
-			                           Resources.Load("UI Art Assets/Selection/WaterElementBox", typeof(Sprite)) as Sprite);
-			Debug.Log("Create List");
-		}
+//		if(GameInit.elementList == null){
+//			GameInit.elementList = new LinkedList<GameInit.ElementSprite>();
+//			new GameInit.ElementSprite(new Earth(), Resources.Load("UI Art Assets/Selection/EarthText", typeof(Sprite)) as Sprite, 
+//			                           Resources.Load("UI Art Assets/Selection/EarthElementBox", typeof(Sprite)) as Sprite);
+//			new GameInit.ElementSprite(new Air(), Resources.Load("UI Art Assets/Selection/AirText", typeof(Sprite)) as Sprite, 
+//			                           Resources.Load("UI Art Assets/Selection/AirElementBox", typeof(Sprite)) as Sprite);
+//			new GameInit.ElementSprite(new Fire(), Resources.Load("UI Art Assets/Selection/FireText", typeof(Sprite)) as Sprite, 
+//			                           Resources.Load("UI Art Assets/Selection/FireElementBox", typeof(Sprite)) as Sprite);
+//			new GameInit.ElementSprite(new Water(), Resources.Load("UI Art Assets/Selection/WaterText", typeof(Sprite)) as Sprite, 
+//			                           Resources.Load("UI Art Assets/Selection/WaterElementBox", typeof(Sprite)) as Sprite);
+//			Debug.Log("Create List");
+//		}
 		if(!selected)
 			background.color = new Color(background.color.r - modifier, background.color.g - modifier, background.color.b - modifier);
 		if(elementNum == 0)

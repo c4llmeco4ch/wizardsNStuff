@@ -12,6 +12,7 @@ public class CharSelector : MonoBehaviour {
     public PlayerColor color;
     public Image[] images = new Image[12];
     public bool isActive = false;
+    public GameObject activeA;
 //    Color alpha = new Color(1f,1f,1f,0.5f);
     
     int counter = 0;
@@ -139,13 +140,17 @@ public class CharSelector : MonoBehaviour {
 			i.color = temp;;
 		}
 		if(act) {
+			activeA.SetActive(false);
 			left.saveElement();
 			right.saveElement();
 			saveColor();
 			GameInit.playerNum++;
 		}
-		else if(GameInit.playerNum > 0) {
-			GameInit.playerNum--;
+		else {
+			if(GameInit.playerNum > 0) {
+				GameInit.playerNum--;
+			}
+			activeA.SetActive(true);
 		}
 	}
 	

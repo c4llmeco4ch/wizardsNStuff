@@ -55,14 +55,6 @@ public static class GameInit {
 					elementChoices.RemoveAt(i);
 				}
 			}
-//			int offset = 0;
-//			for(int i = 0; i < playing.Length-1; i++) {
-//				if(!playing[i]) {
-//					offset++;
-//					colors[i] = colors[i+offset];
-//					
-//				}
-//			}
 		}
 	}
     
