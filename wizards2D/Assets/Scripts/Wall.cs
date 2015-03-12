@@ -97,7 +97,8 @@ public class Wall : Spell {
 			else
 				pc.transform.position=pc.transform.position-new Vector3(this.gameObject.collider.bounds.size.x-(float).2,0,0);
 		}
-		else if(c.gameObject.name.Contains("Spell")){ //same as above
+		else if(c.gameObject.tag=="Spell"){ //same as above
+			Debug.Log ("Hi");
 			Spell s=c.gameObject.GetComponent("Spell") as Spell;//issues grabbing the playerchar from the gameobject
 			s.versus(this);
 		}
