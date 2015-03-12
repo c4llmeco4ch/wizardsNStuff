@@ -22,6 +22,7 @@ public class Wall : Spell {
 		this.transform.position=cast();
 		this.GetComponent<MeshRenderer>().enabled=true;
 		this.GetComponent<BoxCollider>().enabled=true;
+		this.GetComponentInChildren<SpriteRenderer>().enabled=true;
 		p.spellsCast++;
 	}
 	

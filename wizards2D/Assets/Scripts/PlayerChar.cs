@@ -316,6 +316,7 @@ public class PlayerChar : MonoBehaviour {
 		w.prepWall(this);
 		w.GetComponent<MeshRenderer>().enabled=false;
 		w.GetComponent<BoxCollider>().enabled=false;
+		w.gameObject.GetComponentInChildren<SpriteRenderer>().enabled=false;
 		//slash.transform.Translate(s.cast(),Space.World);
 		spells [2] = wall;
 		//		Debug.Log("-.-");
