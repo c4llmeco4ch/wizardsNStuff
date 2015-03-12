@@ -22,6 +22,7 @@ public class PlayerStats : MonoBehaviour {
 	}
 	
 	public void setColor(PlayerColor color) {
+		Debug.Log(color.ToString());
 		player.sprite = Resources.Load("UI Art Assets/Summary/player_"+color.ToString(), typeof(Sprite)) as Sprite;
 	}
     

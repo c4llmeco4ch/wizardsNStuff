@@ -211,6 +211,7 @@ MonoBehaviour:
   win: {fileID: 134374}
   spells: {fileID: 11424000}
   time: {fileID: 11488452}
+  player: {fileID: 11494090}
 --- !u!114 &11476846
 MonoBehaviour:
   m_ObjectHideFlags: 1

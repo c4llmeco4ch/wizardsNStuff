@@ -72,17 +72,21 @@ public class Arena : MonoBehaviour {
 		Debug.Log ("GameOver");
         canvas.gameObject.SetActive(true);
 		int winner = 0;
-        ps[0].setSpellsCast(pc[0].spellsCast);
+		setPlayerStats(0);
         for(int i = 1; i<pNum; i++){
-        	ps[i].setColor(pc[i].color);
-            ps[i].setSpellsCast(pc[i].spellsCast);
-            ps[i].setTime(pc[i].timeAlive);
+			setPlayerStats(i);
             if(!pc[i].isDead)
                 winner = i;
         }
         ps[winner].setTime(-1);
         ps[winner].win.gameObject.SetActive(true);
 //		win.text = "Player "+i+" Won!";
+	}
+	
+	public void setPlayerStats(int p) {
+		ps[p].setColor(pc[p].color);
+		ps[p].setSpellsCast(pc[p].spellsCast);
+		ps[p].setTime(pc[p].timeAlive);
 	}
     
     //onClick to restart game
