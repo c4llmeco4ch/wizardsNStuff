@@ -285,6 +285,92 @@ public class Wall : Spell {
 				}
 			}
 		}
+		else if(s is Missile){
+			if(getElement().getName()=="air"){
+				if(s.getElement().getName()=="air"){
+					//knockback, then...
+					this.kill();
+					s.kill();
+				}
+				if(s.getElement().getName()=="water"){
+					//apply burn, then...
+					this.kill();
+					s.kill();
+				}
+				if(s.getElement().getName()=="fire"){
+					//blow away, then...
+					this.kill();
+					s.kill();
+				}
+				else{
+					this.kill();
+					s.kill();
+				}
+			}
+			else if(getElement().getName()=="fire"){
+				if(s.getElement().getName()=="air"){
+					//applies burn, then...
+					this.kill();
+					s.kill();
+				}
+				if(s.getElement().getName()=="water"){
+					//fizzle, then...
+					this.kill();
+					s.kill();
+				}
+				if(s.getElement().getName()=="fire"){
+					this.kill();
+					s.kill();
+				}
+				else{
+					//earth hits, then...
+					this.kill();
+					s.kill();
+				}
+			}
+			else if(getElement().getName()=="water"){
+				if(s.getElement().getName()=="air"){
+					//apply wet, then...
+					this.kill();
+					s.kill();
+				}
+				if(s.getElement().getName()=="water"){
+					this.kill();
+					s.kill();
+				}
+				if(s.getElement().getName()=="fire"){
+					//fizzle, then...
+					this.kill();
+					s.kill();
+				}
+				else{
+					//earth is wet, then...
+					this.kill();
+					s.kill();
+				}
+			}
+			else{
+				if(s.getElement().getName()=="air"){
+					//earth hits
+					this.kill();
+					s.kill();
+				}
+				if(s.getElement().getName()=="water"){
+					//earth wet, then...
+					this.kill();
+					s.kill();
+				}
+				if(s.getElement().getName()=="fire"){
+					//earth hits, then...
+					this.kill();
+					s.kill();
+				}
+				else{
+					this.kill();
+					s.kill();
+				}
+			}
+		}
 	}
 	
 	//call every time after spell fades to reset base values
