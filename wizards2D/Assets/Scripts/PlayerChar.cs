@@ -373,10 +373,8 @@ public class PlayerChar : MonoBehaviour {
         }
         if (!block)
             bd = dmg;
-        else if (s is Slash && block)
-            bd = dmg / 2;
         else
-            bd = dmg - (dmg / 4);
+            bd = dmg / 2;
         if (bd >= hp) {
             isDead = true;
             hp = 0;
