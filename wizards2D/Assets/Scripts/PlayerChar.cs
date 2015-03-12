@@ -123,6 +123,8 @@ public class PlayerChar : MonoBehaviour {
 			else{
                 if(anim.GetBool("isHit"))
                     anim.SetBool("isHit", false);
+                if(anim.GetBool("isBlockAndHit"))
+					anim.SetBool("isBlockAndHit", false);
                     
 //                if(!casting)
 	            //Debug.Log (lt+" || "+rt);
@@ -215,6 +217,7 @@ public class PlayerChar : MonoBehaviour {
 				else if (XCI.GetButtonDown(XboxButton.Y, playerNum)) {
 					if(!(rt > .5 || lt > .5)){
 						setBlock(true);
+						anim.SetFloat("Speed", 0f);
 						anim.SetBool("isBlocking",true); //?
 					}
 					else if ((rt>.5 && lt>.5) || casting) {
@@ -393,8 +396,10 @@ public class PlayerChar : MonoBehaviour {
         else{
 			stunned(s.getKnock());
         }
-        if(block)
+        if(block) {
             anim.SetBool("isBlockAndHit", true);
+            anim.SetBool("isBlocking", false);
+        }
         else
             anim.SetBool("isHit", true);
     }

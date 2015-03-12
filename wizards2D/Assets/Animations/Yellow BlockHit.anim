@@ -19,8 +19,6 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 2100000, guid: 62c4a6aa9c8664164a9bbce41f9a71bf, type: 2}
-    - time: .0833333358
-      value: {fileID: 2100000, guid: 62c4a6aa9c8664164a9bbce41f9a71bf, type: 2}
     - time: .5
       value: {fileID: 2100000, guid: 62c4a6aa9c8664164a9bbce41f9a71bf, type: 2}
     attribute: m_Materials.Array.data[0]
@@ -41,7 +39,6 @@ AnimationClip:
       customType: 21
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 2100000, guid: 62c4a6aa9c8664164a9bbce41f9a71bf, type: 2}
     - {fileID: 2100000, guid: 62c4a6aa9c8664164a9bbce41f9a71bf, type: 2}
     - {fileID: 2100000, guid: 62c4a6aa9c8664164a9bbce41f9a71bf, type: 2}
   m_AnimationClipSettings:

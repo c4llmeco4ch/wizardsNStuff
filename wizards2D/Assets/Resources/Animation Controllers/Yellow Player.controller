@@ -74,6 +74,26 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!1101 &110101900
+Transition:
+  serializedVersion: 2
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110257136}
+  m_DstState: {fileID: 110276386}
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: isBlocking
+    m_EventTreshold: 0
+    m_ExitTime: 1
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+  m_CanTransitionToSelf: 0
 --- !u!1101 &110117726
 Transition:
   serializedVersion: 2
@@ -88,6 +108,26 @@ Transition:
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: isHit
+    m_EventTreshold: 0
+    m_ExitTime: 1
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+  m_CanTransitionToSelf: 0
+--- !u!1101 &110117936
+Transition:
+  serializedVersion: 2
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110272070}
+  m_DstState: {fileID: 110257136}
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: isBlockAndHit
     m_EventTreshold: 0
     m_ExitTime: 1
   m_Atomic: 1
@@ -170,6 +210,26 @@ Transition:
     m_ConditionEvent: Dead
     m_EventTreshold: 0
     m_ExitTime: .966434896
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+  m_CanTransitionToSelf: 0
+--- !u!1101 &110146118
+Transition:
+  serializedVersion: 2
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110276386}
+  m_DstState: {fileID: 110257136}
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: isBlocking
+    m_EventTreshold: 0
+    m_ExitTime: 1
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
@@ -288,6 +348,26 @@ Transition:
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: isCharging
+    m_EventTreshold: 0
+    m_ExitTime: 1
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+  m_CanTransitionToSelf: 0
+--- !u!1101 &110176046
+Transition:
+  serializedVersion: 2
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110276386}
+  m_DstState: {fileID: 110272070}
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: isBlockAndHit
     m_EventTreshold: 0
     m_ExitTime: 1
   m_Atomic: 1
@@ -485,7 +565,7 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: 11612207d93b143b184ded22aa694491, type: 2}
   m_ParentStateMachine: {fileID: 110700118}
-  m_Position: {x: 543, y: 513, z: 0}
+  m_Position: {x: -276, y: -192, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -500,7 +580,7 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: 7e20918455c4047b4b96590525dfe9c1, type: 2}
   m_ParentStateMachine: {fileID: 110700118}
-  m_Position: {x: 456, y: 408, z: 0}
+  m_Position: {x: 0, y: -192, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -613,19 +693,20 @@ StateMachine:
       - {fileID: 110142980}
       - {fileID: 110186250}
     data:
+      first: {fileID: 110278882}
+      second: []
+    data:
       first: {fileID: 110257136}
       second:
       - {fileID: 110192786}
       - {fileID: 110174814}
       - {fileID: 110144564}
       - {fileID: 110182510}
+      - {fileID: 110101900}
     data:
       first: {fileID: 110267800}
       second:
       - {fileID: 110119028}
-    data:
-      first: {fileID: 110278882}
-      second: []
     data:
       first: {fileID: 110298158}
       second: []
@@ -650,10 +731,13 @@ StateMachine:
       - {fileID: 110175670}
     data:
       first: {fileID: 110276386}
-      second: []
+      second:
+      - {fileID: 110146118}
+      - {fileID: 110176046}
     data:
       first: {fileID: 110272070}
-      second: []
+      second:
+      - {fileID: 110117936}
     data:
       first: {fileID: 110278636}
       second:

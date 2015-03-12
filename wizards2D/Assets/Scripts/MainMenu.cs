@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using XboxCtrlrInput;
+//using XboxCtrlrInput;
 
 public class MainMenu : MonoBehaviour {
 
@@ -21,5 +21,9 @@ public class MainMenu : MonoBehaviour {
     
     public void credits() {
     	Application.LoadLevel("Credits");
+    }
+    
+    public void quit() {
+    	Application.Quit();
     }
 }
