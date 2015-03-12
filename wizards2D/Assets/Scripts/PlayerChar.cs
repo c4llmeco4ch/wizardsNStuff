@@ -416,7 +416,12 @@ public class PlayerChar : MonoBehaviour {
             
 		damage.sprite = Resources.Load("UI Art Assets/damage/"+s.element.getName()+"_"+s.getName()+"_damage", typeof(Sprite)) as Sprite;
 		damage.gameObject.SetActive(true);
-		damage.GetComponent<Damage>().Start();
+		Damage d = damage.GetComponent<Damage>();
+		d.Start();
+		if (d.facingRight && !facingRight)
+			d.Flip();
+		else if (!d.facingRight && facingRight)
+			d.Flip();
     }
 	
     public void setBlock(bool b) {
