@@ -21,7 +21,7 @@ public class Punch : Spell {
 		sound.Play();
 	}
 	
-	public void prepPunch(PlayerChar pc){p=pc; facingRight=true; this.collider=p.collider}
+	public void prepPunch(PlayerChar pc){p=pc; facingRight=true;}
 	
 	public void Awake(){casting = false; dmg=5;}
 	
@@ -38,7 +38,7 @@ public class Punch : Spell {
 		}
 	}
 	
-	public void kill(){
+	override public void kill(){
 		casting = false;
 		p.casting=false;
 		framesLeft=0;
@@ -70,4 +70,8 @@ public class Punch : Spell {
 			return new Vector3((float)x,y,z);
 		}
 	}
+	
+	override public void resetSpell(){}
+	
+	override public void versus(Spell s){}
 }
