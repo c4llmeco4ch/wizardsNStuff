@@ -50,6 +50,7 @@ public class Arena : MonoBehaviour {
         player--;
         pc[player].elementL = ui[player].FindChild("Element L").GetComponent<Image>();
         pc[player].elementR = ui[player].FindChild("Element R").GetComponent<Image>();
+        pc[player].playerPic = ui[player].FindChild("Player").GetComponent<Image>();
         pc[player].healthBarTrans = ui[player].FindChild("Health Bar").GetComponent<RectTransform>();
         pc[player].manaBarTrans = ui[player].FindChild("Mana Bar").GetComponent<RectTransform>();
     }

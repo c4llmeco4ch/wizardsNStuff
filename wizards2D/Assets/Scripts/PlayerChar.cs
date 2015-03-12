@@ -39,6 +39,7 @@ public class PlayerChar : MonoBehaviour {
     public int timeAlive; //Counts the number of frames during which a player is alive
     private Spell currentSpell; //Spell the user is currently charging
     public SpriteRenderer aura;
+    public Image playerPic;
     
 
     //instantiate new instance of player char. @param playerNum determines start location
@@ -98,6 +99,7 @@ public class PlayerChar : MonoBehaviour {
             GameInit.arena.setUI(playerNum);
             elementL.sprite = Resources.Load("UI Art Assets/mana/" + elements [0].getName() + "_element", typeof(Sprite)) as Sprite;
             elementR.sprite = Resources.Load("UI Art Assets/mana/" + elements [1].getName() + "_element", typeof(Sprite)) as Sprite;
+			playerPic.sprite = Resources.Load("UI Art Assets/mana/figure"+playerNum, typeof(Sprite)) as Sprite;
         }
         
         if (!isDead) {
