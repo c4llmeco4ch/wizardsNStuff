@@ -428,7 +428,7 @@ public class PlayerChar : MonoBehaviour {
 	
     public void regenMana() {
         if (mana < maxMana)
-            mana += (float).075;
+            mana += (float).1;
     }
 	
     public void stunned(int d) {

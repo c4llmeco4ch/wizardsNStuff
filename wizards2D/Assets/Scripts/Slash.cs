@@ -39,7 +39,7 @@ public class Slash : Spell {
 		element=null;
 		setDot(false,0,0);
 		setDmg(15);
-		setCast(2);
+		setCast(3);
 		setKnock(0);
 		setMana(20);
 		setRange(0);
@@ -63,7 +63,7 @@ public class Slash : Spell {
 	public void charge(){//muh lazer
 		Debug.Log("Chargin muh lazer");
 		charging=true;
-		chargeLeft=(int)(getCast()*10);
+		chargeLeft=(int)(getCast()*7);
 		this.GetComponent<MeshRenderer>().enabled=false;
 		this.GetComponent<BoxCollider>().enabled=false;
 		p.anim.SetBool("isCharging",true);
