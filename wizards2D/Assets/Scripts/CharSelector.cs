@@ -39,33 +39,28 @@ public class CharSelector : MonoBehaviour {
 	// Update is called once per frame
     void OnGUI () {
     	Play play = GameInit.playButton;
-//        Debug.Log(XCI.GetNumPluggedCtrlrs());
-//        if(counter == 0){
-    	    float y = XCI.GetAxis(XboxAxis.LeftStickY, playerNum);
-            if(y < -0.4) {
-				if(selected == CurElement.L) {
-				   selected = CurElement.R;
-	                left.selected = false;
-	                right.selected = true;
-	                right.background.color = new Color(right.background.color.r + modifier, right.background.color.g + modifier, right.background.color.b + modifier);
-	                left.background.color = new Color(left.background.color.r - modifier, left.background.color.g - modifier, left.background.color.b - modifier);
-	            //                right.background.color.r = right.background.color.r + 10;
-	                counter = time;
-	            }
-	            else if(selected == CurElement.R
+	    float y = XCI.GetAxis(XboxAxis.LeftStickY, playerNum);
+        if(y < -0.4) {
+			if(selected == CurElement.L) {
+			   selected = CurElement.R;
+                left.selected = false;
+                right.selected = true;
+                right.background.color = new Color(right.background.color.r + modifier, right.background.color.g + modifier, right.background.color.b + modifier);
+                left.background.color = new Color(left.background.color.r - modifier, left.background.color.g - modifier, left.background.color.b - modifier);
+            //                right.background.color.r = right.background.color.r + 10;
+                counter = time;
             }
-			else if(y > 0.4) {
-				if(selected == CurElement.R) {
-					selected = CurElement.L;
-	                right.selected = false;
-	                left.selected = true;
-	                left.background.color = new Color(left.background.color.r + modifier, left.background.color.g + modifier, left.background.color.b + modifier);
-	                right.background.color = new Color(right.background.color.r - modifier, right.background.color.g - modifier, right.background.color.b - modifier);
-	                counter = time;
-                }
+//	            else if(selected == CurElement.R
+        }
+		else if(y > 0.4) {
+			if(selected == CurElement.R) {
+				selected = CurElement.L;
+                right.selected = false;
+                left.selected = true;
+                left.background.color = new Color(left.background.color.r + modifier, left.background.color.g + modifier, left.background.color.b + modifier);
+                right.background.color = new Color(right.background.color.r - modifier, right.background.color.g - modifier, right.background.color.b - modifier);
+                counter = time;
             }
-//        }
-//        else
-//            counter--;
+        }
 	}
 }
