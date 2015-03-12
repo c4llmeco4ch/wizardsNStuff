@@ -404,6 +404,9 @@ public class PlayerChar : MonoBehaviour {
         }
         else
             anim.SetBool("isHit", true);
+            
+		damage.sprite = Resources.Load("UI Art Assets/damage/"+s.element.getName()+"_"+s.getName()+"_damage", typeof(Sprite)) as Sprite;
+		damage.gameObject.SetActive(true);
     }
 	
     public void setBlock(bool b) {
