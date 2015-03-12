@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using XboxCtrlrInput;
 
@@ -7,6 +8,7 @@ public class Play : MonoBehaviour {
 	public bool select2 = false;
 	public bool select3 = false;
 	public bool select4 = false;
+	public Button playButton;
 
 	public Play() {
 		GameInit.playButton = this;
@@ -19,6 +21,8 @@ public class Play : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+//		if(select1 || select2 || select3 || select4)
+//			this.
 	    if(XCI.GetButtonDown(XboxButton.Start))
             play();
 	}
