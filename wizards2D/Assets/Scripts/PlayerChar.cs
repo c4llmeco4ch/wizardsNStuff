@@ -215,6 +215,7 @@ public class PlayerChar : MonoBehaviour {
 	                    }
 	                }
 	            } 
+	            //code for wall
 				else if (XCI.GetButtonDown(XboxButton.Y, playerNum)) {
 					if(!(rt > .5 || lt > .5)){
 						setBlock(true);

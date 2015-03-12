@@ -17,7 +17,7 @@ public class Wall : Spell {
 		p.elementLoaded.SetActive(false);
 		p.anim.SetBool("isCharging",false);
 		p.anim.SetBool("Wall",true);
-		framesLeft=(int)getSpd()*20;
+		framesLeft=((int)getSpd())*20;
 		//this.transform.position=p.transform.position;
 		this.transform.position=cast();
 		this.GetComponent<MeshRenderer>().enabled=true;
@@ -70,15 +70,17 @@ public class Wall : Spell {
 		float y=p.transform.position.y;
 		float x=p.transform.position.x;
 		float z=p.transform.position.z;
+		y = 3f;
+		z -= 2f;
 		if(p.facingRight){
 			Debug.Log("X: "+x);
-			x+=p.collider.bounds.size.x/2+(float)1;
+			x+=p.collider.bounds.size.x/2+(float)2;
 			Debug.Log("X is now: "+x);
 			return new Vector3((float)(x+(getRange()/3)),y,z);
 		}
 		else{
 			//Debug.Log("X: "+x+"||Y: "+y+"||Z: "+x);
-			x-=(float)2-(p.collider.bounds.size.x/2);
+			x-=(float)3-(p.collider.bounds.size.x/2);
 			return new Vector3((float)(x-(getRange()/2)),y,z);
 		}
 	}
@@ -294,7 +296,7 @@ public class Wall : Spell {
 		setCast(5);
 		setMana(10);
 		setRange(2);
-		setSpd((float).5);
+		setSpd((float)2.5);
 	}
 	
 	public void Flip (){
