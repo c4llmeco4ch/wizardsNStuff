@@ -62,6 +62,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: isPunching
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 3
     m_Name: Base Layer
@@ -88,6 +94,26 @@ Transition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: isBlocking
+    m_EventTreshold: 0
+    m_ExitTime: 1
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+  m_CanTransitionToSelf: 0
+--- !u!1101 &110102872
+Transition:
+  serializedVersion: 2
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110257136}
+  m_DstState: {fileID: 110278882}
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: isPunching
     m_EventTreshold: 0
     m_ExitTime: 1
   m_Atomic: 1
@@ -243,6 +269,26 @@ Transition:
   m_Name: 
   m_SrcState: {fileID: 110232854}
   m_DstState: {fileID: 110232854}
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 5
+    m_ConditionEvent: 
+    m_EventTreshold: 0
+    m_ExitTime: 1
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+  m_CanTransitionToSelf: 0
+--- !u!1101 &110160444
+Transition:
+  serializedVersion: 2
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110278882}
+  m_DstState: {fileID: 110257136}
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_Conditions:
@@ -694,7 +740,8 @@ StateMachine:
       - {fileID: 110186250}
     data:
       first: {fileID: 110278882}
-      second: []
+      second:
+      - {fileID: 110160444}
     data:
       first: {fileID: 110257136}
       second:
@@ -703,6 +750,7 @@ StateMachine:
       - {fileID: 110144564}
       - {fileID: 110182510}
       - {fileID: 110101900}
+      - {fileID: 110102872}
     data:
       first: {fileID: 110267800}
       second:
