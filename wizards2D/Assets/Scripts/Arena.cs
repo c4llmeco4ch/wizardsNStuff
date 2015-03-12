@@ -75,9 +75,11 @@ public class Arena : MonoBehaviour {
         ps[0].setSpellsCast(pc[0].spellsCast);
         for(int i = 1; i<pNum; i++){
             ps[i].setSpellsCast(pc[i].spellsCast);
+            ps[i].setTime(pc[i].timeAlive);
             if(!pc[i].isDead)
                 winner = i;
         }
+        ps[winner].setTime(-1);
         ps[winner].win.gameObject.SetActive(true);
 //		win.text = "Player "+i+" Won!";
 	}

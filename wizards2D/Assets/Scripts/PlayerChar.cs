@@ -40,6 +40,7 @@ public class PlayerChar : MonoBehaviour {
     private Spell currentSpell; //Spell the user is currently charging
     public SpriteRenderer aura;
     public Image playerPic;
+    public SpriteRenderer damage;
     
 
     //instantiate new instance of player char. @param playerNum determines start location
