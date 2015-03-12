@@ -395,8 +395,11 @@ public class PlayerChar : MonoBehaviour {
 			}
         }
         else{
-			stunned(s.getKnock());
-        }
+			stunned(70+(s.getKnock()*7));
+			if(this.charging){
+				Destroy(currentSpell);
+			}
+		}
         if(block) {
             anim.SetBool("isBlockAndHit", true);
             anim.SetBool("isBlocking", false);
