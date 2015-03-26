@@ -263,10 +263,10 @@ public class PlayerChar : MonoBehaviour {
 							
 							wall.charge();
 							
-							if (wall.facingRight && !facingRight)
+							/*if (wall.facingRight && !facingRight)
 								wall.Flip();
 							else if (!wall.facingRight && facingRight)
-								wall.Flip();
+								wall.Flip();*/
 						}
 					}
 				}

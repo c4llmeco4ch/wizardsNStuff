@@ -92,10 +92,14 @@ public class Wall : Spell {
 		if(c.gameObject.tag.Equals("Player")){
 			Debug.Log("Collision!!");
 			PlayerChar pc=c.gameObject.GetComponent("PlayerChar") as PlayerChar;//issues grabbing the playerchar from the gameobject
+			if(pc.transform.position.z==this.transform.position.z+this.transform.localScale.z)
+				pc.transform.position=pc.transform.position+new Vector3(0,0,(float)1);
+			else if(pc.transform.position.z==this.transform.position.z-this.transform.localScale.z)
+				pc.transform.position=pc.transform.position-new Vector3(0,0,(float)1);
 			if(pc.facingRight)
-				pc.transform.position=pc.transform.position-new Vector3(this.gameObject.collider.bounds.size.x+(float).2,0,0);
+				pc.transform.position=pc.transform.position-new Vector3((float).275,0,0);
 			else
-				pc.transform.position=pc.transform.position+new Vector3(this.gameObject.collider.bounds.size.x-(float).2,0,0);
+				pc.transform.position=pc.transform.position+new Vector3((float).3,0,0);
 		}
 		else if(c.gameObject.tag=="Spell"){ //same as above
 			Debug.Log ("Hi");
@@ -387,7 +391,7 @@ public class Wall : Spell {
 		setSpd((float)4.5);
 	}
 	
-	public void Flip (){
+	/*public void Flip (){
 		// Switch the way the player is labelled as facing.
 		facingRight = !facingRight;
 		
@@ -395,5 +399,5 @@ public class Wall : Spell {
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
-	}
+	}*/
 }

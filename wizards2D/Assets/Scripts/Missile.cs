@@ -82,8 +82,10 @@ public class Missile : Spell {
 		if(c.gameObject.tag.Equals("Player")){
 			Debug.Log("Collision!!");
 			PlayerChar pc=c.gameObject.GetComponent("PlayerChar") as PlayerChar;//issues grabbing the playerchar from the gameobject
-			pc.takeDamage(this.getDmg(),this);
-			kill();
+			if(!pc.isDead){
+				pc.takeDamage(this.getDmg(),this);
+				kill();
+			}
 		}
 		else if(c.gameObject.tag=="Spell"){ //same as above
 			Debug.Log("Hi");
