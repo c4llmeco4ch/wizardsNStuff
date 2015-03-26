@@ -81,7 +81,7 @@ public class Wall : Spell {
 		}
 		else{
 			//Debug.Log("X: "+x+"||Y: "+y+"||Z: "+x);
-			x-=(float)3-(p.collider.bounds.size.x/2);
+			x-=(float)5-(p.collider.bounds.size.x/2);
 			return new Vector3((float)(x-(getRange()/2)),y,z);
 		}
 	}
@@ -97,7 +97,7 @@ public class Wall : Spell {
 			else if(pc.transform.position.z==this.transform.position.z-this.transform.localScale.z)
 				pc.transform.position=pc.transform.position-new Vector3(0,0,(float)1);
 			if(pc.facingRight)
-				pc.transform.position=pc.transform.position-new Vector3((float).275,0,0);
+				pc.transform.position=pc.transform.position-new Vector3((float).3,0,0);
 			else
 				pc.transform.position=pc.transform.position+new Vector3((float).3,0,0);
 		}
