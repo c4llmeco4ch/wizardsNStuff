@@ -37,7 +37,7 @@ public class PlayerChar : MonoBehaviour {
     private bool uiSet = false;
     public int spellsCast; //number of spells a character has casted in this game
     public int timeAlive; //Counts the number of frames during which a player is alive
-    private Spell currentSpell; //Spell the user is currently charging
+    public Spell currentSpell; //Spell the user is currently charging
     public SpriteRenderer aura;
     public Image playerPic;
     public SpriteRenderer damage;
@@ -397,15 +397,18 @@ public class PlayerChar : MonoBehaviour {
         }
         if(s.getKnock()==0){
 			stunned(30);
-			if(this.charging){
-				Destroy(currentSpell);
-			}
         }
         else{
 			stunned(70+(s.getKnock()*7));
-			if(this.charging){
-				Destroy(currentSpell);
-			}
+		}
+		if(this.charging){
+			charging=false;
+			casting=false;
+			chargeLeft=0;
+			elementLoaded.SetActive(false);
+			anim.SetBool("isCharging",false);
+			Destroy(currentSpell.gameObject);
+			currentSpell=null;
 		}
         if(block) {
             anim.SetBool("isBlockAndHit", true);

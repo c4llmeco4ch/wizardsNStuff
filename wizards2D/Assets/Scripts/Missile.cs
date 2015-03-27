@@ -12,6 +12,7 @@ public class Missile : Spell {
 	public void start () {
 		casting=true;
         p.casting=false;
+        p.charging=false;
         p.elementLoaded.SetActive(false);
 		p.anim.SetBool("isCharging",false);
 		p.anim.SetBool("Missile",true);
@@ -49,6 +50,7 @@ public class Missile : Spell {
 	public void charge(){//muh lazer
 		Debug.Log("Chargin muh lazer");
 		charging=true;
+		p.charging=true;
 		chargeLeft=(int)(getCast()*7);
 		this.GetComponent<MeshRenderer>().enabled=false;
 		this.GetComponent<BoxCollider>().enabled=false;

@@ -14,6 +14,7 @@ public class Wall : Spell {
 		Debug.Log("...cuz I think he's walling.");
 		casting=true;
 		p.casting=false;
+		p.charging=false;
 		p.elementLoaded.SetActive(false);
 		p.anim.SetBool("isCharging",false);
 		p.anim.SetBool("Wall",true);
@@ -56,6 +57,7 @@ public class Wall : Spell {
 		chargeLeft=(int)(getCast()*6);
 		this.GetComponent<MeshRenderer>().enabled=false;
 		this.GetComponent<BoxCollider>().enabled=false;
+		p.charging=true;
 		p.anim.SetBool("isCharging",true);
 		p.elementLoaded.SetActive(true);
 		p.elementLoaded.GetComponent<Animator>().SetBool(getElement().getName(), true);

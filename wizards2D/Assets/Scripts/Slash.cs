@@ -50,6 +50,7 @@ public class Slash : Spell {
 	public void start(){
 		g.transform.position=cast();
 		casting=true;
+		p.charging=false;
 		p.anim.SetBool("isCharging",false);
         p.elementLoaded.SetActive(false);
 		p.anim.SetBool("Slash",true);
@@ -66,6 +67,7 @@ public class Slash : Spell {
 		chargeLeft=(int)(getCast()*7);
 		this.GetComponent<MeshRenderer>().enabled=false;
 		this.GetComponent<BoxCollider>().enabled=false;
+		p.charging=true;
 		p.anim.SetBool("isCharging",true);
         p.elementLoaded.SetActive(true);
         p.elementLoaded.GetComponent<Animator>().SetBool(getElement().getName(), true);
