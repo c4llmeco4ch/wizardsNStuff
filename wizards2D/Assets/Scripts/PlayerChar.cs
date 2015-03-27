@@ -331,7 +331,7 @@ public class PlayerChar : MonoBehaviour {
 	
 	// FixedUpdate is called once per physics step 
     public void FixedUpdate() {
-        if (!isDead && stunT==0 && !block) {
+        if (!isDead && stunT==0 && !block && !casting) {
             // Cache the contoller input input.
             if (casting)
                 return;
