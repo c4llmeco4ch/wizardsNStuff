@@ -9,7 +9,7 @@ public class Water : Element {
 		setSpd(0);
 		setDot(true,0,5);
 		setRange(0);
-		setKnock(2);
+		setKnock(0);
 		setMana(0);
 		setDotN("wet");
 		setName("Water");
