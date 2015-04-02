@@ -224,7 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 2d0c261a73d304fa5bf8fa0160772bef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ac43c5d489d2c4cba90d6848aa7a7b4b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -246,14 +246,14 @@ RectTransform:
   m_GameObject: {fileID: 101067771}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.09996688, y: 1.1647644, z: 1}
   m_Children:
   - {fileID: 44677701}
   m_Father: {fileID: 930903057}
   m_RootOrder: 5
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: -120}
+  m_AnchoredPosition: {x: 0, y: -131}
   m_SizeDelta: {x: 580, y: 220}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &247317031
@@ -282,13 +282,13 @@ RectTransform:
   m_GameObject: {fileID: 247317031}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.15275967, y: 1.20117807, z: 1}
   m_Children: []
   m_Father: {fileID: 930903057}
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 18, y: -370}
+  m_AnchoredPosition: {x: 3, y: -382}
   m_SizeDelta: {x: 1000, y: 300}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &247317033
@@ -310,8 +310,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: .960784316, g: .960784316, b: .960784316, a: .768627465}
+    m_NormalColor: {r: .838235259, g: .838235259, b: .838235259, a: 0}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: .768627465}
     m_PressedColor: {r: .811764717, g: .811764717, b: .811764717, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
     m_ColorMultiplier: 1
@@ -357,7 +357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 2d0c261a73d304fa5bf8fa0160772bef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ac43c5d489d2c4cba90d6848aa7a7b4b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
