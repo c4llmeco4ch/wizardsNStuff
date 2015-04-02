@@ -51,6 +51,7 @@ public class Slash : Spell {
 		g.transform.position=cast();
 		casting=true;
 		p.charging=false;
+		p.casting=true;
 		p.anim.SetBool("isCharging",false);
         p.elementLoaded.SetActive(false);
 		p.anim.SetBool("Slash",true);

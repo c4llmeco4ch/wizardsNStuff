@@ -169,6 +169,7 @@ public class PlayerChar : MonoBehaviour {
 	                        if (slash.casting) {
 	                            return;
 	                        }
+	                        anim.SetFloat("Speed",0);
 							slash.charge();
 					
 	                        if (slash.facingRight && !facingRight)
@@ -212,7 +213,7 @@ public class PlayerChar : MonoBehaviour {
 	                        if (missile.casting) {
 	                            return;
 	                        }
-	                      
+							anim.SetFloat("Speed",0);
 							missile.charge();
 	
 	                        if (missile.facingRight && !facingRight)
@@ -260,7 +261,7 @@ public class PlayerChar : MonoBehaviour {
 							if (wall.casting) {
 								return;
 							}
-							
+							anim.SetFloat("Speed",0);
 							wall.charge();
 							
 							/*if (wall.facingRight && !facingRight)
