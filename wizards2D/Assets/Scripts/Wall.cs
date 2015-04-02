@@ -18,7 +18,7 @@ public class Wall : Spell {
 		p.elementLoaded.SetActive(false);
 		p.anim.SetBool("isCharging",false);
 		p.anim.SetBool("Wall",true);
-		framesLeft=((int)getSpd())*20;
+		framesLeft=((int)getSpd())*100;
 		//this.transform.position=p.transform.position;
 		this.transform.position=cast();
 		this.GetComponent<MeshRenderer>().enabled=true;
