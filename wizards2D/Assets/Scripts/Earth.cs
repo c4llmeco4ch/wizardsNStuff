@@ -11,6 +11,7 @@ public class Earth : Element {
 		setKnock(1);
 		setRange(0);
 		setMana(-1);
+		setDuration(2);
 		setDotN("stun");
         setName("Earth");
         setColor(new Color(0.8117647059f, 0.6470588235f, 0.137254902f));

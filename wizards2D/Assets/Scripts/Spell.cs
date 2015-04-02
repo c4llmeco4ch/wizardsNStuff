@@ -13,6 +13,7 @@ public abstract class Spell : MonoBehaviour {
 	int knock;//base knockback of spell
 	int manaC;//mana cost to use spell
 	int range;//range of the spell
+	int dur;  //duration of the spell
 	public Element element; //element the spell has been infused with
     public AudioSource sound;
     public Animator anim;
@@ -39,6 +40,7 @@ public abstract class Spell : MonoBehaviour {
 		setKnock(e.getKnock());
 		modMana(e.getMana());
 		modRange(e.getRange());
+		modDur(e.getDuration());
 		
 		picSwap(e);
         setAudio();
@@ -98,6 +100,12 @@ public abstract class Spell : MonoBehaviour {
 	public void setSpd(float s){spd=s;}
 	
 	public void modSpd(float s){spd+=(float)(s*.75);}
+	
+	public float getDur(){return dur;}
+	
+	public void setDur(int d){dur=d;}
+	
+	public void modDur(int d){dur+=(d*2);}
 	
 	public int getKnock(){return knock;}
 	

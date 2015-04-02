@@ -18,7 +18,7 @@ public class Wall : Spell {
 		p.elementLoaded.SetActive(false);
 		p.anim.SetBool("isCharging",false);
 		p.anim.SetBool("Wall",true);
-		framesLeft=((int)getSpd())*100;
+		framesLeft=((int)getDur())*35;
 		//this.transform.position=p.transform.position;
 		this.transform.position=cast();
 		this.GetComponent<MeshRenderer>().enabled=true;
@@ -391,6 +391,7 @@ public class Wall : Spell {
 		setMana(10);
 		setRange(2);
 		setSpd((float)4.5);
+		setDur(8);
 	}
 	
 	/*public void Flip (){

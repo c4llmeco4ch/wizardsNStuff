@@ -11,6 +11,7 @@ public class Air : Element {
 		setRange(2);
 		setKnock(0);
 		setMana(2);
+		setDuration(0);
 		setDotN("none");
         setName("Air");
         setColor(new Color(0.7450980392f, 1f, 1f));

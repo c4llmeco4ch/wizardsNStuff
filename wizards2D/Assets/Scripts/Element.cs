@@ -12,6 +12,7 @@ public class Element{//: MonoBehaviour {
 	int dotV;    //value per second of on-hit
 	int range;   //range mod for element
 	int manaC;   //mana cost mod for element
+	int duration;//duration of the spell
 	string eName; //name of element
     Color auraColor; //color of aura
 	
@@ -58,6 +59,10 @@ public class Element{//: MonoBehaviour {
 	public int getRange(){return range;}
 	
 	public void setRange(int r){range=r;}
+	
+	public int getDuration(){return duration;}
+	
+	public void setDuration(int d){duration=d;}
 	
 	public string getName(){return eName;}
 	

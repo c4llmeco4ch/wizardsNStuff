@@ -11,6 +11,7 @@ public class Water : Element {
 		setRange(0);
 		setKnock(0);
 		setMana(0);
+		setDuration(-2);
 		setDotN("wet");
 		setName("Water");
         setColor(new Color(0.1568627451f, 0.6078431373f, 0.8941176471f));

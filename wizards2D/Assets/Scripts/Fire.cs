@@ -11,6 +11,7 @@ public class Fire : Element {
 		setRange(1);
 		setKnock(-2);
 		setMana(0);
+		setDuration(0);
 		setDotN("burn");
         setName("Fire");
         setColor(new Color(0.9137254902f, 0.4039215686f, 0.1803921569f));
