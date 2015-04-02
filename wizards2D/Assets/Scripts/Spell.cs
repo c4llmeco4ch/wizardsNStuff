@@ -97,7 +97,7 @@ public abstract class Spell : MonoBehaviour {
 	
 	public void setSpd(float s){spd=s;}
 	
-	public void modSpd(float s){spd+=(float)s;}
+	public void modSpd(float s){spd+=(float)(s*.75);}
 	
 	public int getKnock(){return knock;}
 	
