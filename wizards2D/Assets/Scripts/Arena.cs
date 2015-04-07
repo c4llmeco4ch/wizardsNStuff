@@ -91,6 +91,11 @@ public class Arena : MonoBehaviour {
     
     //onClick to restart game
     public void revenge(){
+		for(int i = 0; i < 4; i++) {
+			GameInit.elementChoices.Add(new Element[2]);
+			GameInit.colorList.Add(PlayerColor.Blue);
+			GameInit.controllerNums.Add(i+1);
+		}
         Application.LoadLevel("ChooseElementScene");
     }
     
