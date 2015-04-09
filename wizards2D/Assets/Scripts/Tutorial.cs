@@ -21,8 +21,14 @@ public class Tutorial : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(cur == 0 && XCI.GetButtonDown(XboxButton.B))
+        if(cur == 0 && XCI.GetButtonDown(XboxButton.B)){
+			for(int i = 0; i < 4; i++) {
+				GameInit.elementChoices.Add(new Element[2]);
+				GameInit.colorList.Add(PlayerColor.Blue);
+				GameInit.controllerNums.Add(i+1);
+			}
             Application.LoadLevel("ChooseElementScene");
+		}
         else if(cur < 2 && XCI.GetButtonDown(XboxButton.A)){
             panel.sprite = sprites[++cur];
         }
