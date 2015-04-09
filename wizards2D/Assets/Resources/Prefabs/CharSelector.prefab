@@ -398,7 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: .882352948, g: .882352948, b: .882352948, a: 1}
-  m_Sprite: {fileID: 21300000, guid: d105737af9eaa4e5882f111f4a7fcfa2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5dbaf877d96474456a450ef09178c89c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -431,7 +431,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press A
+  m_Text: 
 --- !u!114 &11439194
 MonoBehaviour:
   m_ObjectHideFlags: 1

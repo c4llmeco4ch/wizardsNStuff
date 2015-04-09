@@ -56,6 +56,7 @@ public class CharSelector : MonoBehaviour {
 //			activate(true);
 //		else
 			activate(false);
+			
 	}
 	
 	void Update () {
