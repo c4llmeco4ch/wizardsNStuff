@@ -43,7 +43,7 @@ public class PlayerChar : MonoBehaviour {
     public SpriteRenderer damage;
     public PlayerColor color;
     public int controllerNum;
-    public int punchCD;
+    public Punch punch;
     
 
     //instantiate new instance of player char. @param playerNum determines start location
@@ -63,7 +63,7 @@ public class PlayerChar : MonoBehaviour {
         elements = new Element[2];
         spellsCast=0;
         timeAlive=0;
-        punchCD=0;
+        
     }
     
 
@@ -80,7 +80,7 @@ public class PlayerChar : MonoBehaviour {
 //		GameInit i = new GameInit ();
         elements [0] = GameInit.getPlayerElement(playerNum, 0); //new Earth();
         elements [1] = GameInit.getPlayerElement(playerNum, 1);//new Air();
-        
+		punch.prepPunch(this);        
         
 
 //        healthBarTrans = healthBar.GetComponent<RectTransform>() as RectTransform;
@@ -145,7 +145,10 @@ public class PlayerChar : MonoBehaviour {
 	                    //Debug.Log ("I'm here");
 	                } 
 	                else if(!(rt>.5 || lt>.5) && !casting){
-						punch();
+						if(punch.cd==0)
+							punch.start();
+						else
+							playSound("OutOfMana2");
 	                }
 	                else {
 	                    bool justMade = false;
@@ -339,8 +342,7 @@ public class PlayerChar : MonoBehaviour {
     public void FixedUpdate() {
         if (!isDead && stunT==0 && !block && !casting) {
             // Cache the contoller input input.
-            if (casting)
-                return;
+
 			float rawHorizontal = XCI.GetAxis(XboxAxis.LeftStickX, controllerNum);
 			float rawVertical = XCI.GetAxis(XboxAxis.LeftStickY, controllerNum);
             rawHorizontal = (rawHorizontal * 0.35f);
@@ -439,10 +441,6 @@ public class PlayerChar : MonoBehaviour {
 
     public bool getBlock() {
         return block;
-    }
-    
-    public void punch(){
-		
     }
 	
     public void reduceMana(Spell s) {

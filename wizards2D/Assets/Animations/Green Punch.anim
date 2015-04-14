@@ -23,8 +23,6 @@ AnimationClip:
       value: {fileID: 2100000, guid: 10c864032120a4f89a013b1a62217dbd, type: 2}
     - time: .216666669
       value: {fileID: 2100000, guid: 10c864032120a4f89a013b1a62217dbd, type: 2}
-    - time: .333333343
-      value: {fileID: 2100000, guid: 10c864032120a4f89a013b1a62217dbd, type: 2}
     attribute: m_Materials.Array.data[0]
     path: 
     classID: 23
@@ -46,11 +44,10 @@ AnimationClip:
     - {fileID: 2100000, guid: 10c864032120a4f89a013b1a62217dbd, type: 2}
     - {fileID: 2100000, guid: 10c864032120a4f89a013b1a62217dbd, type: 2}
     - {fileID: 2100000, guid: 10c864032120a4f89a013b1a62217dbd, type: 2}
-    - {fileID: 2100000, guid: 10c864032120a4f89a013b1a62217dbd, type: 2}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: .350000024
+    m_StopTime: .233333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

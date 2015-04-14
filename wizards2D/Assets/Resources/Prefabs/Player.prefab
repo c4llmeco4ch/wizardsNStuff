@@ -33,6 +33,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &154242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 454242}
+  - 65: {fileID: 6545584}
+  m_Layer: 0
+  m_Name: Punch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &156452
 GameObject:
   m_ObjectHideFlags: 0
@@ -66,6 +82,7 @@ GameObject:
   - 136: {fileID: 13656610}
   - 65: {fileID: 6597994}
   - 82: {fileID: 8268144}
+  - 114: {fileID: 11468536}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -113,6 +130,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 476676}
   m_RootOrder: 3
+--- !u!4 &454242
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154242}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 476676}
+  m_RootOrder: 4
 --- !u!4 &456452
 Transform:
   m_ObjectHideFlags: 1
@@ -132,13 +161,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176676}
   m_LocalRotation: {x: .258819073, y: 0, z: 0, w: .965925813}
-  m_LocalPosition: {x: 5, y: 2, z: -10}
+  m_LocalPosition: {x: 5, y: 1.80999994, z: -10}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 456452}
   - {fileID: 489572}
   - {fileID: 407850}
   - {fileID: 408192}
+  - {fileID: 454242}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &489572
@@ -165,7 +195,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: b44fff525a2ce45c8ae9167acdeb732b, type: 2}
+  - {fileID: 2100000, guid: 5595a134e5aa643e980a5158e0392aab, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -193,8 +223,20 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!65 &6545584
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154242}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .5, y: .5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &6597994
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -306,6 +348,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24d21fda601f14377b507fb194e91ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  facingRight: 1
+--- !u!114 &11468536
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f8bef2ee294c4ff7bd9d8cd0aa8be96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 0}
+  anim: {fileID: 0}
+  p: {fileID: 0}
+  g: {fileID: 154242}
+  casting: 0
+  framesLeft: 0
+  facingRight: 0
+  dmg: 0
+  cd: 0
 --- !u!114 &11476676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -345,9 +408,13 @@ MonoBehaviour:
   chargeLeft: 0
   spellsCast: 0
   timeAlive: 0
+  currentSpell: {fileID: 0}
   aura: {fileID: 21207850}
   playerPic: {fileID: 0}
   damage: {fileID: 21208192}
+  color: 0
+  controllerNum: 0
+  punch: {fileID: 11468536}
 --- !u!136 &13656610
 CapsuleCollider:
   m_ObjectHideFlags: 1
