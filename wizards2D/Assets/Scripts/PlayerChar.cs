@@ -43,7 +43,7 @@ public class PlayerChar : MonoBehaviour {
     public SpriteRenderer damage;
     public PlayerColor color;
     public int controllerNum;
-    
+    public int punchCD;
     
 
     //instantiate new instance of player char. @param playerNum determines start location
@@ -63,6 +63,7 @@ public class PlayerChar : MonoBehaviour {
         elements = new Element[2];
         spellsCast=0;
         timeAlive=0;
+        punchCD=0;
     }
     
 
@@ -139,10 +140,14 @@ public class PlayerChar : MonoBehaviour {
 	            //Code for casting Slash
 				if (XCI.GetButtonDown(XboxButton.X, controllerNum)) {
 	//                elementLoaded.SetActive(false);
-	                if ((rt>.5 && lt>.5) || !(rt > .5 || lt > .5) || casting) {
+	                if (((rt>.5 && lt>.5) || !(rt > .5 || lt > .5)) && casting) {
 	                    //Actually, punch, but for now, nothing
 	                    //Debug.Log ("I'm here");
-	                } else {
+	                } 
+	                else if(!(rt>.5 || lt>.5) && !casting){
+						punch();
+	                }
+	                else {
 	                    bool justMade = false;
 	                    if (spells [0] == null) {
 	                        slashMaker();
@@ -434,6 +439,10 @@ public class PlayerChar : MonoBehaviour {
 
     public bool getBlock() {
         return block;
+    }
+    
+    public void punch(){
+		
     }
 	
     public void reduceMana(Spell s) {
