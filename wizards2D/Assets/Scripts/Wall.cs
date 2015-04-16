@@ -73,8 +73,11 @@ public class Wall : Spell {
 		float y=p.transform.position.y;
 		float x=p.transform.position.x;
 		float z=p.transform.position.z;
-		y = 3f;
-		z -= 2f;
+		y = 2f;
+		if(z>-3)
+			z=-3f;
+		/*else
+			z += 2f;*/
 		if(p.facingRight){
 			Debug.Log("X: "+x);
 			x+=p.collider.bounds.size.x/2+(float)2;

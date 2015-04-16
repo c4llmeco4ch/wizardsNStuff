@@ -569,7 +569,6 @@ MonoBehaviour:
   casting: 0
   framesLeft: 0
   facingRight: 0
-  dmg: 0
   cd: 0
 --- !u!1001 &81018403
 Prefab:
@@ -2287,7 +2286,6 @@ MonoBehaviour:
   casting: 0
   framesLeft: 0
   facingRight: 0
-  dmg: 0
   cd: 0
 --- !u!1 &513630817
 GameObject:
@@ -7257,7 +7255,6 @@ MonoBehaviour:
   casting: 0
   framesLeft: 0
   facingRight: 0
-  dmg: 0
   cd: 0
 --- !u!1 &1703267556
 GameObject:
@@ -7562,7 +7559,6 @@ MonoBehaviour:
   casting: 0
   framesLeft: 0
   facingRight: 0
-  dmg: 0
   cd: 0
 --- !u!1 &1718457525
 GameObject:
@@ -8719,7 +8715,6 @@ MonoBehaviour:
   casting: 0
   framesLeft: 0
   facingRight: 0
-  dmg: 0
   cd: 0
 --- !u!1 &1995803119
 GameObject:
