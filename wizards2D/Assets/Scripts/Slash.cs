@@ -113,6 +113,7 @@ public class Slash : Spell {
 	
 	//what happens when this collides with a different spell
 	override public void versus(Spell s){
+		if(s is Punch){return;}
 		if(s is Slash){
 			if(getElement().getName()=="air"){
 				if(s.getElement().getName()=="air"){

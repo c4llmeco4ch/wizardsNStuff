@@ -41,7 +41,9 @@ public class PlayerChar : MonoBehaviour {
     public SpriteRenderer aura;
     public Image playerPic;
     public SpriteRenderer damage;
-    public PlayerColor color;
+	public SpriteRenderer damage1;
+	public SpriteRenderer damage2;
+	public PlayerColor color;
     public int controllerNum;
     
 
@@ -78,7 +80,7 @@ public class PlayerChar : MonoBehaviour {
 		controllerNum = GameInit.getControllerNum(playerNum);
 //		GameInit i = new GameInit ();
         elements [0] = GameInit.getPlayerElement(playerNum, 0); //new Earth();
-        elements [1] = GameInit.getPlayerElement(playerNum, 1);//new Air();       
+        elements [1] = GameInit.getPlayerElement(playerNum, 1);//new Air();     
         punchMaker();
 
 //        healthBarTrans = healthBar.GetComponent<RectTransform>() as RectTransform;
@@ -410,6 +412,12 @@ public class PlayerChar : MonoBehaviour {
             hp -= bd;
             Debug.Log("Player " + playerNum + ": " + hp);
         }
+        string s1=bd.ToString()[0].ToString();
+        string s2;
+        if(bd>=10)
+			s2=bd.ToString()[1].ToString();
+		else
+			s2="0";
         if (s.getDotB()) {
             dotVal = s.getDotV();
             dotT = s.getDotT();
@@ -435,15 +443,33 @@ public class PlayerChar : MonoBehaviour {
         }
         else
             anim.SetBool("isHit", true);
-            
-		damage.sprite = Resources.Load("UI Art Assets/damage/"+s.element.getName()+"_"+s.getName()+"_damage", typeof(Sprite)) as Sprite;
+		damage.sprite = Resources.Load("UI Art Assets/damage/fire_minus", typeof(Sprite)) as Sprite;    
+		damage1.sprite = Resources.Load("UI Art Assets/damage/fire_"+s1, typeof(Sprite)) as Sprite;
+		damage2.sprite = Resources.Load("UI Art Assets/damage/fire_"+s2, typeof(Sprite)) as Sprite;
 		damage.gameObject.SetActive(true);
+		damage1.gameObject.SetActive(true);
+		if(bd>=10)
+			damage2.gameObject.SetActive(true);
 		Damage d = damage.GetComponent<Damage>();
+		Damage d1= damage1.GetComponent<Damage>();
+		Damage d2= damage2.GetComponent<Damage>();
+		d1.enabled=true;
+		d.enabled=true;
+		d2.enabled=true;
 		d.Start();
-		if (d.facingRight && !facingRight)
+		d1.Start();
+		if(bd>=10)
+			d2.Start();
+		if (d.facingRight && !facingRight){
 			d.Flip();
-		else if (!d.facingRight && facingRight)
+			d1.Flip();
+			d2.Flip();	
+		}
+		else if (!d.facingRight && facingRight){
 			d.Flip();
+			d1.Flip();
+			d2.Flip();
+		}
     }
 	
     public void setBlock(bool b) {

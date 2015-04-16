@@ -107,6 +107,7 @@ public class Missile : Spell {
 	
 	//defines what happens when a spell collides with a different spell
 	override public void versus(Spell s){
+		if(s is Punch){return;}
 		if(s is Slash){
 			if(getElement().getName()=="air"){
 				if(s.getElement().getName()=="air"){

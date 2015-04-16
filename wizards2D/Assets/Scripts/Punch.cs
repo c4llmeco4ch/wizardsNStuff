@@ -41,7 +41,7 @@ public class Punch : Spell {
 				casting=false;
 				p.casting=false;
 				cd=60;
-				g.GetComponent<BoxCollider>().enabled=false;
+				this.GetComponent<BoxCollider>().enabled=false;
 			}
 		}
 	}
@@ -51,6 +51,7 @@ public class Punch : Spell {
 		p.casting=false;
 		framesLeft=0;
 		g.GetComponent<BoxCollider>().enabled=false;
+		
 	}
 	
 	public void OnCollisionEnter(Collision c){
