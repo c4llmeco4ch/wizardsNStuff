@@ -21,7 +21,7 @@ public class Punch : Spell {
 		framesLeft = 19;
 	}
 	
-	public void prepPunch(PlayerChar pc){p=pc; facingRight=true;cd=0;}
+	public void prepPunch(PlayerChar pc, GameObject g){p=pc; this.g=g; facingRight=true;cd=0;}
 	
 	public void Awake(){
 		casting = false; 
@@ -79,7 +79,7 @@ public class Punch : Spell {
 		}
 	}
 	
-	override public void resetSpell(){}
+	override public void resetSpell(){return;}
 	
 	override public void versus(Spell s){return;}
 }

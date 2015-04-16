@@ -33,22 +33,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!1 &154242
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 454242}
-  - 65: {fileID: 6545584}
-  m_Layer: 0
-  m_Name: Punch
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &156452
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,18 +114,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 476676}
   m_RootOrder: 3
---- !u!4 &454242
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154242}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 476676}
-  m_RootOrder: 4
 --- !u!4 &456452
 Transform:
   m_ObjectHideFlags: 1
@@ -161,14 +133,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176676}
   m_LocalRotation: {x: .258819073, y: 0, z: 0, w: .965925813}
-  m_LocalPosition: {x: 5, y: 1.80999994, z: -10}
+  m_LocalPosition: {x: 5, y: 1.79999995, z: -10}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 456452}
   - {fileID: 489572}
   - {fileID: 407850}
   - {fileID: 408192}
-  - {fileID: 454242}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &489572
@@ -225,18 +196,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!65 &6545584
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154242}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &6597994
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -363,7 +322,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   anim: {fileID: 0}
   p: {fileID: 0}
-  g: {fileID: 154242}
+  g: {fileID: 0}
   casting: 0
   framesLeft: 0
   facingRight: 0
@@ -414,7 +373,6 @@ MonoBehaviour:
   damage: {fileID: 21208192}
   color: 0
   controllerNum: 0
-  punch: {fileID: 11468536}
 --- !u!136 &13656610
 CapsuleCollider:
   m_ObjectHideFlags: 1

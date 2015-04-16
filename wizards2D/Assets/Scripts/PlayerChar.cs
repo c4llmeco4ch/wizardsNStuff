@@ -43,7 +43,6 @@ public class PlayerChar : MonoBehaviour {
     public SpriteRenderer damage;
     public PlayerColor color;
     public int controllerNum;
-    public Punch punch;
     
 
     //instantiate new instance of player char. @param playerNum determines start location
@@ -59,7 +58,7 @@ public class PlayerChar : MonoBehaviour {
         isDead = false;
         stunT = 0;
         playerNum = 1;
-        spells = new GameObject[4];
+        spells = new GameObject[5];
         elements = new Element[2];
         spellsCast=0;
         timeAlive=0;
@@ -79,9 +78,8 @@ public class PlayerChar : MonoBehaviour {
 		controllerNum = GameInit.getControllerNum(playerNum);
 //		GameInit i = new GameInit ();
         elements [0] = GameInit.getPlayerElement(playerNum, 0); //new Earth();
-        elements [1] = GameInit.getPlayerElement(playerNum, 1);//new Air();
-		punch.prepPunch(this);        
-        
+        elements [1] = GameInit.getPlayerElement(playerNum, 1);//new Air();       
+        punchMaker();
 
 //        healthBarTrans = healthBar.GetComponent<RectTransform>() as RectTransform;
 //        manaBarTrans = manaBar.GetComponent<RectTransform>() as RectTransform;
@@ -145,6 +143,7 @@ public class PlayerChar : MonoBehaviour {
 	                    //Debug.Log ("I'm here");
 	                } 
 	                else if(!(rt>.5 || lt>.5) && !casting){
+						Punch punch = spells[3].GetComponent("Punch") as Punch;
 						if(punch.cd==0)
 							punch.start();
 						else
@@ -314,6 +313,16 @@ public class PlayerChar : MonoBehaviour {
         spells [0] = slash;
 //		Debug.Log("-.-");
     }
+    
+	public void punchMaker() {
+		GameObject punch = Instantiate(Resources.Load("Prefabs/Punch", typeof(GameObject)), transform.position, Quaternion.identity) as GameObject;
+		Punch p = punch.GetComponent("Punch") as Punch;
+		p.prepPunch(this, punch);
+		p.GetComponent<BoxCollider>().enabled=false;
+		//slash.transform.Translate(s.cast(),Space.World);
+		spells [3] = punch;
+		//		Debug.Log("-.-");
+	}
 	
     public void missileMaker() {
         GameObject missile = Instantiate(Resources.Load("Prefabs/Missile", typeof(GameObject)), transform.position, Quaternion.identity) as GameObject;
