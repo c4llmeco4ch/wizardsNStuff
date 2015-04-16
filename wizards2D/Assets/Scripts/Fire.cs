@@ -4,7 +4,7 @@ using System.Collections;
 public class Fire : Element {
 
 	public Fire(){
-		setDmg(-2);
+		setDmg(-1);
 		setCast(-2);
 		setSpd(1);
 		setDot(true,2,5);

@@ -8,7 +8,6 @@ public class Punch : Spell {
 	public bool casting; //whether the punch is currently in effect
 	public int framesLeft; //how many frames till the punch ends
 	public bool facingRight; //true if sprite is facing right
-	public int dmg;      //how much damage a given punch inflicts
 	public int cd;
 	
 	// Use this for initialization
@@ -25,7 +24,7 @@ public class Punch : Spell {
 	
 	public void Awake(){
 		casting = false; 
-		dmg=3; 
+		setDmg(2); 
 	}
 	
 	// Update is called once per frame
@@ -59,7 +58,7 @@ public class Punch : Spell {
 		if(c.gameObject.tag.Equals("Player")){
 			Debug.Log("Collision!!");
 			PlayerChar pc=c.gameObject.GetComponent("PlayerChar") as PlayerChar;//issues grabbing the playerchar from the gameobject
-			pc.takeDamage(dmg,this); //should I make a different method for punches and have this not be a spell?
+			pc.takeDamage(getDmg (),this); //should I make a different method for punches and have this not be a spell?
 		}
 	}
 	

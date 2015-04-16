@@ -144,8 +144,10 @@ public class PlayerChar : MonoBehaviour {
 	                } 
 	                else if(!(rt>.5 || lt>.5) && !casting){
 						Punch punch = spells[3].GetComponent("Punch") as Punch;
-						if(punch.cd==0)
+						if(punch.cd==0){
 							punch.start();
+							currentSpell=punch;
+						}
 						else
 							playSound("OutOfMana2");
 	                }
@@ -177,7 +179,7 @@ public class PlayerChar : MonoBehaviour {
 	                            return;
 	                        }
 	                        anim.SetFloat("Speed",0);
-							slash.charge();
+							slash.charge(); 
 					
 	                        if (slash.facingRight && !facingRight)
 	                            slash.Flip();
