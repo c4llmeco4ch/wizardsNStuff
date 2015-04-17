@@ -10,6 +10,7 @@ public class Arena : MonoBehaviour {
 
 	public Canvas canvas;
 	public Text win;
+	public bool first;
     
     //all the different positons for player ui depending on the number of players
     public RectTransform uiLL;
@@ -39,6 +40,7 @@ public class Arena : MonoBehaviour {
                 ui[3] = uiRR;
                 break;
         }
+        first = false;
         foreach(RectTransform r in ui)
             r.gameObject.SetActive(true);
         
@@ -63,8 +65,10 @@ public class Arena : MonoBehaviour {
 				allDead++;
 		}
 		//Debug.Log("all dead: "+allDead+" out of "+pNum);
-		if(allDead >= pNum-1)
+		if(allDead >= pNum-1 && !first){
 			gameOver();
+			first=!first;
+		}
 	}
 
 	//Called when all but one player are dead

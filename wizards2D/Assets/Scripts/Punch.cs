@@ -67,6 +67,7 @@ public class Punch : Spell {
 		float y=p.transform.position.y;
 		float x=p.transform.position.x;
 		float z=p.transform.position.z;
+		y=2f;
 		if(p.facingRight){
 			//			Debug.Log("X: "+x+"||Y: "+y+"||Z: "+x);
 			x=p.collider.bounds.size.x/2+x+(float).75;

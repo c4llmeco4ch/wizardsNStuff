@@ -108,7 +108,8 @@ public class PlayerChar : MonoBehaviour {
             elementR.sprite = Resources.Load("UI Art Assets/mana/" + elements [1].getName() + "_element", typeof(Sprite)) as Sprite;
             Debug.Log("color: "+color.ToString());
 			playerPic.sprite = Resources.Load("UI Art Assets/mana/"+color.ToString()+"_figure", typeof(Sprite)) as Sprite;
-			anim.runtimeAnimatorController = Resources.Load("Animation Controllers/"+color.ToString()+" Player", typeof(RuntimeAnimatorController)) as RuntimeAnimatorController;
+			if(!isDead)
+				anim.runtimeAnimatorController = Resources.Load("Animation Controllers/"+color.ToString()+" Player", typeof(RuntimeAnimatorController)) as RuntimeAnimatorController;
         }
         
         if (!isDead) {
@@ -486,10 +487,12 @@ public class PlayerChar : MonoBehaviour {
 	
     public void kill() {
         isDead = true;
-        anim.SetBool("Dead", true);
-        transform.Rotate(0, 0, 90);
         rigidbody.constraints = RigidbodyConstraints.FreezeAll;
         this.GetComponent<BoxCollider>().enabled=false;
+		MeshRenderer mr=this.GetComponent<MeshRenderer>();
+		this.GetComponent<Animator>().enabled=false;
+		mr.material=Resources.Load("Materials/Gravestone", typeof(Material)) as Material;
+		this.GetComponentInChildren<SpriteRenderer>().enabled=false;
     }
 	
     public void regenMana() {
