@@ -74,6 +74,7 @@ public class Wall : Spell {
 		float x=p.transform.position.x;
 		float z=p.transform.position.z;
 		y = 2f;
+		this.transform.Rotate(new Vector3(45f,0f,0f));
 		if(z>-3)
 			z=-3f;
 		/*else
