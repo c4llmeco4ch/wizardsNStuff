@@ -24,6 +24,9 @@ public class Wall : Spell {
 		this.GetComponent<MeshRenderer>().enabled=true;
 		this.GetComponent<BoxCollider>().enabled=true;
 		this.GetComponentInChildren<SpriteRenderer>().enabled=true;
+		string s=getElement().getName()+"_wall1_shadow";
+		Debug.Log(s);
+		this.GetComponentInChildren<SpriteRenderer>().sprite=Resources.Load("UI Art Assets/"+s,typeof(Sprite)) as Sprite;
 		p.spellsCast++;
 	}
 	
