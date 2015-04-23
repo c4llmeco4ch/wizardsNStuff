@@ -454,8 +454,8 @@ MonoBehaviour:
   aura: {fileID: 21207850}
   playerPic: {fileID: 0}
   damage: {fileID: 21247694}
-  damage1: {fileID: 0}
-  damage2: {fileID: 0}
+  damage1: {fileID: 21247692}
+  damage2: {fileID: 21208192}
   color: 0
   controllerNum: 0
 --- !u!136 &13656610
