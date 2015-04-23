@@ -510,7 +510,7 @@ public class PlayerChar : MonoBehaviour {
     
     //plays the out of mana sound effect
     public void playNoMana() {
-        playSound("OutOfMana");
+        playSound("OutOfManaPoof");
     }
     
     //plays the hit sound effect
