@@ -385,11 +385,26 @@ public class PlayerChar : MonoBehaviour {
     public void Flip() {
         // Switch the way the player is labelled as facing.
         facingRight = !facingRight;
-		
         // Multiply the player's x local scale by -1.
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+        
+        Vector3 temp = damage.transform.position;
+        
+		Vector3 theScaled = damage.transform.localScale;
+		theScaled.x *= -1;
+		damage.transform.localScale = theScaled;
+		damage.transform.position=damage2.transform.position;
+		
+		Vector3 theScaled1 = damage1.transform.localScale;
+		theScaled1.x *= -1;
+		damage1.transform.localScale = theScaled1;
+		
+		Vector3 theScaled2 = damage2.transform.localScale;
+		theScaled2.x *= -1;
+		damage2.transform.localScale = theScaled2;
+		damage2.transform.position=temp;
     }
 
     //check if the amount of incoming damage is greater than the player's current hp. if so, player is die
@@ -460,17 +475,7 @@ public class PlayerChar : MonoBehaviour {
 		d.Start();
 		d1.Start();
 		if(bd>=10)
-			d2.Start();
-		if (d.facingRight && !facingRight){
-			d.Flip();
-			d1.Flip();
-			d2.Flip();	
-		}
-		else if (!d.facingRight && facingRight){
-			d.Flip();
-			d1.Flip();
-			d2.Flip();
-		}
+			d2.Start();	
     }
 	
     public void setBlock(bool b) {
