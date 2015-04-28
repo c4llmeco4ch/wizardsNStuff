@@ -154,7 +154,7 @@ public class PlayerChar : MonoBehaviour {
 						else
 							playSound("OutOfMana2");
 	                }
-	                else {
+	                else if(!casting){
 	                    bool justMade = false;
 	                    if (spells [0] == null) {
 	                        slashMaker();
