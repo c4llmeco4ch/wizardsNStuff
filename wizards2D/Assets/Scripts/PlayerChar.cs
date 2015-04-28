@@ -123,6 +123,13 @@ public class PlayerChar : MonoBehaviour {
                 if (anim.GetCurrentAnimationClipState(0)[0].clip.name.EndsWith("Cast Wall"))
                     anim.SetBool("Wall", false);
             }
+            if(chargeLeft>0)
+				chargeLeft--;
+			else if(chargeLeft<=0 && charging){
+				charging=false;
+				chargeLeft=0;
+				anim.SetBool("isCharging",false);
+			}
             
 			float lt = XCI.GetAxis(XboxAxis.LeftTrigger, controllerNum); //true if left trigger is pushed, else false
 			float rt = XCI.GetAxis(XboxAxis.RightTrigger, controllerNum); //true if right trigger is pushed, else false
