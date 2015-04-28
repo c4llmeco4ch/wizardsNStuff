@@ -395,8 +395,8 @@ public class Wall : Spell {
 		setDot(false,0,0);
 		setDmg(0);
 		setKnock(1);
-		setCast(4);
-		setMana(10);
+		setCast(3);
+		setMana(20);
 		setRange(2);
 		setSpd((float)4.5);
 		setDur(8);
