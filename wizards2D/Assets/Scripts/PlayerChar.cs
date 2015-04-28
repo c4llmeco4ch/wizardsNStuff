@@ -497,6 +497,8 @@ public class PlayerChar : MonoBehaviour {
 		MeshRenderer mr=this.GetComponent<MeshRenderer>();
 		this.GetComponent<Animator>().enabled=false;
 		mr.material=Resources.Load("Materials/Gravestone", typeof(Material)) as Material;
+		if(!facingRight)
+			Flip ();
 		this.GetComponentInChildren<SpriteRenderer>().enabled=false;
     }
 	
