@@ -170,6 +170,7 @@ public class PlayerChar : MonoBehaviour {
 	                        slash.infuse(elements [1]);	
 	                    Debug.Log("Slash's Element is " + slash.getElement().getName());
 	                    if (mana < slash.getMana()) {
+							Debug.Log("no slash mana");
 	                        playNoMana();
 	                        slash.kill();
 	                    }
@@ -214,6 +215,7 @@ public class PlayerChar : MonoBehaviour {
 	                        missile.infuse(elements [1]);
 	                    Debug.Log("Missile's Element is " + missile.getElement().getName());
 	                    if (mana < missile.getMana()){
+							Debug.Log("no missile mana");
 	                        playNoMana();
 	                        missile.kill();
 	                    }
@@ -262,6 +264,7 @@ public class PlayerChar : MonoBehaviour {
 							wall.infuse(elements [1]);
 						Debug.Log("Missile's Element is " + wall.getElement().getName());
 						if (mana < wall.getMana()){
+							Debug.Log("no wall mana");
 							playNoMana();
 							wall.kill();
 						}
@@ -411,7 +414,6 @@ public class PlayerChar : MonoBehaviour {
     //else, subtract player's hp by damage
     public void takeDamage(int dmg, Spell s) {
         Debug.Log("Taking " + dmg + " Damage as " + playerNum);
-        playHit();
         int bd;
         if (hp == 0) {
             return;
@@ -424,7 +426,9 @@ public class PlayerChar : MonoBehaviour {
             isDead = true;
             hp = 0;
             kill();
-        } else {
+        } 
+        else {
+			playHit();
             hp -= bd;
             Debug.Log("Player " + playerNum + ": " + hp);
         }
@@ -491,6 +495,7 @@ public class PlayerChar : MonoBehaviour {
     }
 	
     public void kill() {
+		playSound("DeathAndPoof");
         isDead = true;
         rigidbody.constraints = RigidbodyConstraints.FreezeAll;
         this.GetComponent<BoxCollider>().enabled=false;
